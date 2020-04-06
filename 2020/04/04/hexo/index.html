@@ -40,20 +40,6 @@
     
     
         
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
-    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-    Macros: { href: "{}" } }, messageStyle: "none" });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
-        <!-- 通过连接CDN加载MathJax的js代码 -->
-        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-        </script>
-        
     
 
 
@@ -223,7 +209,7 @@
 <p>为</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">escape</span>: <span class="regexp">/^\\([!"#$%&amp;'()*+,\-./:;&lt;=&gt;?@\[\]^_`|~])/</span>,</span><br></pre></td></tr></table></figure>
 
-<p>删除对<code>\{</code>,<code>\}</code>的转义,使得方程组可以正常显示:<br>$$<br>y(t)=\left\{\begin{array}{ll}0, &amp; x(t)&lt;0 \\ x(t)+x(t-2), &amp; x(t) \geqslant 0\end{array} \right.<br>$$</p>
+<p>删除对<code>\{</code>,<code>\}</code>的转义,使得方程组可以正常显示:<br>$$<br>y(t)=\left\{\begin{array}{ll}<br>0, &amp; x(t)&lt;0 \<br>x(t)+x(t-2), &amp; x(t) \geqslant 0<br>\end{array}\right.<br>$$</p>
 <blockquote>
 <p>换行<code>\\</code>得用<code>\\\\</code>,暂时没有解决,也可以不解决.但奇怪的是数学环境<code>\begin{array}...\end{array}</code>中<code>\\</code>可以正常显示.</p>
 </blockquote>
@@ -271,7 +257,6 @@
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://my.oschina.net/u/3029314/blog/2875604" target="_blank" rel="noopener">GitHub Pages 绑定阿里云域名</a>. OSCHINA.</li>
 <li><a href="https://www.jianshu.com/p/d92ea8542673" target="_blank" rel="noopener">Github Pages 绑定阿里云域名</a>. 简书.</li>
-<li><a href="https://zhuanlan.zhihu.com/p/33857596" target="_blank" rel="noopener">Hexo博客使用MathJax公式并解决Markdown渲染冲突问题</a>. 知乎</li>
 </ul>
 
                             </div>
