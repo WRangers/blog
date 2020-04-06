@@ -223,9 +223,10 @@
 <p>为</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">escape</span>: <span class="regexp">/^\\([!"#$%&amp;'()*+,\-./:;&lt;=&gt;?@\[\]^_`|~])/</span>,</span><br></pre></td></tr></table></figure>
 
-<p>删除对<code>\{</code>,<code>\}</code>的转义,使得方程组可以正常显示:<br>$$<br>y(t)=\left\{\begin{array}{ll}<br>0, &amp; x(t)&lt;0 \<br>x(t)+x(t-2), &amp; x(t) \geqslant 0<br>\end{array}\right.<br>$$</p>
+<p>删除对<code>\{</code>,<code>\}</code>的转义,使得方程组可以正常显示:</p>
+<p>$$<br>y(t)=\left\{\begin{array}{ll}<br>0, &amp; x(t)&lt;0 \\\<br>x(t)+x(t-2), &amp; x(t) \geqslant 0<br>\end{array}\right.<br>$$</p>
 <blockquote>
-<p>换行<code>\\</code>得用<code>\\\\</code>,暂时没有解决,也可以不解决.但奇怪的是数学环境<code>\begin{array}...\end{array}</code>中<code>\\</code>可以正常显示.</p>
+<p>展示数学环境中换行<code>\\</code>得用<code>\\\\</code>,暂时没有解决,也可以不解决;但在行内数学环境<code>$...$</code>中,<code>\\</code>是可识别的.</p>
 </blockquote>
 <h3 id="Github部署-1"><a href="#Github部署-1" class="headerlink" title="Github部署"></a>Github部署</h3><h2 id="阿里云域名绑定"><a href="#阿里云域名绑定" class="headerlink" title="阿里云域名绑定"></a>阿里云域名绑定</h2><ol>
 <li><p>在阿里云挑一个心仪的域名,掏钱,实名认证.</p>
