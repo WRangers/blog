@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Signals and Systems Series 1 Time Invariant Property | J. Wang&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+    Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. Wang&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. Wang&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Signals and Systems Series 1 Time Invariant Property
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                        Date: <a href="#">February 9, 2020&nbsp;&nbsp;22:16:23</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                    Category:
+                            
+                                <a href="/blog/categories/Signals-and-Systems-Series/">Signals and Systems Series</a>
+                            
+                        </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>　　系统的时不变性是指:如果系统的输入信号在时间上有一个平移,系统的零状态响应也产生同样一个时间的平移.</p>
+<p>对于连续时间系统:<br>$$<br>\text{If} \ f(t)\rightarrow y_f(t), \text{then} \ f(t-t_0)\rightarrow y_f(t-t_0).<br>$$<br>对于离散时间系统:<br>$$<br>\text{If} \ x(n)\rightarrow y_x (n), \text{then} \ x(n-n_0)\rightarrow y_x (n-n_0).<br>$$<br>其中,$t_0$、$n_0$可正可负.</p>
+<p>　　具有时不变性的系统为时不变系统(Time-invariant System),如下图所示:</p>
+<p><img src="ss1.asset/SystemResponeseText.gif" alt="SystemResponeseText"></p>
+<blockquote>
+<p>#TODO:更新图片.</p>
+</blockquote>
+<h2 id="理解系统时变性质"><a href="#理解系统时变性质" class="headerlink" title="理解系统时变性质"></a>理解系统时变性质</h2><p>　　对于连续时间信号系统$y_f(t)=f(t)$来说,发生时移时:<br>$$<br>f(t)\rightarrow f(t-t_0) \tag{1.1}<br>$$</p>
+<p>$$<br>y_f(t)\rightarrow y_f(t-t_0) \tag{1.2}<br>$$</p>
+<p>只有当式$(1.1)$与式$(1.2)$的时移域是一样的时候,即信号的时间域和系统的时间域是一样的,系统才是时不变系统.</p>
+<p>以$y_1(t)=f_1(t)$和$y_2(t)=f_2(t)·\cos(t)$为例:</p>
+<ul>
+<li>$y_1(t)=f_1(t)$中,信号$f_1(t)$的时间域与系统响应$y_1(t)$的时间域是一致的,故为时不变系统.</li>
+<li>$y_2(t)=f_2(t)·\cos(t)$中,信号$f_2(t)$时移只作用于信号本身的时间域$f_2(t)\rightarrow f_2(t-t_0)$,而系统响应的时移不单单作用于信号,是整个系统时域的时移$y_2(t-t_0)\rightarrow f_2(t-t_0)·\cos(t-t_0)$.</li>
+</ul>
+<p><strong>有翻转、展缩的情况</strong></p>
+<p>　　对于系统<br>$$<br>y_f(t)=f(-2t)·\sin(t)<br>$$<br>有<br>$$<br>y_f(t-t_0)=f[-2(t-t_0)]·\sin(t-t_0)\ne f(-2t-t_0)·\sin(t).<br>$$<br>故为时变系统.为什么如此?</p>
+<p>令<br>$$<br>f(t)\rightarrow y_f(t)=f(-2t)·\sin(t) \tag{1.3}<br>$$<br>则$y_f(t-t_0)=f[-2(t-t_0)]·\sin(t-t_0)$;</p>
+<p>而<br>$$<br>f_1(t)=f(t-t_0)\rightarrow y_{f1}(t)=f_1(-2t)·\sin(t)=f(-2t-t_0)·\sin(t) \tag{1.4}<br>$$<br>换个角度再看一下:<br>$$<br>\begin{aligned}<br>f_1(t)&amp;\rightarrow y_{f1}(t) \\\<br>|| \ \ \ &amp;\ \ \ \ \ \ \ \ \   ||\\\<br>f(t-t_0)&amp; \rightarrow f_1(-2t)·\sin(t)=f(-2t-t_0)·\sin(t)<br>\end{aligned}<br>$$<br>这里关键就是做变量替换,由于$f_1(t)=f(t-t_0)$,则$f_1(-2t)=f(-2t-t_0)$;$\sin(t)$中的$t$不改变是因为是$\sin(t)$是具体函数,而不是抽象函数(具体函数指$y=ax+b$、$y=\sin(x)$、$y=ae^x$这样的函数,抽象函数指类似于$f(at+b)$、$g(at+b)$这样的函数).</p>
+<blockquote>
+<p>e.g.</p>
+<p>判断系统$y(n)=x(n+1)+x(1-n)$的时变性.</p>
+<p>解:</p>
+<p>$x(n) \rightarrow y(n)=x(n-1)+x(1-n) \Rightarrow y\left(n-n_{0}\right)=x\left(n-n_{0}-1\right)+x\left(1-n+n_{0}\right)$<br>$x_{1}(n)=x\left(n-n_{0}\right) \rightarrow$<br>$y_{1}(n)=x_{1}(n-1)+x_{1}(1-n)=x\left(n-1-n_{0}\right)+x\left(1-n-n_{0}\right) \neq y\left(n-n_{0}\right)$</p>
+<p>故为时变系统.</p>
+</blockquote>
+<h2 id="时不变性的判断"><a href="#时不变性的判断" class="headerlink" title="时不变性的判断"></a>时不变性的判断</h2><ul>
+<li>线性系统:判断线性/非线性系统时,不需要关心时间.</li>
+<li>时不变系统:判断时变/时不变,不考虑初始状态的影响,仅考虑零状态响应.</li>
+<li>线性与时不变性没有必然联系.</li>
+</ul>
+<h3 id="Regular-Examples"><a href="#Regular-Examples" class="headerlink" title="Regular Examples"></a>Regular Examples</h3><blockquote>
+<ul>
+<li><p>判断下列方程描述的系统是否时不变系统?</p>
+<ol>
+<li>$y(t)=\sin [f(t)]$</li>
+<li>$y(t)=\cos t \cdot f(t)$</li>
+</ol>
+</li>
+</ul>
+<p>1.解:</p>
+<p>　步骤一:直接写出$y(t-t_0)$</p>
+<p>　步骤二:看$f(t-t_0)$的输出<br>$$<br>f\left(t-t_{0}\right) \rightarrow y_{1}(t)=\sin \left[f\left(t-t_{0}\right)\right]=y\left(t-t_{0}\right)<br>$$<br>所以为时不变系统.</p>
+<p>2.解:</p>
+<p>　步骤一: $y\left(t-t_{0}\right)=\cos \left(t-t_{0}\right) \cdot f\left(t-t_{0}\right)$</p>
+<p>　步骤二: $\begin{aligned} f\left(t-t_{0}\right) \rightarrow y_{1}(t) &amp; \triangleq \cos (t) \cdot f\left(t-t_{0}\right) \neq y\left(t-t_{0}\right) \end{aligned}$</p>
+<p>所以是时变系统.</p>
+</blockquote>
+<h3 id="Irregular-Examples"><a href="#Irregular-Examples" class="headerlink" title="Irregular Examples"></a>Irregular Examples</h3><blockquote>
+<ul>
+<li>电容$u(t)=\frac{1}{C} \int_{-\infty}^{t} i(\tau) \mathrm{d} \tau$是时变系统还是时不变系统?</li>
+</ul>
+<p>$$<br>f(t) \rightarrow y(t)=\frac{1}{C} \int_{-\infty}^{t} f(\tau) \mathrm{d} \tau<br>$$</p>
+<p>　步骤一: $y\left(t-t_{0}\right)=\frac{1}{C} \int_{-\infty}^{t-t_{0}} f(\tau) \mathrm{d} \tau$</p>
+<p>　步骤二: $f\left(t-t_{0}\right) \rightarrow y_{1}(t)=\frac{1}{C} \int_{-\infty}^{t} f\left(\tau-t_{0}\right) \mathrm{d} \tau$</p>
+<p>　　　　 令$u=\tau-t_0$　　　$=\frac{1}{C} \int_{-\infty}^{t-t_{0}} f(u) \mathrm{d} u$</p>
+<p>　　　　　　　　　　　　　$\ =y\left(t-t_{0}\right)$</p>
+<p>这种代数方式超越了以往一般数学概念.</p>
+<p><strong>对于电阻、电容、电感组成的电路,只要参数是常数,就是时不变系统!</strong>时不变系统一般用常系数微分/差分方程来描述.</p>
+<ul>
+<li>某系统,对输入波形拓展$2$倍输出,即$y(t)=f(\frac{1}{2}t)$,则该系统是时变系统还是时不变系统?线性还是非线性系统?</li>
+</ul>
+<p>　　$(1) : y\left(t-t_{0}\right)=f\left[\frac{1}{2}\left(t-t_{0}\right)\right]$<br>　　$(2) : f\left(t-t_{0}\right) \rightarrow y_{1}(t) \triangleq f\left(\frac{1}{2} t-t_{0}\right) \neq y\left(t-t_{0}\right)$ </p>
+<p>是线性、时变系统.</p>
+<p><strong>如果$f(·)$前出现变系数,或有展缩,翻转运算,则为时变系统;如果仅仅有时延,则为时不变系统.</strong></p>
+<ul>
+<li>$y(t)=\int_{- \infty}^{2t-1}f(\tau)\mathrm{d}\tau$为非线性($2t-1$为仿射,非线性)、时变($2t-1$中的$t$带有系数$2$)系统(可以依照本小节第一题自行验证,下同)</li>
+<li>$y(t)=\int_{- \infty}^{t-1}f(\tau)\mathrm{d}\tau$为非线性、时不变系统.</li>
+</ul>
+</blockquote>
+<p><strong>题外话:</strong>本小节第一题是线性系统而第三题是非线性系统,这里的线性概念不同于高中的线性概念.高中的线性只要$x$与$y$是一次函数关系就可以成为线性,而在大学线性概念是严格的正比例关系.类似于$y=ax+b(b\ne0)$这样的函数关系成为仿射(affine).</p>
+<h3 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h3><blockquote>
+<p>判断下列系统的记忆性、时变性、线性、因果性和稳定性:</p>
+<ul>
+<li>$y(t)=\frac{\mathrm{d} x(t)}{\mathrm{d} t}$</li>
+<li>$y(t)=\int_{-\infty}^{2 t} x(\tau) \mathrm{d} \tau$</li>
+<li>$y(t)=\left\{\begin{array}{ll}0, &amp; t&lt;0 \\ x(t)+x(t-2), &amp; t \geqslant 0\end{array}\right.$</li>
+<li>$y(t)=\left\{\begin{array}{ll}0, &amp; x(t)&lt;0 \\ x(t)+x(t-2), &amp; x(t) \geqslant 0\end{array} \right.$</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>#TODO:更新答案.</p>
+</blockquote>
+<h3 id="判断技巧"><a href="#判断技巧" class="headerlink" title="判断技巧"></a>判断技巧</h3><p>凡$f(·)$与变系数、或其他具体函数有关,或者抽象函数中包含<strong>展缩、翻转(不包括时移)</strong>的即为时变系统.</p>
+<ul>
+<li>$y(t)=tf(t)$为时变系统-&gt;有变系数$t$(或者说有具体函数$y=t$).</li>
+<li>$y(t)=f(t)·f(t-1)$为时不变系统.</li>
+<li>$y(t)=\sin(t)·f(t)$为时变系统-&gt;包含具体函数.</li>
+<li>$y(t)=\frac{\mathrm{d}}{\mathrm{d}t}{f(t)}$为时不变系统,<strong>但不一定是因果系统,因为微分操作可以与未来时间有关,也可以与过去时间有关</strong>.</li>
+<li>$y(n)=2x(-n)$是时变系统-&gt;包含翻转.</li>
+<li>$y(n)=2x(-7n)$是时变系统-&gt;包含翻转与展缩.</li>
+</ul>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span>Tag(s):</span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Signals-and-Systems/"># Signals and Systems</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();">back</a>
+                                            <span>· </span>
+                                            <a href="/blog/">home</a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/03/04/sphinx/">
+                                                Sphinx Memorandum
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/02/09/ss0/">
+                                                        Signals and Systems Series | Introduction
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+    </div>
+</body>
+</html>
