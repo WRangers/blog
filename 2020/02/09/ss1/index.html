@@ -196,7 +196,7 @@
 
                                                 
                                                     <span class="post-time">
-                        Date: <a href="#">February 9, 2020&nbsp;&nbsp;22:16:23</a>
+                        Date: <a href="#">February 9, 2020&nbsp;&nbsp;23:16:23</a>
                         </span>
                                                     
                                                         
@@ -212,7 +212,14 @@
                             </header>
 
                             <div class="post-content">
-                                <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>　　系统的时不变性是指:如果系统的输入信号在时间上有一个平移,系统的零状态响应也产生同样一个时间的平移.</p>
+                                <h1 id="视频版"><a href="#视频版" class="headerlink" title="视频版"></a>视频版</h1><iframe src="//player.bilibili.com/player.html?aid=97015991&bvid=BV157411d7PG&cid=165621364&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"
+style="width: 100%; height: 500px; max-width: 100%；align:center; padding:7px;"
+> </iframe>
+
+<blockquote>
+<p>视频版和文字版有些许差别.</p>
+</blockquote>
+<h1 id="文字版"><a href="#文字版" class="headerlink" title="文字版"></a>文字版</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>　　系统的时不变性是指:如果系统的输入信号在时间上有一个平移,系统的零状态响应也产生同样一个时间的平移.</p>
 <p>对于连续时间系统:<br>$$<br>\text{If} \ f(t)\rightarrow y_f(t), \text{then} \ f(t-t_0)\rightarrow y_f(t-t_0).<br>$$<br>对于离散时间系统:<br>$$<br>\text{If} \ x(n)\rightarrow y_x (n), \text{then} \ x(n-n_0)\rightarrow y_x (n-n_0).<br>$$<br>其中,$t_0$、$n_0$可正可负.</p>
 <p>　　具有时不变性的系统为时不变系统(Time-invariant System),如下图所示:</p>
 <p><img src="ss1.asset/SystemResponeseText.gif" alt="SystemResponeseText"></p>
@@ -283,12 +290,24 @@
 </ul>
 </blockquote>
 <p><strong>题外话:</strong>本小节第一题是线性系统而第三题是非线性系统,这里的线性概念不同于高中的线性概念.高中的线性只要$x$与$y$是一次函数关系就可以成为线性,而在大学线性概念是严格的正比例关系.类似于$y=ax+b(b\ne0)$这样的函数关系成为仿射(affine).</p>
-<h3 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h3><blockquote>
-<p>判断下列系统的记忆性、时变性、线性、因果性和稳定性:</p>
+<h3 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h3><p>判断下列系统的记忆性、时变性、线性、因果性和稳定性:</p>
+<blockquote>
 <ul>
 <li>$y(t)=\frac{\mathrm{d} x(t)}{\mathrm{d} t}$</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
 <li>$y(t)=\int_{-\infty}^{2 t} x(\tau) \mathrm{d} \tau$</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
 <li>$y(t)=\left\{\begin{array}{ll}0, &amp; t&lt;0 \\ x(t)+x(t-2), &amp; t \geqslant 0\end{array}\right.$</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
 <li>$y(t)=\left\{\begin{array}{ll}0, &amp; x(t)&lt;0 \\ x(t)+x(t-2), &amp; x(t) \geqslant 0\end{array} \right.$</li>
 </ul>
 </blockquote>
