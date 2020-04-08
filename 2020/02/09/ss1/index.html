@@ -276,21 +276,23 @@ style="width: 100%; height: 500px; max-width: 100%；align:center; padding:7px;"
 <p>　步骤二: $f\left(t-t_{0}\right) \rightarrow y_{1}(t)=\frac{1}{C} \int_{-\infty}^{t} f\left(\tau-t_{0}\right) \mathrm{d} \tau$</p>
 <p>　　　　 令$u=\tau-t_0$　　　$=\frac{1}{C} \int_{-\infty}^{t-t_{0}} f(u) \mathrm{d} u$</p>
 <p>　　　　　　　　　　　　　$\ =y\left(t-t_{0}\right)$</p>
-<p>这种代数方式超越了以往一般数学概念.</p>
+<p>　系统为时不变系统.这种代数方式不同于一般的数学直觉,但并不违背数学逻辑.</p>
 <p><strong>对于电阻、电容、电感组成的电路,只要参数是常数,就是时不变系统!</strong>时不变系统一般用常系数微分/差分方程来描述.</p>
 <ul>
 <li>某系统,对输入波形拓展$2$倍输出,即$y(t)=f(\frac{1}{2}t)$,则该系统是时变系统还是时不变系统?线性还是非线性系统?</li>
 </ul>
-<p>　　$(1) : y\left(t-t_{0}\right)=f\left[\frac{1}{2}\left(t-t_{0}\right)\right]$<br>　　$(2) : f\left(t-t_{0}\right) \rightarrow y_{1}(t) \triangleq f\left(\frac{1}{2} t-t_{0}\right) \neq y\left(t-t_{0}\right)$ </p>
-<p>是线性、时变系统.</p>
+<p>　步骤一: $y\left(t-t_{0}\right)=f\left[\frac{1}{2}\left(t-t_{0}\right)\right]$<br>　步骤二: $ f\left(t-t_{0}\right) \rightarrow y_{1}(t) \triangleq f\left(\frac{1}{2} t-t_{0}\right) \neq y\left(t-t_{0}\right)$ </p>
+<p>　系统为线性、时变系统.</p>
 <p><strong>如果$f(·)$前出现变系数,或有展缩,翻转运算,则为时变系统;如果仅仅有时延,则为时不变系统.</strong></p>
 <ul>
 <li>$y(t)=\int_{- \infty}^{2t-1}f(\tau)\mathrm{d}\tau$为非线性($2t-1$为仿射,非线性)、时变($2t-1$中的$t$带有系数$2$)系统(可以依照本小节第一题自行验证,下同)</li>
 <li>$y(t)=\int_{- \infty}^{t-1}f(\tau)\mathrm{d}\tau$为非线性、时不变系统.</li>
 </ul>
 </blockquote>
+<blockquote>
 <p><strong>题外话:</strong>本小节第一题是线性系统而第三题是非线性系统,这里的线性概念不同于高中的线性概念.高中的线性只要$x$与$y$是一次函数关系就可以成为线性,而在大学线性概念是严格的正比例关系.类似于$y=ax+b(b\ne0)$这样的函数关系成为仿射(affine).</p>
-<h3 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h3><p>判断下列系统的记忆性、时变性、线性、因果性和稳定性:</p>
+</blockquote>
+<h2 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h2><p>判断下列系统的记忆性、时变性、线性、因果性和稳定性:</p>
 <blockquote>
 <ul>
 <li>$y(t)=\frac{\mathrm{d} x(t)}{\mathrm{d} t}$</li>
@@ -314,7 +316,7 @@ style="width: 100%; height: 500px; max-width: 100%；align:center; padding:7px;"
 <blockquote>
 <p>#TODO:更新答案.</p>
 </blockquote>
-<h3 id="判断技巧"><a href="#判断技巧" class="headerlink" title="判断技巧"></a>判断技巧</h3><p>凡$f(·)$与变系数、或其他具体函数有关,或者抽象函数中包含<strong>展缩、翻转(不包括时移)</strong>的即为时变系统.</p>
+<h2 id="判断技巧"><a href="#判断技巧" class="headerlink" title="判断技巧"></a>判断技巧</h2><p>凡$f(·)$与变系数、或其他具体函数有关,或者抽象函数中包含<strong>展缩、翻转(不包括时移)</strong>的即为时变系统.</p>
 <ul>
 <li>$y(t)=tf(t)$为时变系统-&gt;有变系数$t$(或者说有具体函数$y=t$).</li>
 <li>$y(t)=f(t)·f(t-1)$为时不变系统.</li>
