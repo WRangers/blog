@@ -40,6 +40,20 @@
     
     
         
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+    Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
     
 
 
@@ -136,14 +150,23 @@
                             </header>
 
                             <div class="post-content">
-                                <p>　Yesterday, I saw a post in my WeChat, which described the poster spend two and a half hours in examination of complex analysis, but get scores of 50 or so. I learned the course Complex Function last term. Out of interest, I downloaded the classical textbook <em>Visual Complex Analysis</em> and began to learn. In fact, I have brought the four analysis textbook by Elias M. Stein and Rami Shakarchi before. But I didn’t take the <em>Complex Analysis</em> home. If possible, I may read it after finish the former one.</p>
-<p>　As for complex analysis, although I have learned the Complex Function, it just consists of some superficial theories. Having watched some videos about this subject on the YouTube channels <strong>3Blue1Brown</strong> and <strong>Welch Labs</strong>, I think it as of the most elegant branches in mathematics. It’s quite exciting to go close to such a beautiful affair.</p>
-<p>　In preface of the <em>Visual Complex Analysis</em>, the author cited a paragraph from Feynman:</p>
+                                <p>　Yesterday, I saw a post in my WeChat, which described the poster spend two and a half hours in examination of complex analysis, but get scores of 50 or so. I learned the course Functions of Complex Variables last term. Out of interest, I downloaded the classical textbook <em>Visual Complex Analysis</em> and began to learn. In fact, I have brought the four analysis textbook by Elias M. Stein and Rami Shakarchi before. But I didn’t take the <em>Complex Analysis</em> home. If possible, I may read it after finishing this one.</p>
+<p>　As for complex analysis, although I have learned the Functions of Complex Variables, it just consists of some superficial theories. Having watched some videos about this subject on the YouTube channels <strong>3Blue1Brown</strong> and <strong>Welch Labs</strong>, I think it as of the most elegant branches in mathematics. It’s quite exciting to get closer to such a beautiful affair.</p>
+<p>　In the preface of the <em>Visual Complex Analysis</em>, the author cited a paragraph from Feynman:</p>
 <blockquote>
 <p>Theories of the known, which are described by different physical ideas, may be equivalent in all their predictions and hence scientifically indistinguishable. However, they are not psychologically identical when trying to move from that base into the unknown. For different views suggest different kinds of modifications which might be made and hence are not equivalent in the hypotheses one generates from them in one’s attempt to understand what is not yet understood.</p>
 <p style="text-align:right">R. P. Feynman [1966]</p>
 </blockquote>
 <p>　Without any objective, just learning for fun!</p>
+<hr>
+<p>　An geometric calculus example mentioned is quite interesting! Though it has become a universal tool in modern mathematics and physics, it is magical and very useful.</p>
+<blockquote>
+<ul>
+<li>Proof the proposition that if $T=\tan \theta$, then $\frac{d T}{d \theta}=1+T^{2}$.</li>
+</ul>
+<p><img src="complex0.assets/geometric_calculus_example.svg" alt="geometric_calculus_example"><br>$$<br>\frac{\mathrm{d} T}{L \mathrm{d} \theta}=\frac{L}{1} \quad \Rightarrow \quad \frac{\mathrm{d} T}{\mathrm{d} \theta}=L^{2}=1+T^{2}<br>$$</p>
+</blockquote>
+<p>　Hoping I can spare some time to read the book <em>Philosophiae Naturalis Principia Mathematica</em>. Setting a flat here.</p>
 
                             </div>
 
