@@ -12,7 +12,7 @@
 
 
 
-<title>Visual Complex Analysis | Entry | J. WANG&#39;s Blog</title>
+<title>Capacitance and Inductance | J. WANG&#39;s Blog</title>
 
 
 
@@ -121,12 +121,74 @@
             <div class="container">
     
         
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
 
                     
                         <article class="post-wrap">
                             <header class="post-header">
                                 <h1 class="post-title">
-                                    Visual Complex Analysis | Entry
+                                    Capacitance and Inductance
                                 </h1>
                                 
                                     <div class="post-meta">
@@ -134,39 +196,29 @@
 
                                                 
                                                     <span class="post-time">
-                        Date: <a href="#">April 12, 2020&nbsp;&nbsp;10:17:47</a>
+                        Date: <a href="#">April 14, 2020&nbsp;&nbsp;21:18:58</a>
                         </span>
                                                     
                                                         
-                                                            <span class="post-category">
-                    Category:
-                            
-                                <a href="/blog/categories/Complex-Analysis/">Complex Analysis</a>
-                            
-                        </span>
-                                                            
                                     </div>
                                     
                             </header>
 
                             <div class="post-content">
-                                <p>　Yesterday, I saw a post in my WeChat, which described the poster spend two and a half hours in examination of complex analysis, but get scores of 50 or so. I learned the course Functions of Complex Variables last term. Out of interest, I downloaded the classical textbook <em>Visual Complex Analysis</em> and began to learn. In fact, I have brought the four analysis textbook by Elias M. Stein and Rami Shakarchi before. But I didn’t take the <em>Complex Analysis</em> home. If possible, I may read it after finishing this one.</p>
-<p>　As for complex analysis, although I have learned the Functions of Complex Variables, it just consists of some superficial theories. Having watched some videos about this subject on the YouTube channels <strong>3Blue1Brown</strong> and <strong>Welch Labs</strong>, I think it as of the most elegant branches in mathematics. It’s quite exciting to get closer to such a beautiful affair.</p>
-<p>　In the preface of the <em>Visual Complex Analysis</em>, the author cited a paragraph from Feynman:</p>
-<blockquote>
-<p>Theories of the known, which are described by different physical ideas, may be equivalent in all their predictions and hence scientifically indistinguishable. However, they are not psychologically identical when trying to move from that base into the unknown. For different views suggest different kinds of modifications which might be made and hence are not equivalent in the hypotheses one generates from them in one’s attempt to understand what is not yet understood.</p>
-<p style="text-align:right">R. P. Feynman [1966]</p>
+                                <blockquote>
+<p>重新梳理电感和电容的相关知识.</p>
 </blockquote>
-<p>　Without any objective, just learning for fun!</p>
-<hr>
-<p>　An geometric calculus example mentioned is quite interesting! Though it has become a universal tool in modern mathematics and physics, it is magical and very useful.</p>
-<blockquote>
-<ul>
-<li>Proof the proposition that if $T=\tan \theta$, then $\frac{d T}{d \theta}=1+T^{2}$.</li>
+<h2 id="电感"><a href="#电感" class="headerlink" title="电感"></a>电感</h2><h3 id="电流与电压关系推导"><a href="#电流与电压关系推导" class="headerlink" title="电流与电压关系推导"></a>电流与电压关系推导</h3><p>根据法拉第电磁感应定律:<br>$$<br>\mathcal{E}=-N \frac{\mathrm{d} \Phi}{\mathrm{d} t}=-N \frac{\mathrm{d} \Phi}{\mathrm{d} i} \frac{\mathrm{d} i}{\mathrm{d} t} ,<br>$$<br>设电感$L=N\frac{\mathrm{d} \Phi}{\mathrm{d} i}$,则<br>$$<br>\mathcal{E}=-L \frac{\mathrm{d} i}{\mathrm{d} t}.<br>$$<br>故一个典型的电感元件的电压是电流关系是:<br>$$<br>u=L \frac{\mathrm{d} i}{\mathrm{d} t}.<br>$$</p>
+<h3 id="阻抗"><a href="#阻抗" class="headerlink" title="阻抗"></a>阻抗</h3><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>电感的作用是抵抗电流的变化,但是这种作用与电阻阻碍电流的流动是有区别的.电阻阻碍电流的流动的特征是消耗电能,而电感则纯粹是抵抗电流的变化.当电流增加时电感抵抗电流的增加;当电流小时电感抵抗电流的减小.电感抵抗电流变化的过程并不消耗电能,当电流增加时它会将能量以磁场的形式暂时储存起来,等到电流减小时它又会将磁场的能量释放出来,其效应就是抵抗电流的变化.抵抗的效果与电流变化的快慢相关.</p>
+<h2 id="电容"><a href="#电容" class="headerlink" title="电容"></a>电容</h2><h3 id="电流与电压关系推导-1"><a href="#电流与电压关系推导-1" class="headerlink" title="电流与电压关系推导"></a>电流与电压关系推导</h3><p>由定义<br>$$<br>C=\frac{Q}{U}<br>$$<br>得<br>$$<br>C=\frac{\mathrm{d}q}{\mathrm{d}u}.<br>$$<br>又<br>$$<br>i=\frac{\mathrm{d}q}{\mathrm{d}t},<br>$$<br>故<br>$$<br>\mathrm{d}u=\frac{i\mathrm{d}t}{C} ,<br>$$<br>得<br>$$<br>u=\frac{1}{C} \int_{-\infty}^{t}i \mathrm{d}t.<br>$$</p>
+<h3 id="阻抗-1"><a href="#阻抗-1" class="headerlink" title="阻抗"></a>阻抗</h3><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>当电性相反的电荷分别在电容器的两端累积,电容器两端的电势差和电荷产生的电场开始增加.累积电荷越多,为抵抗电场所需要传的功就越大.储存在电容器的能量等于建立电容两端的电压和电场所需要的能量.</p>
+<h2 id="谐振"><a href="#谐振" class="headerlink" title="谐振"></a>谐振</h2><p>　　谐振是物理中的共振在电路中的一种特殊表现,谐振频率就是电路的共振频率.</p>
+<p>　　无论是电感和电容并联,还是串联的电路发生谐振,其表现为每一时刻,电感释放(储存)的能量等于电容储存(释放)的能量,此时不消耗电源额外的能量;二者的整体表现为视在功率为$0$.其本质是能量在电场和磁场的相互转换.</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/qq_29545231/article/details/79941213" target="_blank" rel="noopener">理论知识:电感感应电压公式，纯电感正弦电路感应电压公式，纯电容正弦电路电流公式的推导</a>. CSDN.</li>
+<li><a href="[https://zh.wikipedia.org/wiki/%E7%94%B5%E6%84%9F](https://zh.wikipedia.org/wiki/电感)">电感</a>. Wikipedia.</li>
+<li><a href="[https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AE%B9%E5%99%A8](https://zh.wikipedia.org/wiki/电容器)">电容</a>. Wikipedia.</li>
 </ul>
-<p><img src="complex0.assets/geometric_calculus_example.svg" alt="geometric_calculus_example"><br>$$<br>\frac{\mathrm{d} T}{L \mathrm{d} \theta}=\frac{L}{1} \quad \Rightarrow \quad \frac{\mathrm{d} T}{\mathrm{d} \theta}=L^{2}=1+T^{2}<br>$$</p>
-</blockquote>
-<p>　Hoping I can spare some time to read the book <em>Philosophiae Naturalis Principia Mathematica</em>. Setting a flat here.</p>
 
                             </div>
 
@@ -179,7 +231,7 @@
                                             <span class="tag">
                     
                     
-                        <a href="/blog/tags/Math/"># Math</a>
+                        <a href="/blog/tags/Circuit/"># Circuit</a>
                     
                         
                 </span>
@@ -192,13 +244,13 @@
                                     </section>
                                     <section class="post-nav">
                                         
-                                            <a class="prev" rel="prev" href="/blog/2020/04/14/circuit_capacitance-inductance/">
-                                                Capacitance and Inductance
+                                            <a class="prev" rel="prev" href="/blog/2020/04/14/calculus-gradient/">
+                                                Reviewing Calculus | Directional Derivative and Gradient
                                             </a>
                                             
                                                 
-                                                    <a class="next" rel="next" href="/blog/2020/04/10/wdf-love/">
-                                                        Origin of Differences Between Chinese and Western Culture | Love
+                                                    <a class="next" rel="next" href="/blog/2020/04/12/complex0/">
+                                                        Visual Complex Analysis | Entry
                                                     </a>
                                                     
                                     </section>
