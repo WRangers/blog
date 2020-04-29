@@ -12,7 +12,7 @@
 
 
 
-<title>Origin of Differences Between Chinese and Western Culture | Love | J. WANG&#39;s Blog</title>
+<title>Reviewing Calculus | Coordinate System | J. WANG&#39;s Blog</title>
 
 
 
@@ -39,6 +39,20 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+    Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
         
     
 
@@ -107,12 +121,74 @@
             <div class="container">
     
         
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
 
                     
                         <article class="post-wrap">
                             <header class="post-header">
                                 <h1 class="post-title">
-                                    Origin of Differences Between Chinese and Western Culture | Love
+                                    Reviewing Calculus | Coordinate System
                                 </h1>
                                 
                                     <div class="post-meta">
@@ -120,14 +196,14 @@
 
                                                 
                                                     <span class="post-time">
-                        Date: <a href="#">April 10, 2020&nbsp;&nbsp;15:47:41</a>
+                        Date: <a href="#">April 10, 2020&nbsp;&nbsp;21:26:50</a>
                         </span>
                                                     
                                                         
                                                             <span class="post-category">
                     Category:
                             
-                                <a href="/blog/categories/Thought-Culture-Reading/">Thought/Culture/Reading</a>
+                                <a href="/blog/categories/Advanced-Mathematics/">Advanced Mathematics</a>
                             
                         </span>
                                                             
@@ -136,7 +212,11 @@
                             </header>
 
                             <div class="post-content">
-                                
+                                <blockquote>
+<p>数学和物理中比较常见的三种正交坐标系分别是直角坐标系、圆柱坐标系和球坐标系.这里重点关注圆柱坐标系和球坐标系几何上的微分解释.</p>
+</blockquote>
+<h2 id="圆柱坐标系"><a href="#圆柱坐标系" class="headerlink" title="圆柱坐标系"></a>圆柱坐标系</h2><p>　　</p>
+
                             </div>
 
                             <hr />
@@ -148,7 +228,7 @@
                                             <span class="tag">
                     
                     
-                        <a href="/blog/tags/Culture/"># Culture</a>
+                        <a href="/blog/tags/Math/"># Math</a>
                     
                         
                 </span>
@@ -161,13 +241,13 @@
                                     </section>
                                     <section class="post-nav">
                                         
-                                            <a class="prev" rel="prev" href="/blog/2020/04/10/calculus-coordinate-system/">
-                                                Reviewing Calculus | Coordinate System
+                                            <a class="prev" rel="prev" href="/blog/2020/04/12/complex-0-entry/">
+                                                Visual Complex Analysis | Entry
                                             </a>
                                             
                                                 
-                                                    <a class="next" rel="next" href="/blog/2020/04/08/wdf-language/">
-                                                        Origin of Differences Between Chinese and Western Culture | Language
+                                                    <a class="next" rel="next" href="/blog/2020/04/10/wdf-love/">
+                                                        Origin of Differences Between Chinese and Western Culture | Love
                                                     </a>
                                                     
                                     </section>
