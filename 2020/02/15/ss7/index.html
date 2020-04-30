@@ -227,9 +227,7 @@
 \mathrm{H}(j \omega)=A \frac{\left(j \omega-z_{1}\right)\left(j \omega-z_{2}\right) \cdots\left(j \omega-z_{M}\right)}{\left(j \omega-p_{1}\right)\left(j \omega-p_{2}\right) \cdots\left(j \omega-p_{N}\right)}. \tag{7.2}
 \]</span> 比如<span class="math inline">\(\mathrm{H}(s)=\frac{3 s}{s+3}\)</span>,其频率响应为<span class="math inline">\(\mathrm{H}(j \omega)=3 \frac{j \omega}{j \omega+3}\)</span>.我们图上用向量表示如下;</p>
 <p>#TODO</p>
-<figure>
-<img src="ss7.assets/image-20200215121538571.png" alt="image-20200215121538571" /><figcaption>image-20200215121538571</figcaption>
-</figure>
+<p><img src="ss7.assets/image-20200215121538571.png" alt="image-20200215121538571" /></p>
 <p>频率改变的时候,向量也会发生改变. <span class="math display">\[
 |\mathrm{H}(j \omega)|=3 \frac{|j \omega|}{|j \omega+3|} \tag{7.3}
 \]</span></p>
@@ -239,9 +237,7 @@
 \]</span></p>
 <p>式<span class="math inline">\((7.3)\)</span>是频率响应的模值,式<span class="math inline">\((7.4)\)</span>是频率响应的幅角.我们让<span class="math inline">\(\omega\)</span>从<span class="math inline">\(\infty\)</span>到<span class="math inline">\(-\infty\)</span>变化(反过来也行),然后绘制式<span class="math inline">\((7.3)\)</span>、<span class="math inline">\((7.4)\)</span>的图像,得到的就是完整的频率响应.</p>
 <p>#TODO</p>
-<figure>
-<img src="ss7.assets/image-20200215122430885.png" alt="image-20200215122430885" /><figcaption>image-20200215122430885</figcaption>
-</figure>
+<p><img src="ss7.assets/image-20200215122430885.png" alt="image-20200215122430885" /></p>
 <p>可见这是一个高通滤波器.这就是从极零图推断出频率响应的方法.</p>
 <h3 id="more-examples">More Examples</h3>
 <ul>
@@ -254,36 +250,16 @@ H(s)=\frac{(s+1-j 4)(s+1+j 4)}{(s+2-j 10)(s+2+j 10)} \\
 \angle \mathrm{H}(j \omega)=\angle(j \omega+1-j 4)+\angle(j \omega+1+j 4)-[\angle(j \omega+2-j 10)+\angle(j \omega+2+j 10)]
 \]</span></p>
 <p>#TODO</p>
-<figure>
-<img src="ss7.assets/image-20200215123924603.png" alt="image-20200215123924603" /><figcaption>image-20200215123924603</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215123938143.png" alt="image-20200215123938143" /><figcaption>image-20200215123938143</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215124228859.png" alt="image-20200215124228859" /><figcaption>image-20200215124228859</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215124247937.png" alt="image-20200215124247937" /><figcaption>image-20200215124247937</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215124309148.png" alt="image-20200215124309148" /><figcaption>image-20200215124309148</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215124341727.png" alt="image-20200215124341727" /><figcaption>image-20200215124341727</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215124412702.png" alt="image-20200215124412702" /><figcaption>image-20200215124412702</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215124437438.png" alt="image-20200215124437438" /><figcaption>image-20200215124437438</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215124500926.png" alt="image-20200215124500926" /><figcaption>image-20200215124500926</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215124523099.png" alt="image-20200215124523099" /><figcaption>image-20200215124523099</figcaption>
-</figure>
+<p><img src="ss7.assets/image-20200215123924603.png" alt="image-20200215123924603" /></p>
+<p><img src="ss7.assets/image-20200215123938143.png" alt="image-20200215123938143" /></p>
+<p><img src="ss7.assets/image-20200215124228859.png" alt="image-20200215124228859" /></p>
+<p><img src="ss7.assets/image-20200215124247937.png" alt="image-20200215124247937" /></p>
+<p><img src="ss7.assets/image-20200215124309148.png" alt="image-20200215124309148" /></p>
+<p><img src="ss7.assets/image-20200215124341727.png" alt="image-20200215124341727" /></p>
+<p><img src="ss7.assets/image-20200215124412702.png" alt="image-20200215124412702" /></p>
+<p><img src="ss7.assets/image-20200215124437438.png" alt="image-20200215124437438" /></p>
+<p><img src="ss7.assets/image-20200215124500926.png" alt="image-20200215124500926" /></p>
+<p><img src="ss7.assets/image-20200215124523099.png" alt="image-20200215124523099" /></p>
 <h3 id="判断技巧">判断技巧</h3>
 <p>对于<span class="math inline">\(s\)</span>域的系统函数,我们可以用更简单的技巧来判断这个系统的滤波性质.简单说就是&quot;分子通什么,滤波器就通什么&quot;.</p>
 <ul>
@@ -302,12 +278,8 @@ H(s)=\frac{(s+1-j 4)(s+1+j 4)}{(s+2-j 10)(s+2+j 10)} \\
 <p><span class="math display">\[
 \angle \mathrm{H}\left(e^{j \Omega}\right)=\angle e^{j \Omega}-\angle\left(e^{j \Omega}-p_{1}\right)-\angle\left(e^{j \Omega}-p_{2}\right) \tag{7.7}
 \]</span></p>
-<figure>
-<img src="ss7.assets/image-20200215130622444.png" alt="image-20200215130622444" /><figcaption>image-20200215130622444</figcaption>
-</figure>
-<figure>
-<img src="ss7.assets/image-20200215130749745.png" alt="image-20200215130749745" /><figcaption>image-20200215130749745</figcaption>
-</figure>
+<p><img src="ss7.assets/image-20200215130622444.png" alt="image-20200215130622444" /></p>
+<p><img src="ss7.assets/image-20200215130749745.png" alt="image-20200215130749745" /></p>
 <p>这里与<span class="math inline">\(s\)</span>域的区别是<span class="math inline">\(z\)</span>域上的频率响应是周期性的.</p>
 <h3 id="more-examples-1">More Examples</h3>
 <ul>
@@ -316,18 +288,14 @@ H(s)=\frac{(s+1-j 4)(s+1+j 4)}{(s+2-j 10)(s+2+j 10)} \\
 <p><span class="math display">\[
 \mathrm{H}(z)=\frac{(z-0.48+j 0.82)(z-0.48-j 0.82)}{(z-0.78+j 0.45)(z-0.78-j 0.45)}\\
 \]</span></p>
-<figure>
-<img src="ss7.assets/image-20200215131433862.png" alt="image-20200215131433862" /><figcaption>image-20200215131433862</figcaption>
-</figure>
+<p><img src="ss7.assets/image-20200215131433862.png" alt="image-20200215131433862" /></p>
 <ul>
 <li><span class="math inline">\(\mathrm{H}(z)=\frac{0.0686}{\left(z^{2}-1.087 z+0.3132\right)\left(z^{2}-1.315 z+0.6182\right)}\)</span></li>
 </ul>
 <p><span class="math display">\[
 \mathrm{H}(z)=\frac{0.0686}{(z-0.5435+j 0.1333)(z-0.5435-j 0.1333)(z-0.6575+j 0.4312)(z-0.6575-j 0.4312)}
 \]</span></p>
-<figure>
-<img src="ss7.assets/image-20200215131538630.png" alt="image-20200215131538630" /><figcaption>image-20200215131538630</figcaption>
-</figure>
+<p><img src="ss7.assets/image-20200215131538630.png" alt="image-20200215131538630" /></p>
 <h3 id="与s域区分">与<span class="math inline">\(S\)</span>域区分</h3>
 <p>　　<span class="math inline">\(Z\)</span>域上系统函数滤波特性的判断就没有<span class="math inline">\(S\)</span>域那样的技巧了,简单说就是因为<span class="math inline">\(Z\)</span>域到<span class="math inline">\(S\)</span>域的映射是多值的.</p>
 <blockquote>

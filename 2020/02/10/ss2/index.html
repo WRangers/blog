@@ -231,9 +231,7 @@ f_1(t)\stackrel{f_2(t)}{\longrightarrow}y(t) \tag{2.1}
 <p>　　建模过程中,我们刻画了一个客流量曲线(与原来有所出入) <span class="math display">\[
 y_p(t)=(t-t_p-15)^n e^{-a(t-t_p-15)} \tag{2.2}
 \]</span> 其中,<span class="math inline">\(y_p(t)\)</span>代表机场出口人流量,<span class="math inline">\(t\)</span>代表时间,<span class="math inline">\(t_p\)</span>代表一架特定机型的飞机抵达机场的时间,<span class="math inline">\(15\)</span>是预估的乘客从机场空侧走到陆侧(也即从下飞机走到出口)的时间,<span class="math inline">\(n\)</span>为常数.所以,这个函数刻画的是一架特定机型的飞机降落到一个出口没人的机场后,出口客流量与时间的关系.</p>
-<figure>
-<img src="ss2.assets/PassagersTimeCurve.gif" alt="PassagersTimeCurve" /><figcaption>PassagersTimeCurve</figcaption>
-</figure>
+<p><img src="ss2.assets/PassagersTimeCurve.gif" alt="PassagersTimeCurve" /></p>
 <p>​ 如果是<span class="math inline">\(n\)</span>架飞机(假定飞机都是同样的机型并且载客量相同)同时抵达机场(当然了,现实要依跑道数量而定;建模我们就不扣那么细了),那么机场出口客流量就是$y_{pn}(t)=n(t-t_p-15)^n e^{-a(t-t_p-15)} $.</p>
 <p>　　如果是多架飞机在不同时刻抵达机场呢,我们如何计算这个客流量呢?我们只需要把不同的函数相加可以了: <span class="math display">\[
 \begin{aligned}
@@ -245,9 +243,7 @@ y_{pn}(t)=&amp;(t-t_{pn}-15)^n e^{-a(t-t_{pn}-15)} \\
 \end{aligned}
 \]</span> 将这些等式左右两边相加就可以得到中的客流量函数.</p>
 <p>现在假定时间从<span class="math inline">\(1\)</span> 到<span class="math inline">\(5\)</span>之间每隔一分钟就有一架飞机降落,则我们用动画演示:</p>
-<figure>
-<img src="ss2.assets/PassagersTimeCurve2.gif" alt="PassagersTimeCurve2" /><figcaption>PassagersTimeCurve2</figcaption>
-</figure>
+<p><img src="ss2.assets/PassagersTimeCurve2.gif" alt="PassagersTimeCurve2" /></p>
 <h3 id="抽象">抽象</h3>
 <p>　　我们将上述的模型抽象出来,一架飞机抵达抽象为一个单位冲激信号<span class="math inline">\(\delta(t-t_p)\)</span>;机场出口抽象为一个系统,系统对单位冲激<span class="math inline">\(\delta(t- t_p)\)</span>信号的响应就是<span class="math inline">\(y_p(t)=(t-t_p-15)^n e^{-a(t-t_p-15)}\)</span>.我们将系统表示为<span class="math inline">\(f_s(t)=(t-15)^n e^{-a(t-15)}\)</span>,则 <span class="math display">\[
 y_p(t)=(t-t_p-15)^n e^{-a(t-t_p-15)}=f_s(t)*\delta(t-t_0) \tag{2.3}
@@ -265,9 +261,7 @@ y_{pt}=&amp;y_{1}(t)+y_{2}(t)+y_{3}(t)+y_{4}(t)+y_{5}(t) \\
 \end{align*} \tag{2.4}
 \]</span> 这个计算过程就是卷积,<strong>卷积就是一种数学运算的定义,本质上就是加权求和</strong>.当然了式<span class="math inline">\((2.4)\)</span>的计算过程只是为了方便理解,实际计算不用这么复杂.</p>
 <p>现在我们将信号换做更一般的信号,动画演示如下:</p>
-<figure>
-<img src="ss2.assets/SystemResponeseText_2-1586242469945.gif" alt="SystemResponeseText_2" /><figcaption>SystemResponeseText_2</figcaption>
-</figure>
+<p><img src="ss2.assets/SystemResponeseText_2-1586242469945.gif" alt="SystemResponeseText_2" /></p>
 <p>连续信号的情况就是把离散的信号换成连续的,这个编程不难,就是渲染太久了,我就不做动画了.</p>
 <h3 id="卷积的暴力解释">卷积的暴力解释</h3>
 <p><span class="math display">\[
@@ -281,16 +275,10 @@ f(x) * g(x)=\int_{-\infty}^{\infty} f(\alpha) g(x-\alpha) \mathrm{d} \alpha
 <p>　　其实反褶操作只是方便图解计算而已,它并非必须的,但却是自然的.如何理解呢?</p>
 <p>​ 因为我们的函数在笛卡尔坐标系上的表示时,<span class="math inline">\(x\)</span>轴正方向水平向右,时间水平向右延伸.系统对信号的响应是从信号产生的时间点开始响应,直到信号消失的时间点;从时间轴上来看就是从左响应到右.下面是一个简单的示例(为了方便表示,我们把信号和系统响应放在同一个坐标系上).</p>
 <p>系统的单位样值响应为;</p>
-<figure>
-<img src="ss2.assets/UnitResponse.gif" alt="UnitResponse" /><figcaption>UnitResponse</figcaption>
-</figure>
-<figure>
-<img src="ss2.assets/ReverseConv.gif" alt="ReverseConv" /><figcaption>ReverseConv</figcaption>
-</figure>
+<p><img src="ss2.assets/UnitResponse.gif" alt="UnitResponse" /></p>
+<p><img src="ss2.assets/ReverseConv.gif" alt="ReverseConv" /></p>
 <p>上面的演示是将信号拆分开的,我们将其看做一个整体的话就发生反褶了.</p>
-<figure>
-<img src="ss2.assets/ReverseConv2.gif" alt="ReverseConv2" /><figcaption>ReverseConv2</figcaption>
-</figure>
+<p><img src="ss2.assets/ReverseConv2.gif" alt="ReverseConv2" /></p>
 <p>所以,对于<strong>图解卷积计算</strong>而言,反褶是自然的.</p>
 <h3 id="为什么叫卷积">为什么叫&quot;卷积&quot;</h3>
 <p>　　卷积的英文是convolution,为什么翻译成「卷积」呢?请参考[10].</p>
@@ -298,9 +286,7 @@ f(x) * g(x)=\int_{-\infty}^{\infty} f(\alpha) g(x-\alpha) \mathrm{d} \alpha
 <p>#TODO:制作动画</p>
 </blockquote>
 <h3 id="more-example-animations">More Example Animations</h3>
-<figure>
-<img src="ss2.assets/ConvolutionExample.gif" alt="ConvolutionExample" /><figcaption>ConvolutionExample</figcaption>
-</figure>
+<p><img src="ss2.assets/ConvolutionExample.gif" alt="ConvolutionExample" /></p>
 <h2 id="卷积神经网络cnn-convolution-neural-network">卷积神经网络(CNN: Convolution Neural Network)</h2>
 <p>　　这一节将放在M/D Learning中,在这里先挖一个坑.</p>
 <p>　　不过需要注意的是,CNN中的卷积本质上是一种互相关运算,即没有了&quot;反褶&quot;.</p>
