@@ -215,21 +215,42 @@
                                 <blockquote>
 <p>#TODO:补充图;完善拉普拉斯变换和傅里叶变换的关系.</p>
 </blockquote>
-<p>　　傅里叶变换并不是万能的,对于类似于$e^{at}u(t),a&gt;0$这样的不收敛函数完全没辙,而拉普拉斯变换就是对付这样的函数的工具.</p>
-<h2 id="理解拉普拉斯变换"><a href="#理解拉普拉斯变换" class="headerlink" title="理解拉普拉斯变换"></a>理解拉普拉斯变换</h2><p>　　课本通过对傅里叶变换乘一个收敛因子来推导出拉普拉斯变换,这样就从数学上说明了傅里叶变换是拉普拉斯变换的一个特殊情形.傅里叶变换与拉普拉斯变换在后面会详细地展开.</p>
+<p>　　傅里叶变换并不是万能的,对于类似于<span class="math inline">\(e^{at}u(t),a&gt;0\)</span>这样的不收敛函数完全没辙,而拉普拉斯变换就是对付这样的函数的工具.</p>
+<h2 id="理解拉普拉斯变换">理解拉普拉斯变换</h2>
+<p>　　课本通过对傅里叶变换乘一个收敛因子来推导出拉普拉斯变换,这样就从数学上说明了傅里叶变换是拉普拉斯变换的一个特殊情形.傅里叶变换与拉普拉斯变换在后面会详细地展开.</p>
 <p>　　拉普拉斯变换分为单边拉普拉斯变换和双边拉普拉斯变换,下文主要讲的是单边拉普拉斯变换.</p>
-<p>​    傅里叶级数/变换是用等幅度(幅度不变)的三角函数$e^{i\omega t}$来逼近原函数,这样是收服不了包含无穷大值的函数的.</p>
+<p>​ 傅里叶级数/变换是用等幅度(幅度不变)的三角函数<span class="math inline">\(e^{i\omega t}\)</span>来逼近原函数,这样是收服不了包含无穷大值的函数的.</p>
 <p>#TODO 等幅度</p>
-<p>　　拉普拉斯变换(没有拉普拉斯级数哦!)则是用变幅三角函数$e^{st}$来逼近原函数,这样才能追上无穷大值</p>
+<p>　　拉普拉斯变换(没有拉普拉斯级数哦!)则是用变幅三角函数<span class="math inline">\(e^{st}\)</span>来逼近原函数,这样才能追上无穷大值</p>
 <p>#TODO 变幅度</p>
 <p>　　有了对傅里叶级数/变换的理解,拉普拉斯变换其实应该很好理解.如果还是不清楚,请看[27].</p>
-<h2 id="拉普拉斯变换与傅里叶变换"><a href="#拉普拉斯变换与傅里叶变换" class="headerlink" title="拉普拉斯变换与傅里叶变换"></a>拉普拉斯变换与傅里叶变换</h2><p>　　上面讲了傅里叶变换是拉普拉斯变换的一种特殊形式.我们来看看怎么个特殊法.</p>
-<p>　　我们对傅里叶变换的处理是这样的:<br>$$<br>\begin{aligned}<br>\mathscr{F}\left[f(t) e^{-\sigma t}\right] &amp;=\int_{-\infty}^{\infty} f(t) e^{-\sigma t} e^{-j \omega t} \mathrm{d} t \\\<br>&amp;=\int_{-\infty}^{\infty} f(t) e^{-(\sigma+j \omega) t} \mathrm{d} t<br>\end{aligned} \tag{6.1}<br>$$<br>令$s=\sigma+j\omega$,拉普拉斯变换为:<br>$$<br>\begin{aligned}<br>F(s)=&amp;\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-st} \mathrm{d} t\\\<br>f(t)=&amp;\frac{1}{2 \pi j} \int_{\sigma-j \infty}^{\sigma+j \infty} F(s) \mathrm{e}^{st} \mathrm{d} s<br>\end{aligned} \tag{6.2}<br>$$<br>下面举个栗子(参考[26]):</p>
-<p>对信号$f(t)=e^{-at}\sin{(\omega_0t)}u(t)$作傅里叶变换,由变换表(手推也很简单)知:<br>$$<br>\mathscr{F}[f(t)]=\frac{\omega_0}{(a+j\omega)^2+\omega_0^2} \ , a&gt;0 \tag{6.3}<br>$$<br>其频谱为:</p>
+<h2 id="拉普拉斯变换与傅里叶变换">拉普拉斯变换与傅里叶变换</h2>
+<p>　　上面讲了傅里叶变换是拉普拉斯变换的一种特殊形式.我们来看看怎么个特殊法.</p>
+<p>　　我们对傅里叶变换的处理是这样的: <span class="math display">\[
+\begin{aligned}
+\mathscr{F}\left[f(t) e^{-\sigma t}\right] &amp;=\int_{-\infty}^{\infty} f(t) e^{-\sigma t} e^{-j \omega t} \mathrm{d} t \\
+&amp;=\int_{-\infty}^{\infty} f(t) e^{-(\sigma+j \omega) t} \mathrm{d} t
+\end{aligned} \tag{6.1}
+\]</span> 令<span class="math inline">\(s=\sigma+j\omega\)</span>,拉普拉斯变换为: <span class="math display">\[
+\begin{aligned}
+F(s)=&amp;\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-st} \mathrm{d} t\\
+f(t)=&amp;\frac{1}{2 \pi j} \int_{\sigma-j \infty}^{\sigma+j \infty} F(s) \mathrm{e}^{st} \mathrm{d} s
+\end{aligned} \tag{6.2}
+\]</span> 下面举个栗子(参考[26]):</p>
+<p>对信号<span class="math inline">\(f(t)=e^{-at}\sin{(\omega_0t)}u(t)\)</span>作傅里叶变换,由变换表(手推也很简单)知: <span class="math display">\[
+\mathscr{F}[f(t)]=\frac{\omega_0}{(a+j\omega)^2+\omega_0^2} \ , a&gt;0 \tag{6.3}
+\]</span> 其频谱为:</p>
 <p>#TODO</p>
 <p>对其作拉普拉斯变换,我们推导一下:</p>
-<p>对信号乘以一个收敛因子$e^{-\sigma t}$,<br>$$<br>\begin{aligned}<br>\mathscr{F}\left[f(t) e^{-\sigma t}\right] &amp;=\int_{-\infty}^{\infty} e^{-at}\sin{(\omega_0t)}u(t) e^{-\sigma t} e^{-j \omega t} \mathrm{d} t \\\<br>&amp;=\int_{0}^{\infty} e^{-at}\sin{(\omega_0t)}u(t) e^{-(\sigma+j \omega) t} \mathrm{d} t\\\<br>&amp;=\frac{\omega_0}{[a+(j\omega +\sigma)]^2+\omega_0^2} \ , \ \text{definin } s=j\omega+\sigma\\\<br>&amp;=\frac{\omega_0}{(a+s)^2+\omega_0^2} \triangleq \mathscr{L}[f(t)]=F(s)<br>\end{aligned} \tag{6.4}<br>$$<br>其中,$a$是可以大于$0$的;当我们选择的$\sigma =0$时,式$(6.4)$就与式$(6.3)$等价了,拉普拉斯变换就退化成了傅里叶变换.也正是因为他们的这种关系,很多信号的傅里叶变换和拉普拉斯变换在形式上很像.$\sigma$在这里主要影响的是收敛域.</p>
-<p>　　我们接下来绘制出$\omega,\sigma$和$|F(s)|$的关系,以及傅里叶变换和拉普拉斯变换的关系.</p>
+<p>对信号乘以一个收敛因子<span class="math inline">\(e^{-\sigma t}\)</span>, <span class="math display">\[
+\begin{aligned}
+\mathscr{F}\left[f(t) e^{-\sigma t}\right] &amp;=\int_{-\infty}^{\infty} e^{-at}\sin{(\omega_0t)}u(t) e^{-\sigma t} e^{-j \omega t} \mathrm{d} t \\
+&amp;=\int_{0}^{\infty} e^{-at}\sin{(\omega_0t)}u(t) e^{-(\sigma+j \omega) t} \mathrm{d} t\\
+&amp;=\frac{\omega_0}{[a+(j\omega +\sigma)]^2+\omega_0^2} \ , \ \text{definin } s=j\omega+\sigma\\
+&amp;=\frac{\omega_0}{(a+s)^2+\omega_0^2} \triangleq \mathscr{L}[f(t)]=F(s)
+\end{aligned} \tag{6.4}
+\]</span> 其中,<span class="math inline">\(a\)</span>是可以大于<span class="math inline">\(0\)</span>的;当我们选择的<span class="math inline">\(\sigma =0\)</span>时,式<span class="math inline">\((6.4)\)</span>就与式<span class="math inline">\((6.3)\)</span>等价了,拉普拉斯变换就退化成了傅里叶变换.也正是因为他们的这种关系,很多信号的傅里叶变换和拉普拉斯变换在形式上很像.<span class="math inline">\(\sigma\)</span>在这里主要影响的是收敛域.</p>
+<p>　　我们接下来绘制出<span class="math inline">\(\omega,\sigma\)</span>和<span class="math inline">\(|F(s)|\)</span>的关系,以及傅里叶变换和拉普拉斯变换的关系.</p>
 <p>#TODO</p>
 
                             </div>

@@ -215,64 +215,80 @@
                                 <blockquote>
 <p>#TODO:补充答案;补充一题多解;补充方波与方波卷积的快速手算.</p>
 </blockquote>
-<p>　　手工计算卷积是一门<strong>手艺活</strong>,特别是在还没学傅里叶变换、拉普拉斯变换或$Z$变换的时候.比较恶心的就是卷积过程中出现分部积分和反因果信号/序列,以及绝对值符号.计算就是老老实实地算,学习了傅里叶等变换后就会有很多奇技淫巧,会方便和快很多(但再怎么快也快不过计算机用FFT算).</p>
+<p>　　手工计算卷积是一门<strong>手艺活</strong>,特别是在还没学傅里叶变换、拉普拉斯变换或<span class="math inline">\(Z\)</span>变换的时候.比较恶心的就是卷积过程中出现分部积分和反因果信号/序列,以及绝对值符号.计算就是老老实实地算,学习了傅里叶等变换后就会有很多奇技淫巧,会方便和快很多(但再怎么快也快不过计算机用FFT算).</p>
 <p>　　下面放几道题,太懒了就不打答案了,有兴趣的话算一算吧.</p>
-<h2 id="连续时间卷积"><a href="#连续时间卷积" class="headerlink" title="连续时间卷积"></a>连续时间卷积</h2><blockquote>
+<h2 id="连续时间卷积">连续时间卷积</h2>
+<blockquote>
 <ul>
-<li>$f_1(t)=\cos (t)·[u(t)-u(t-\frac{\pi}{2})], \ f_2(t)=(1-e^{-at})u(t)$</li>
+<li><span class="math inline">\(f_1(t)=\cos (t)·[u(t)-u(t-\frac{\pi}{2})], \ f_2(t)=(1-e^{-at})u(t)\)</span></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li>$f_{1}(t)=\mathrm{e}^{-a t} u(t), \ f_{2}(t)=\sin (t) u(t-2 \pi)$</li>
+<li><span class="math inline">\(f_{1}(t)=\mathrm{e}^{-a t} u(t), \ f_{2}(t)=\sin (t) u(t-2 \pi)\)</span></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li>$f_{1}(t)=2 \mathrm{e}^{-t}[u(t)-u(t-3)], \ f_{2}(t)=4[u(t)-u(t-2)]$</li>
+<li><span class="math inline">\(f_{1}(t)=2 \mathrm{e}^{-t}[u(t)-u(t-3)], \ f_{2}(t)=4[u(t)-u(t-2)]\)</span></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li>$f_{1}(t)=\left\{\begin{array}{ll}{1,} &amp; {1 \leqslant t \leqslant 3} \\ {0,} &amp; \text{Others}\end{array}\right. , \ f_{2}(t)=\left\{\begin{array}{ll}{t-1,} &amp; {1 \leqslant t \leqslant 3} \\ {0,} &amp; \text{Others}\end{array}\right. $</li>
+<li><span class="math inline">\(f_{1}(t)=\left\{\begin{array}{ll}1, &amp; 1 \leqslant t \leqslant 3 \\ 0, &amp; \text { Others }\end{array}\right.,\)</span> <span class="math inline">\(f_{2}(t)=\left\{\begin{array}{ll}t-1, &amp; 1 \leqslant t \leqslant 3 \\ 0, &amp; \text { Others }\end{array}\right.\)</span></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li>$e^{-|t-1|} * u(t)$</li>
+<li><span class="math inline">\(e^{-|t-1|} * u(t)\)</span></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li><p>若$y(t)=f_1(t)*f_2(t)$,计算$f_1(2t)*f_2(2t)$.</p>
-<p>解:<br>$$<br>\begin{aligned}<br>y(t) &amp;=f_{1}(t) * f_{2}(t) \\\<br>&amp;=\int_{-\infty}^{+\infty} f_{1}(k) f_{2}(t-k) \mathrm{d} k<br>\end{aligned}<br>$$</p>
-<p>$$<br>f_{1}(a t) * f_{2}(a t)=\int_{-\infty}^{+\infty} f_{1}(a k) f_{2}[a(t-k)] \mathrm{d} k<br>$$</p>
-<p>$$<br>\begin{aligned}<br>y(a t) &amp;=\int_{-\infty}^{+\infty} f_{1}(k) f_{2}(a t-k) \mathrm{d} k \\\<br>&amp;\overset{k=am}{=} \int_{-\infty}^{+\infty} f_{1}(a m) f_{2}(a t-a m) \mathrm{d}(a m) \\\<br>&amp;=a \int_{-\infty}^{+\infty} f_{1}(a m) f_{2}(a t-a m) \mathrm{d}(a m) \\\<br>&amp;=a f_{1}(a t) * f_{2}(a t)<br>\end{aligned}<br>$$</p>
-<p>故$f_1(2t)*f_2(2t)=\frac{1}{2}y(2t)$.</p>
-</li>
+<li><p>若<span class="math inline">\(y(t)=f_1(t)*f_2(t)\)</span>,计算<span class="math inline">\(f_1(2t)*f_2(2t)\)</span>.</p>
+<p>解: <span class="math display">\[
+\begin{aligned}
+y(t) &amp;=f_{1}(t) * f_{2}(t) \\
+&amp;=\int_{-\infty}^{+\infty} f_{1}(k) f_{2}(t-k) \mathrm{d} k
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+f_{1}(a t) * f_{2}(a t)=\int_{-\infty}^{+\infty} f_{1}(a k) f_{2}[a(t-k)] \mathrm{d} k
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+y(a t) &amp;=\int_{-\infty}^{+\infty} f_{1}(k) f_{2}(a t-k) \mathrm{d} k \\
+&amp;\overset{k=am}{=} \int_{-\infty}^{+\infty} f_{1}(a m) f_{2}(a t-a m) \mathrm{d}(a m) \\
+&amp;=a \int_{-\infty}^{+\infty} f_{1}(a m) f_{2}(a t-a m) \mathrm{d}(a m) \\
+&amp;=a f_{1}(a t) * f_{2}(a t)
+\end{aligned}
+\]</span></p>
+<p>故<span class="math inline">\(f_1(2t)*f_2(2t)=\frac{1}{2}y(2t)\)</span>.</p></li>
 </ul>
 </blockquote>
-<h2 id="离散时间卷积"><a href="#离散时间卷积" class="headerlink" title="离散时间卷积"></a>离散时间卷积</h2><blockquote>
+<h2 id="离散时间卷积">离散时间卷积</h2>
+<blockquote>
 <ul>
-<li>$x_{1}(n)=2^{n} u(-n), \ x_{2}(n)=u(n)$</li>
+<li><span class="math inline">\(x_{1}(n)=2^{n} u(-n), \ x_{2}(n)=u(n)\)</span></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li>$x_{1}(n)=2^{n} u(n),\  x_{2}(n)=3^{n} u(n)$</li>
+<li><span class="math inline">\(x_{1}(n)=2^{n} u(n),\  x_{2}(n)=3^{n} u(n)\)</span></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li>$x_{1}(n)=(-0.5)^{n} u(n-4), \ x_{2}(n)=4^{n} u(-n+2)$</li>
+<li><span class="math inline">\(x_{1}(n)=(-0.5)^{n} u(n-4), \ x_{2}(n)=4^{n} u(-n+2)\)</span></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li>$x_{1}(n)=u(n)-u(-n),\  x_{2}(n)=\left\{\begin{array}{ll}{4^{n},} &amp; {n&lt;0} \\ {0.5^{n},} &amp; { n \geq 0}\end{array}\right.$</li>
+<li><span class="math inline">\(x_{1}(n)=u(n)-u(-n),\  x_{2}(n)=\left\{\begin{array}{ll}{4^{n},} &amp; {n&lt;0} \\ {0.5^{n},} &amp; { n \geq 0}\end{array}\right.\)</span></li>
 </ul>
 </blockquote>
-<h2 id="一题多解"><a href="#一题多解" class="headerlink" title="一题多解"></a>一题多解</h2><blockquote>
+<h2 id="一题多解">一题多解</h2>
+<blockquote>
 <p>暂时懒得找那道题,待更新.</p>
 </blockquote>
 

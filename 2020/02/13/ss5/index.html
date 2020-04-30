@@ -215,35 +215,71 @@
                                 <blockquote>
 <p>#TODO:补充图片;补充滤波设计.</p>
 </blockquote>
-<p>　　上一节已经介绍了傅里叶变换,傅里叶变换在多数时候比傅里叶级数好用.那能不能对周期信号也做傅里叶变换呢?由于周期信号不满足绝对可积的条件,不能直接利用式$(4.10)$求得.但我们通过引入$\delta $函数,可以对一般的周期信号进行傅里叶变换(神奇吧!).</p>
-<h2 id="周期信号频谱"><a href="#周期信号频谱" class="headerlink" title="周期信号频谱"></a>周期信号频谱</h2><blockquote>
+<p>　　上一节已经介绍了傅里叶变换,傅里叶变换在多数时候比傅里叶级数好用.那能不能对周期信号也做傅里叶变换呢?由于周期信号不满足绝对可积的条件,不能直接利用式<span class="math inline">\((4.10)\)</span>求得.但我们通过引入$$函数,可以对一般的周期信号进行傅里叶变换(神奇吧!).</p>
+<h2 id="周期信号频谱">周期信号频谱</h2>
+<blockquote>
 <p>此处照抄课本.</p>
 </blockquote>
-<p>​    假定一般的周期信号$f_T(t)$的周期为$T$,其指数形式的傅里叶级数为:<br>$$<br>f_{T}(t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n \frac{2 \pi}{T}t} \\\<br>F_{n}=\frac{1}{T} \int_{t_0}^{t_{0}+T} f_{T}(t) e^{-j n \frac{2 \pi}{T}t} \mathrm{d} t \tag{5.1}<br>$$<br>令$f_T(t)$的傅里叶变换为$F_T(jw)$,则<br>$$<br>\begin{aligned}<br>F_{T}(j \omega)&amp;=\mathscr{F}\left[\sum_{n=-\infty}^{\infty} F_{n} e^{j n \frac{2 \pi}{T} t}\right]=\sum_{n=-\infty}^{\infty} F_{n} \mathscr{F}\left[e^{j n \frac{2 \pi}{T}t}\right]\\\<br>&amp;\text{Explanation: }\text{Because }1 \longleftrightarrow 2\pi \delta(\omega)        \\\<br>&amp;\text{and frequency shift property, we get}\\\<br>&amp;\qquad e^{j n \frac{2\pi}{T} t} \longleftrightarrow 2\pi \delta\left(w-n \frac{2 x}{T}\right)\\\<br>&amp;=\sum_{n=-\infty}^{\infty} F_n2 \pi \delta\left(\omega-n \frac{2 \pi}{T}\right)\\\<br>&amp;=\sum_{n=-\infty}^{\infty} 2 \pi F_{n} \delta\left(\omega-n \frac{2 \pi}{T}\right)<br>\end{aligned} \tag{5.2}<br>$$<br>上式表明一般的周期信号的傅里叶变换是一系列的冲激函数的线性组合,这些冲激发生在各谐波频率上,强度是指数形式的傅里叶级数相应谐波分量振幅的$2\pi$倍.</p>
+<p>​ 假定一般的周期信号<span class="math inline">\(f_T(t)\)</span>的周期为<span class="math inline">\(T\)</span>,其指数形式的傅里叶级数为: <span class="math display">\[
+f_{T}(t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n \frac{2 \pi}{T}t} \\
+F_{n}=\frac{1}{T} \int_{t_0}^{t_{0}+T} f_{T}(t) e^{-j n \frac{2 \pi}{T}t} \mathrm{d} t \tag{5.1}
+\]</span> 令<span class="math inline">\(f_T(t)\)</span>的傅里叶变换为<span class="math inline">\(F_T(jw)\)</span>,则 <span class="math display">\[
+\begin{aligned}
+F_{T}(j \omega)&amp;=\mathscr{F}\left[\sum_{n=-\infty}^{\infty} F_{n} e^{j n \frac{2 \pi}{T} t}\right]=\sum_{n=-\infty}^{\infty} F_{n} \mathscr{F}\left[e^{j n \frac{2 \pi}{T}t}\right]\\
+&amp;\text{Explanation: }\text{Because }1 \longleftrightarrow 2\pi \delta(\omega)        \\
+&amp;\text{and frequency shift property, we get}\\
+&amp;\qquad e^{j n \frac{2\pi}{T} t} \longleftrightarrow 2\pi \delta\left(w-n \frac{2 x}{T}\right)\\
+&amp;=\sum_{n=-\infty}^{\infty} F_n2 \pi \delta\left(\omega-n \frac{2 \pi}{T}\right)\\
+&amp;=\sum_{n=-\infty}^{\infty} 2 \pi F_{n} \delta\left(\omega-n \frac{2 \pi}{T}\right)
+\end{aligned} \tag{5.2}
+\]</span> 上式表明一般的周期信号的傅里叶变换是一系列的冲激函数的线性组合,这些冲激发生在各谐波频率上,强度是指数形式的傅里叶级数相应谐波分量振幅的<span class="math inline">\(2\pi\)</span>倍.</p>
 <blockquote>
 <ul>
-<li>求周期冲激串$\delta_{T}(t)=\sum_{n=-\infty}^{\infty} \delta(t-n T)$的频谱.</li>
+<li>求周期冲激串<span class="math inline">\(\delta_{T}(t)=\sum_{n=-\infty}^{\infty} \delta(t-n T)\)</span>的频谱.</li>
 </ul>
 <p>#TODO 图</p>
-<p>由式$(5.1)$求得$\delta_{T}(t)$的指数形式傅里叶级数为<br>$$<br>\delta_{T}(t)=\sum_{n=-\infty}^{\infty} \frac{1}{T} e^{j n \frac{2 \pi}{T} t}.<br>$$<br>由式$(5.2)$得<br>$$<br>\begin{aligned}<br>\mathscr{F}\left[\delta_{T}(t)\right] &amp;=\sum_{n=-\infty}^{\infty} 2 \pi \cdot \frac{1}{T} \delta\left(\omega-n \frac{2 \pi}{T}\right) \\\<br>&amp;=\frac{2 \pi}{T} \sum_{n=-\infty}^{\infty} \delta\left(\omega-n \frac{2 \pi}{T}\right) \\\<br>&amp;=\Omega \sum_{n=-\infty}^{\infty} \delta(\omega-n \Omega)  ,\ \Omega=\frac{2 \pi}{T}<br>\end{aligned}<br>$$</p>
+<p>由式<span class="math inline">\((5.1)\)</span>求得<span class="math inline">\(\delta_{T}(t)\)</span>的指数形式傅里叶级数为 <span class="math display">\[
+\delta_{T}(t)=\sum_{n=-\infty}^{\infty} \frac{1}{T} e^{j n \frac{2 \pi}{T} t}.
+\]</span> 由式<span class="math inline">\((5.2)\)</span>得 <span class="math display">\[
+\begin{aligned}
+\mathscr{F}\left[\delta_{T}(t)\right] &amp;=\sum_{n=-\infty}^{\infty} 2 \pi \cdot \frac{1}{T} \delta\left(\omega-n \frac{2 \pi}{T}\right) \\
+&amp;=\frac{2 \pi}{T} \sum_{n=-\infty}^{\infty} \delta\left(\omega-n \frac{2 \pi}{T}\right) \\
+&amp;=\Omega \sum_{n=-\infty}^{\infty} \delta(\omega-n \Omega)  ,\ \Omega=\frac{2 \pi}{T}
+\end{aligned}
+\]</span></p>
 <p>记作</p>
-<p>$$<br>\delta_{\Omega}(\omega)=\sum_{n=-\infty}^{\infty} \delta(\omega-n \Omega)<br>$$</p>
+<p><span class="math display">\[
+\delta_{\Omega}(\omega)=\sum_{n=-\infty}^{\infty} \delta(\omega-n \Omega)
+\]</span></p>
 <p>故</p>
-<p>$$<br>\mathscr{F}\left[\delta_{T}(t)\right]=\Omega \delta_{\Omega}(\omega) \ ,\ \Omega=\frac{2 \pi}{T}<br>$$<br>可见周期冲激串的频谱仍为周期冲激串,强度为$\Omega=\frac{2 \pi}{T}$,周期也为$\frac{2 \pi}{T}$.</p>
+<p><span class="math display">\[
+\mathscr{F}\left[\delta_{T}(t)\right]=\Omega \delta_{\Omega}(\omega) \ ,\ \Omega=\frac{2 \pi}{T}
+\]</span> 可见周期冲激串的频谱仍为周期冲激串,强度为<span class="math inline">\(\Omega=\frac{2 \pi}{T}\)</span>,周期也为<span class="math inline">\(\frac{2 \pi}{T}\)</span>.</p>
 <p>#TODO 动画</p>
 </blockquote>
-<p>此外,一般的周期函数$f_T(t)$可以表示为:<br>$$<br>f_{T}(t)=\sum_{n=-\infty}^{\infty} f(t-n T)=f(t) * \delta_{T}(t) \tag{5.3}<br>$$<br>其中$f(t)$为周期信号$f_T(t)$在原点附近的一个主周期.由时域卷积(时域卷积相当于频域相乘)定理可得:<br>$$<br>\begin{aligned}<br>\mathscr{F}\left[f_{T}(t)\right]&amp;=\mathscr{F}\left[f(t) * \delta_{T}(t)\right]\\\<br>&amp;=F(j \omega) \cdot \Omega \delta_{\Omega}(\omega)\\\<br>&amp;=F(j \omega) \cdot \sum_{n=-\infty}^{\infty} \Omega \delta(\omega-n \Omega) \\\<br>&amp;=  \sum_{n=-\infty}^{\infty} \Omega F(j n \Omega) \delta(\omega-n \Omega)<br>\end{aligned} \tag{5.4}<br>$$<br>上式表明,一般的周期信号的傅里叶变换是发生在其各次谐波频率($\omega=n\Omega$)上的一串冲激.当主周期在时域上以$T$为周期进行延拓的时候,等效于在频域上对其频谱进行以$\Omega=2\pi/T$为周期的等距离抽样,即时域周期延拓对应频域周期采样.上一节我们将方波函数的周期无限延长得到其主周期的傅里叶变换,下面我们由一个主周期延拓得到方波函数的傅里叶变换.</p>
-<p>#TODO </p>
-<h2 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h2><p>　　好好的信号我们为什么要抽样呢?在直观上我们对连续信号是比较有感觉的,对离散信号无感(至少我是这样的,这也是我离散傅里叶级数/变换学不好的原因.).而计算机对离散信号有感,因为计算机只能处理数字化的信号,完全处理不了连续的信号,所以要先对信号进行抽样,数字化后给计算机处理.</p>
+<p>此外,一般的周期函数<span class="math inline">\(f_T(t)\)</span>可以表示为: <span class="math display">\[
+f_{T}(t)=\sum_{n=-\infty}^{\infty} f(t-n T)=f(t) * \delta_{T}(t) \tag{5.3}
+\]</span> 其中<span class="math inline">\(f(t)\)</span>为周期信号<span class="math inline">\(f_T(t)\)</span>在原点附近的一个主周期.由时域卷积(时域卷积相当于频域相乘)定理可得: <span class="math display">\[
+\begin{aligned}
+\mathscr{F}\left[f_{T}(t)\right]&amp;=\mathscr{F}\left[f(t) * \delta_{T}(t)\right]\\
+&amp;=F(j \omega) \cdot \Omega \delta_{\Omega}(\omega)\\
+&amp;=F(j \omega) \cdot \sum_{n=-\infty}^{\infty} \Omega \delta(\omega-n \Omega) \\
+&amp;=  \sum_{n=-\infty}^{\infty} \Omega F(j n \Omega) \delta(\omega-n \Omega) 
+\end{aligned} \tag{5.4}
+\]</span> 上式表明,一般的周期信号的傅里叶变换是发生在其各次谐波频率(<span class="math inline">\(\omega=n\Omega\)</span>)上的一串冲激.当主周期在时域上以<span class="math inline">\(T\)</span>为周期进行延拓的时候,等效于在频域上对其频谱进行以<span class="math inline">\(\Omega=2\pi/T\)</span>为周期的等距离抽样,即时域周期延拓对应频域周期采样.上一节我们将方波函数的周期无限延长得到其主周期的傅里叶变换,下面我们由一个主周期延拓得到方波函数的傅里叶变换.</p>
+<p>#TODO</p>
+<h2 id="抽样">抽样</h2>
+<p>　　好好的信号我们为什么要抽样呢?在直观上我们对连续信号是比较有感觉的,对离散信号无感(至少我是这样的,这也是我离散傅里叶级数/变换学不好的原因.).而计算机对离散信号有感,因为计算机只能处理数字化的信号,完全处理不了连续的信号,所以要先对信号进行抽样,数字化后给计算机处理.</p>
 <p>　　抽样有冲激串抽样和脉冲串抽样.这里只讲冲激串抽样.我们把冲激串跟连续信号相乘,根据频域卷积定理可知时域相乘相当于频域卷积.</p>
 <p>#TODO</p>
 <p>我们对信号进行抽样后,得到的是抽样信号,对其数字化后得到的才是数字信号.我们不讨论数字信号,只讨论抽样信号.我的老师说采样信号其实仍然是连续信号,是连续信号的一种表示而已;但我不认为采样信号仍是连续信号,它就是离散的.可以看成是把时域上的信息搬到频域上.抽样信号在频域是周期性的,可以认为抽样是制造频域信息上的冗余,这样时域上的信息就少了.</p>
-<h2 id="信号的恢复"><a href="#信号的恢复" class="headerlink" title="信号的恢复"></a>信号的恢复</h2><p>　　我们将信号进行抽样,那么如何才能把信号恢复回来呢,这是很重要也很神奇的!</p>
+<h2 id="信号的恢复">信号的恢复</h2>
+<p>　　我们将信号进行抽样,那么如何才能把信号恢复回来呢,这是很重要也很神奇的!</p>
 <p>　　怎么恢复信号呢?连续信号经过抽样后这样的——</p>
 <p>#TODO</p>
-<p>连续信号的频域是采样信号频域的一个”主周期”,我们如果要把信号恢复回来,是不是可以只要把”周期信号”变成的一个”主周期”就可以了?没错,可以的——因为傅里叶变换是唯一的!所以问题就变得简单了,我们对抽样信号的频域做一个处理,</p>
+<p>连续信号的频域是采样信号频域的一个&quot;主周期&quot;,我们如果要把信号恢复回来,是不是可以只要把&quot;周期信号&quot;变成的一个&quot;主周期&quot;就可以了?没错,可以的——因为傅里叶变换是唯一的!所以问题就变得简单了,我们对抽样信号的频域做一个处理,</p>
 <p>#TODO</p>
-<p>我们把$h(t)$把这个玩意儿称作滤波器.我们看看时域上是怎样的.</p>
+<p>我们把<span class="math inline">\(h(t)\)</span>把这个玩意儿称作滤波器.我们看看时域上是怎样的.</p>
 <p>#TODO</p>
 <p>上面是一种理想的状况,你怎么就能保证一定能从抽样信号的频域恢复出连续信号的频谱呢?如我抽样频率换一下呢?</p>
 <p>#TODO</p>
@@ -251,8 +287,9 @@
 <p>#TODO</p>
 <p>抽样频率从大到小变化的情况:</p>
 <p>#TODO</p>
-<p>临界情况就是抽样频率$\Omega=2\omega_0$,这也就是Nyquist频率,然后就有了时域抽样定理和频域采样定理(就是反过来).至于怎么设计滤波器,这里就暂时不拓展了.</p>
-<h2 id="周期信号频谱和抽样"><a href="#周期信号频谱和抽样" class="headerlink" title="周期信号频谱和抽样"></a>周期信号频谱和抽样</h2><p>　　从上面我们可以看到,我们得到周期信号傅里叶变换和得到抽样信号频谱的过程其实是“对称”的,这也是为什么把它们俩放在一起的原因.</p>
+<p>临界情况就是抽样频率<span class="math inline">\(\Omega=2\omega_0\)</span>,这也就是Nyquist频率,然后就有了时域抽样定理和频域采样定理(就是反过来).至于怎么设计滤波器,这里就暂时不拓展了.</p>
+<h2 id="周期信号频谱和抽样">周期信号频谱和抽样</h2>
+<p>　　从上面我们可以看到,我们得到周期信号傅里叶变换和得到抽样信号频谱的过程其实是“对称”的,这也是为什么把它们俩放在一起的原因.</p>
 
                             </div>
 
