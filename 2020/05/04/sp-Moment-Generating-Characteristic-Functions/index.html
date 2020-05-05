@@ -270,7 +270,7 @@
 <p>　When a moment generating function exists, it uniquely determines the distribution. This is quite important because it enables us to characterize the probability of a random variable by its generating function.</p>
 <p>　Here, we need to tell the MGF from <em>Probability Generating Function</em>, of a non-negative integer random variable <span class="math inline">\(X\)</span>, which is defined by <span class="math display">\[
 G(t)=E\left(t^{X}\right)=\sum_{x=0}^{\infty} P(x) t^{x}\ . \tag{4}
-\]</span> 　By the way, we may be very curious about that why we define the MGF using the form of <span class="math inline">\(\text{e}\)</span> exponent. That's what will be talked about.</p>
+\]</span> 　By the way, we may be very curious about that why we define the MGF using the form of <span class="math inline">\(\text{e}\)</span> exponent. That's what will be talked about in <a href="#Example%202">Example 2</a></p>
 <p>Now, let dive into the formula <span class="math inline">\((3)\)</span>. We use the Taylor series to prove this. Let's get the Maclaurin expansion of <span class="math inline">\(e^x\)</span>: <span class="math display">\[
 e^{x}=1+x+\frac{x^{2}}{2 !}+\frac{x^{3}}{3 !}+\cdots+\frac{x^{n}}{n !}
 \]</span> then, <span class="math display">\[
@@ -319,6 +319,7 @@ E\left(X^{3}\right)=\frac{\mathrm{d}^{3}}{\mathrm{d} t^{3}}\left(\frac{\lambda}{
 \end{aligned}
 \]</span> Thus the moment generating function of <span class="math inline">\(X+Y\)</span> is that of a normal random variable with mean <span class="math inline">\(\mu_1+\mu_2\)</span> and variance <span class="math inline">\(\sigma_{1}^{2}+\sigma_{2}^{2}\)</span>. By uniqueness, this is the distribution of <span class="math inline">\(X+Y\)</span>.</p>
 <p>　By this example, we make a trivial process becomes a non-trivial one using the MGF.</p>
+<p>　In my opinion, the MGP derives from the Laplace transform. Thus it inherits the form of <span class="math inline">\(e\)</span> exponent. The power of <span class="math inline">\(e\)</span> exponent lies in the converting between <em>multiplication</em> and <em>addition</em>.</p>
 <h3 id="notes">Notes</h3>
 <blockquote>
 <ol type="1">
