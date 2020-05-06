@@ -12,7 +12,7 @@
 
 
 
-<title>Stochastic Process | Moment Generating, Characteristic Functions, and Laplace Transforms | J. WANG&#39;s Blog</title>
+<title>Probability and Statistics | Moment Generating, Characteristic Functions, and Laplace Transforms | J. WANG&#39;s Blog</title>
 
 
 
@@ -188,7 +188,7 @@
                         <article class="post-wrap">
                             <header class="post-header">
                                 <h1 class="post-title">
-                                    Stochastic Process | Moment Generating, Characteristic Functions, and Laplace Transforms
+                                    Probability and Statistics | Moment Generating, Characteristic Functions, and Laplace Transforms
                                 </h1>
                                 
                                     <div class="post-meta">
@@ -203,7 +203,7 @@
                                                             <span class="post-category">
                     Category:
                             
-                                <a href="/blog/categories/Stochastic-Process/">Stochastic Process</a>
+                                <a href="/blog/categories/Probability-and-Statistics/">Probability and Statistics</a>
                             
                         </span>
                                                             
@@ -270,7 +270,7 @@
 <p>　When a moment generating function exists, it uniquely determines the distribution. This is quite important because it enables us to characterize the probability of a random variable by its generating function.</p>
 <p>　Here, we need to tell the MGF from <em>Probability Generating Function</em>, of a non-negative integer random variable <span class="math inline">\(X\)</span>, which is defined by <span class="math display">\[
 G(t)=E\left(t^{X}\right)=\sum_{x=0}^{\infty} P(x) t^{x}\ . \tag{4}
-\]</span> 　By the way, we may be very curious about that why we define the MGF using the form of <span class="math inline">\(\text{e}\)</span> exponent. That's what will be talked about in <a href="#Example%202">Example 2</a></p>
+\]</span> 　By the way, we may be very curious about that why we define the MGF using the form of <span class="math inline">\(\text{e}\)</span> exponent. That's what will be talked about in <a href="#1">Example 2</a></p>
 <p>Now, let dive into the formula <span class="math inline">\((3)\)</span>. We use the Taylor series to prove this. Let's get the Maclaurin expansion of <span class="math inline">\(e^x\)</span>: <span class="math display">\[
 e^{x}=1+x+\frac{x^{2}}{2 !}+\frac{x^{3}}{3 !}+\cdots+\frac{x^{n}}{n !}
 \]</span> then, <span class="math display">\[
@@ -289,7 +289,7 @@ E\left(e^{t x}\right) &amp;=E\left(1+t x+\frac{(t x)^{2}}{2 !}+\frac{(t x)^{3}}{
 \]</span> Let's replace the <span class="math inline">\(x\)</span> with <span class="math inline">\(X\)</span>, take <span class="math inline">\(n\)</span> times of derivative, and we will get the formula <span class="math inline">\((3)\)</span>. Besides, we can see the role of the variable <span class="math inline">\(t\)</span>, who helps us calculate the derivatives and makes the terms (that we are not interested in) zero.</p>
 <h3 id="why-do-we-need-mgf">Why do we need MGF?</h3>
 <p>For convenience. It is much easier to get the expected value using the MGF than the definition of expected values. Using the MGF, it is possible to find moments by taking derivatives rather than doing integrals! The followings are tow examples.</p>
-<h4 id="example-1">Example 1</h4>
+<h4 id="example-1">Example 1</span></h4>
 <p>The expected value of exponential distribution. <span class="math display">\[
 f_{X}(x)=\left\{\begin{array}{cl}
 \lambda \cdot e^{-\lambda x} &amp;  x&gt;0 \\
@@ -309,7 +309,7 @@ f_{X}(x)=\left\{\begin{array}{cl}
 <p>　Once we have the MGF: <span class="math inline">\(\lambda/(\lambda-t)\)</span>, calculating moments becomes just a matter of taking derivatives, which is easier than the integrals to calculate the expected value directly. <span class="math display">\[
 E\left(X^{3}\right)=\frac{\mathrm{d}^{3}}{\mathrm{d} t^{3}}\left(\frac{\lambda}{\lambda-t}\right) \quad \text{is easier than} \quad E\left(X^{3}\right)=\int_{0}^{\infty} x^{3} \lambda e^{-\lambda x} \mathrm{d} x \ .
 \]</span></p>
-<h4 id="example-2">Example 2</h4>
+<h4 id="example-2"><span id="1">Example 2</span></h4>
 <p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent normal random variables with respective means <span class="math inline">\(\mu_{1}\)</span> and <span class="math inline">\(\mu_{2}\)</span> and respective variances <span class="math inline">\(\sigma_{1}^{2}\)</span> and <span class="math inline">\(\sigma_{2}^{2} .\)</span> The moment generating function of their sum is given by <span class="math display">\[
 \begin{aligned}
 \psi_{X+Y}(t) &amp;=E\left[e^{t(X+Y)}\right] \\
@@ -415,6 +415,10 @@ f(x)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} e^{i t x} F(t) \mathrm{d} t=\frac{1
                                     </section>
                                     <section class="post-nav">
                                         
+                                            <a class="prev" rel="prev" href="/blog/2020/05/06/sp-poisson-distribution/">
+                                                Probability and Statistics | Poisson Distribution
+                                            </a>
+                                            
                                                 
                                                     <a class="next" rel="next" href="/blog/2020/04/29/sjxhfxyclxt-ch1/">
                                                         Stochastic Signal Analysis and Processing | Exercises Chapter 1
