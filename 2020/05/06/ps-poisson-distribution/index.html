@@ -214,7 +214,7 @@
                             <div class="post-content">
                                 <h2 id="definition">Definition</h2>
 <p>A Poisson random variable has a PMF given by <span class="math display">\[
-p_{X}(k)=e^{-\lambda} \frac{\lambda^{k}}{k !}, \quad k=0,1,2, \ldots,
+p_{X}(k)=e^{-\lambda} \frac{\lambda^{k}}{k !}, \quad k=0,1,2, \ldots, \tag{1}
 \]</span> where <span class="math inline">\(\lambda\)</span> is a positive parameter charactering the PMF. This is a legitimate PMF because <span class="math display">\[
 \sum_{k=0}^{\infty} e^{-\lambda} \frac{\lambda^{k}}{k !}=e^{-\lambda}\left(1+\lambda+\frac{\lambda^{2}}{2 !}+\frac{\lambda^{3}}{3 !}+\cdots\right)=e^{-\lambda} e^{\lambda}=1\ .
 \]</span></p>
@@ -227,8 +227,8 @@ p_{X}(k)=e^{-\lambda} \frac{\lambda^{k}}{k !}, \quad k=0,1,2, \ldots,
 &amp;=\lambda e^{-\lambda} \sum_{i=1}^{\infty} \frac{\lambda^{i-1}}{(i-1) !} \\
 &amp;=\lambda e^{-\lambda} \sum_{i=0}^{\infty} \frac{\lambda^{i}}{i !} \\
 &amp;=\lambda e^{-\lambda} e^{\lambda} \\
-&amp;=\lambda
-\end{aligned}
+&amp;=\lambda  
+\end{aligned} \tag{2}
 \]</span></p>
 <h3 id="variance">Variance</h3>
 <p><span class="math display">\[
@@ -240,19 +240,19 @@ p_{X}(k)=e^{-\lambda} \frac{\lambda^{k}}{k !}, \quad k=0,1,2, \ldots,
 &amp;=\lambda e^{-\lambda} \frac{\mathrm{d}}{\mathrm{d} \lambda}\left[\sum_{i=1}^{\infty} \frac{\lambda^{i}}{(i-1) !}\right] \\
 &amp;=\lambda e^{-\lambda} \frac{\mathrm{d}}{\mathrm{d} \lambda}\left[\lambda \sum_{i=1}^{\infty} \frac{\lambda^{i-1}}{(i-1) !}\right] \\
 &amp;=\lambda e^{-\lambda} \frac{\mathrm{d}}{\mathrm{d} \lambda}\left(\lambda e^{\lambda}\right)=\lambda e^{-\lambda}\left(e^{\lambda}+\lambda e^{\lambda}\right)=\lambda+\lambda^{2}\ ,
-\end{aligned}
+\end{aligned} \tag{3}
 \]</span></p>
 <p>or <span class="math display">\[
 \begin{aligned}
 E\left(X^{2}\right) &amp;=E[X(X-1)+X]=E[X(X-1)]+E(X) \\
 &amp;=\sum_{k=0}^{\infty} k(k-1) \frac{\lambda^{k}}{k !} \mathrm{e}^{-\lambda}+\lambda=\lambda^{2} \mathrm{e}^{-\lambda} \sum_{k=2}^{\infty} \frac{\lambda^{k-2}}{(k-2) !}+\lambda=\lambda^{2}+\lambda \ .
-\end{aligned}
+\end{aligned} \tag{4}
 \]</span> Then <span class="math display">\[
-D(X)=E\left(X^{2}\right)-E^{2}(X)=\lambda^{2}+\lambda-\lambda^{2}=\lambda \ .
+D(X)=E\left(X^{2}\right)-E^{2}(X)=\lambda^{2}+\lambda-\lambda^{2}=\lambda \ . \tag{5}
 \]</span></p>
 <h3 id="the-moment-generating-function">The Moment Generating Function</h3>
 <p><span class="math display">\[
-M_{X}(t)=E\left[e^{t X}\right]=\sum_{x=0}^{\infty} e^{t x} \frac{e^{-\lambda} \lambda^{x}}{x !}=e^{-\lambda} \sum_{x=0}^{\infty} \frac{\left(e^{t} \lambda\right)^{x}}{x !}=e^{\lambda\left(e^{t}-1\right)}.
+M_{X}(t)=E\left[e^{t X}\right]=\sum_{x=0}^{\infty} e^{t x} \frac{e^{-\lambda} \lambda^{x}}{x !}=e^{-\lambda} \sum_{x=0}^{\infty} \frac{\left(e^{t} \lambda\right)^{x}}{x !}=e^{\lambda\left(e^{t}-1\right)}. \tag{6}
 \]</span></p>
 <p>The sum of dependent Poisson random variables still obeys Poisson distribution. It's easy to proof using the MGF.</p>
 <h2 id="source">Source</h2>
@@ -262,14 +262,14 @@ M_{X}(t)=E\left[e^{t X}\right]=\sum_{x=0}^{\infty} e^{t x} \frac{e^{-\lambda} \l
 p_{X}(k)=\left\{\begin{array}{ll}
 p, &amp; \text { if } k=1 \\
 1-p, &amp; \text { if } k=0 \ .
-\end{array}\right.
+\end{array}\right. \tag{7}
 \]</span> For all its simplicity, the Bernoulli random variable is very important. In practice, it is used to model generic probabilistic situations with just two outcomes. Furthermore, by combining multiple Bernoulli random variables, one can construct more complicated random variables, such as the binomial random variable.</p>
 <h3 id="binomial-distribution">Binomial Distribution</h3>
 <p>A coin is tossed <span class="math inline">\(n\)</span> times. At each toss, the coin comes up a head with probability <span class="math inline">\(p,\)</span> and a tail with probability <span class="math inline">\(1-p,\)</span> independent of prior tosses. Let <span class="math inline">\(X\)</span> be the number of heads in the <span class="math inline">\(n\)</span>-toss sequence. We refer to <span class="math inline">\(X\)</span> as a binomial random variable with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p .\)</span> The PMF of <span class="math inline">\(X\)</span> is <span class="math display">\[
-p_{X}(k)=\mathbf{P}(X=k)=\left(\begin{array}{l}
+p_{X}(k)=P(X=k)=\left(\begin{array}{l}
 n \\
 k
-\end{array}\right) p^{k}(1-p)^{n-k}, \quad k=0,1, \ldots, n\ ,
+\end{array}\right) p^{k}(1-p)^{n-k}, \quad k=0,1, \ldots, n\ , \tag{8}
 \]</span> which can be regarded as the PMF of multiple Bernoulli trials.</p>
 <h3 id="poisson-distribution">Poisson Distribution</h3>
 <p>When the binomial distribution's <span class="math inline">\(n\)</span> is very large but the <span class="math inline">\(p\)</span> is very small, it becomes the Poisson distribution: <span class="math display">\[
@@ -281,10 +281,11 @@ k
 &amp;=\lim _{n \rightarrow \infty} \frac{n !}{(n-k) ! k !}\left(\frac{\lambda}{n}\right)^{k}\left(1-\frac{\lambda}{n}\right)^{n-k} \\
 &amp;=\lim _{n \rightarrow \infty} \underbrace{\left[\frac{n !}{n^{k}(n-k) !}\right]}_{F}\left(\frac{\lambda^{k}}{k !}\right) \underbrace{\left(1-\frac{\lambda}{n}\right)^{n}}_{\rightarrow \exp (-\lambda)} \underbrace{\left(1-\frac{\lambda}{n}\right)^{-k}}_{\rightarrow 1} \\
 &amp;=\lim _{n \rightarrow \infty} \underbrace{\left[\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right) \ldots\left(1-\frac{k-1}{n}\right)\right]}_{\rightarrow 1}\left(\frac{\lambda^{k}}{k !}\right) \underbrace{\left(1-\frac{\lambda}{n}\right)^{n}}_{\rightarrow \exp (-\lambda)} \underbrace{\left(1-\frac{\lambda}{n}\right)^{-k}}_{\rightarrow 1}\\
-&amp;=\left(\frac{\lambda^{k}}{k !}\right) \exp (-\lambda)\ .
+&amp;=\left(\frac{\lambda^{k}}{k !}\right) \exp (-\lambda)\ ,
 \end{aligned}
-\]</span> Note that <span class="math inline">\(\displaystyle \lim _{n \rightarrow \infty}\left(1-\frac{\lambda}{n}\right)^{n}=e^{-\lambda}\)</span>.</p>
-<p>　As for how to understand Poisson distribution, <a href="https://www.matongxue.com/madocs/858/" target="_blank" rel="noopener">here</a> is a good explanation.</p>
+\]</span> where <span class="math inline">\(\lambda =np\)</span>. Note that <span class="math inline">\(\displaystyle \lim _{n \rightarrow \infty}\left(1-\frac{\lambda}{n}\right)^{n}=e^{-\lambda}\)</span>, so the Poisson distribution is <span class="math display">\[
+P(X=k)=e^{-\lambda} \frac{\lambda^{k}}{k !}, \quad k=0,1,2, \ldots
+\]</span> 　As for how to understand Poisson distribution, there is a good <a href="https://www.matongxue.com/madocs/858/" target="_blank" rel="noopener">explanation</a>. Poisson distribution is the limit of binomial distribution with a very small <span class="math inline">\(p\)</span>, and the normal distribution is the limit of binomial distribution with a vary lager <span class="math inline">\(n\)</span>, making the discrete distribution become the continuous one.</p>
 <h2 id="references">References</h2>
 <ul>
 <li>Dimitri P. Bertsekas and John N. Tsitsiklis. Introduction to Probability. Second Edition. Athena Scientific, Belmont, Massachusetts. 2008.</li>
@@ -317,12 +318,12 @@ k
                                     </section>
                                     <section class="post-nav">
                                         
-                                            <a class="prev" rel="prev" href="/blog/2020/05/07/sp-exponential-distribution/">
+                                            <a class="prev" rel="prev" href="/blog/2020/05/07/ps-exponential-distribution/">
                                                 Probability and Statistics | Exponential Distribution
                                             </a>
                                             
                                                 
-                                                    <a class="next" rel="next" href="/blog/2020/05/04/sp-moment-generating-characteristic-functions/">
+                                                    <a class="next" rel="next" href="/blog/2020/05/04/ps-moment-generating-characteristic-functions/">
                                                         Probability and Statistics | Moment Generating, Characteristic Functions, and Laplace Transforms
                                                     </a>
                                                     

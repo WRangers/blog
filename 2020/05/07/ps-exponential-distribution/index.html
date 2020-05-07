@@ -212,9 +212,37 @@
                             </header>
 
                             <div class="post-content">
-                                <p>指数分布解决的问题是“要等到一个随机事件发生，需要经历多久时间”</p>
-<p>伽玛分布解决的问题是“要等到n个随机事件都发生，需要经历多久时间”</p>
-<p>泊松分布解决的是“在特定时间里发生n个事件的概率”。</p>
+                                <h2 id="poisson-process">Poisson Process</h2>
+<p>In the last post, we know what is Poisson distribution. If we give a restriction, we can get the Poisson Process (we don't discuss the details here): <span class="math display">\[
+P(X=k, t)=\frac{(\lambda t)^{k}}{k !} e^{-\lambda t}\ . \tag{1}
+\]</span></p>
+<h2 id="exponential-distribution">Exponential Distribution</h2>
+<p>Let say <span class="math inline">\(Y=k_1-k_2\)</span>, then according to formula <span class="math inline">\((1)\)</span> <span class="math display">\[
+P(Y&gt;t)=P(X=0, t)=\frac{(\lambda t)^{0}}{0 !} e^{-\lambda t}=e^{-\lambda t}, \quad t \geqslant 0\ ,
+\]</span> then <span class="math display">\[
+P(Y \leq t)=1-P(Y&gt;t)=1-e^{-\lambda t}\ . 
+\]</span> That is the probability distribution function of exponential distribution, <span class="math display">\[
+F(y)=P(Y \leq y)=\left\{\begin{array}{ll}1-e^{-\lambda y}, &amp; y \geq 0 \\ 0, &amp; y&lt;0\end{array}\right. \ . \tag{2} 
+\]</span> and the PDF is <span class="math display">\[
+p(y)=\left\{\begin{array}{ll}\lambda e^{-\lambda y}, &amp; y \geq 0 \\ 0, &amp; y&lt;0\end{array}\right.  \ . \tag{3}
+\]</span> 　The <strong>MGF</strong> is <span class="math display">\[
+\psi(t)=E\left[e^{t x}\right]=\int_{0}^{\infty} e^{t x} \lambda e^{-\lambda x} \mathrm{d} x=\frac{\lambda}{\lambda-t}\ . \tag{4} 
+\]</span></p>
+<p>　<strong>Expected Value</strong> <span class="math inline">\(E[X]=1 / \lambda\)</span></p>
+<p>　<strong>Variance</strong> <span class="math inline">\(\operatorname{Var}(X)=1 / \lambda^{2}\)</span></p>
+<h2 id="relationship">Relationship</h2>
+<p>Because Poisson and exponential both generate from binomial distribution, they are all memoryless distribution. They are all belong to exponential function as well, relating to normal distribution and so on.</p>
+<p>　Let say a case where selling hamburgers.</p>
+<ul>
+<li>Poisson distribution describes the probability of how many hamburgers will be sold over a period of time.</li>
+<li>Exponential distribution describes the probability distribution of the next time someone buys a hamburger. The expected value of Poisson distribution is <span class="math inline">\(\lambda\)</span> , thus the expected value of exponential distribution, meaning the average interval between each hamburger sold, is <span class="math inline">\(1/ \lambda\)</span>.</li>
+<li>Gamma distribution describes the probability distribution of how long it takes to sell <span class="math inline">\(n\)</span> hamburgers.</li>
+</ul>
+<p>　All kinds of distributions have countless ties.</p>
+<p><img src="ps-exponential-distribution.assets/distribution.svg" alt="distribution" /></p>
+<p style="text-align:center">
+The figure comes from <i>Univariate Distribution Relationships</i>
+</p>
 <h2 id="references">References</h2>
 <ul>
 <li>Sheldon M. Ross. Stochastic Processes. Second Edition. John Wiley &amp; Sons, Inc. 1996.</li>
@@ -223,6 +251,8 @@
 <li>马同学的数学. <a href="https://www.matongxue.com/madocs/2109/" target="_blank" rel="noopener">如何理解几何分布与指数分布的无记忆性</a>.</li>
 <li>知乎. <a href="https://zhuanlan.zhihu.com/p/89912218" target="_blank" rel="noopener">泊松分布、指数分布和伽马分布</a>.</li>
 <li>Wikipedia. <a href="https://en.wikipedia.org/wiki/Exponential_family" target="_blank" rel="noopener">Exponential Family</a>.</li>
+<li>Lawrence M Leemis &amp; Jacquelyn T McQueston (2008) Univariate Distribution Relationships, The American Statistician, 62:1, 45-53, DOI: <a href="https://doi.org/10.1198/000313008X270448" target="_blank" rel="noopener">10.1198/000313008X270448</a></li>
+<li>chmx0929. <a href="https://chmx0929.gitbook.io/machine-learning/shu-xue-ji-chu/shu-xue-ji-chu/gai-lv-tong-ji/gai-lv-fen-bu" target="_blank" rel="noopener">概率分布</a>.</li>
 </ul>
 
                             </div>
@@ -250,7 +280,7 @@
                                     <section class="post-nav">
                                         
                                                 
-                                                    <a class="next" rel="next" href="/blog/2020/05/06/sp-poisson-distribution/">
+                                                    <a class="next" rel="next" href="/blog/2020/05/06/ps-poisson-distribution/">
                                                         Probability and Statistics | Poisson Distribution
                                                     </a>
                                                     
