@@ -272,19 +272,19 @@
 G(t)=E\left(t^{X}\right)=\sum_{x=0}^{\infty} P(x) t^{x}\ . \tag{4}
 \]</span> 　By the way, we may be very curious about that why we define the MGF using the form of <span class="math inline">\(\text{e}\)</span> exponent. That's what will be talked about in <a href="#1">Example 2</a></p>
 <p>Now, let dive into the formula <span class="math inline">\((3)\)</span>. We use the Taylor series to prove this. Let's get the Maclaurin expansion of <span class="math inline">\(e^x\)</span>: <span class="math display">\[
-e^{x}=1+x+\frac{x^{2}}{2 !}+\frac{x^{3}}{3 !}+\cdots+\frac{x^{n}}{n !}
+e^{X}=1+X+\frac{X^{2}}{2 !}+\frac{X^{3}}{3 !}+\cdots+\frac{X^{n}}{n !}
 \]</span> then, <span class="math display">\[
-e^{t x}=1+t x+\frac{(t x)^{2}}{2 !}+\frac{(t x)^{3}}{3 !}+\cdots+\frac{(t x)^{n}}{n !}\ .
+e^{t X}=1+t x+\frac{(t X)^{2}}{2 !}+\frac{(t X)^{3}}{3 !}+\cdots+\frac{(t X)^{n}}{n !}\ .
 \]</span> Take the expected value: <span class="math display">\[
 \begin{aligned}
-E\left(e^{t x}\right) &amp;=E\left(1+t x+\frac{(t x)^{2}}{2 !}+\frac{(t x)^{3}}{3 !}+\cdots+\frac{(t x)^{n}}{n !}\right) \\
-&amp;=E(1)+t E(x)+\frac{t^{2}}{2 !} E\left(x^{2}\right)+\frac{t^{3}}{3 !} E\left(x^{3}\right)+\cdots+\frac{t^{n}}{n !} E\left(x^{n}\right) \ .
+E\left(e^{t X}\right) &amp;=E\left[1+t X+\frac{(t X)^{2}}{2 !}+\frac{(t X)^{3}}{3 !}+\cdots+\frac{(t X)^{n}}{n !}\right] \\
+&amp;=E(1)+t E(X)+\frac{t^{2}}{2 !} E\left(X^{2}\right)+\frac{t^{3}}{3 !} E\left(X^{3}\right)+\cdots+\frac{t^{n}}{n !} E\left(X^{n}\right) \ .
 \end{aligned}
 \]</span> Now, take a derivative with respect to <span class="math inline">\(t\)</span>: <span class="math display">\[
 \begin{aligned}
-\frac{\mathrm{d}}{\mathrm{d} t} E\left(e^{t x}\right)&amp;=\frac{\mathrm{d}}{\mathrm{d} t}\left(E(1)+t E(x)+\frac{t^{2}}{2 !} E\left(x^{3}\right)+\frac{t^{3}}{3 !} E\left(x^{3}\right)+\cdots+\frac{t^{n}}{n !} E\left(x^{n}\right)\right) \\
-&amp;=0+E(x)+0+0+\cdots+0 \quad (\text{Let }t=0)\\
-&amp;=E(x) \ .
+\frac{\mathrm{d}}{\mathrm{d} t} E\left(e^{t X}\right)&amp;=\frac{\mathrm{d}}{\mathrm{d} t}\left[E(1)+t E(X)+\frac{t^{2}}{2 !} E\left(X^{2}\right)+\frac{t^{3}}{3 !} E\left(X^{3}\right)+\cdots+\frac{t^{n}}{n !} E\left(X^{n}\right)\right] \\
+&amp;=0+E(X)+0+0+\cdots+0 \quad (\text{Let }t=0)\\
+&amp;=E(X) \ .
 \end{aligned}
 \]</span> Let's replace the <span class="math inline">\(x\)</span> with <span class="math inline">\(X\)</span>, take <span class="math inline">\(n\)</span> times of derivative, and we will get the formula <span class="math inline">\((3)\)</span>. Besides, we can see the role of the variable <span class="math inline">\(t\)</span>, who helps us calculate the derivatives and makes the terms (that we are not interested in) zero.</p>
 <h3 id="why-do-we-need-mgf">Why do we need MGF?</h3>
@@ -336,12 +336,12 @@ E\left(X^{3}\right)=\frac{\mathrm{d}^{3}}{\mathrm{d} t^{3}}\left(\frac{\lambda}{
 </blockquote>
 <h2 id="characteristic-functions-cf">Characteristic Functions (CF)</h2>
 <p>As the moment generating function of a random variable <span class="math inline">\(X\)</span> need not exist, it is theoretically convenient to define the <em>characteristic function</em> of <span class="math inline">\(X\)</span> by <span class="math display">\[
-\phi(t)=E\left[e^{itx}\right], \ -\infty&lt;t&lt;\infty \ , \tag{5}
+\phi(t)=E\left[e^{itX}\right], \ -\infty&lt;t&lt;\infty \ , \tag{5}
 \]</span> where <span class="math inline">\(i=\sqrt{-1}\)</span>. It can be shown that <span class="math inline">\(\phi\)</span> <strong>always exists</strong> and, like the moment generating function, uniquely determines the distribution of <span class="math inline">\(X\)</span>.</p>
 <p>　Similar to the MGF above, we can also get the Maclaurin expansion of formula <span class="math inline">\((5)\)</span>: <span class="math display">\[
 \begin{aligned}
-E\left(e^{it x}\right) &amp;=E\left(1+it x+\frac{(it x)^{2}}{2 !}+\frac{(it x)^{3}}{3 !}+\cdots+\frac{(it x)^{n}}{n !}\right) \\
-&amp;=E(1)+it E(x)+\frac{(it)^{2}}{2 !} E\left(x^{2}\right)+\frac{(it)^{3}}{3 !} E\left(x^{3}\right)+\cdots+\frac{(it)^{n}}{n !} E\left(x^{n}\right) \ .
+E\left(e^{it X}\right) &amp;=E\left[1+it X+\frac{(it X)^{2}}{2 !}+\frac{(it X)^{3}}{3 !}+\cdots+\frac{(it X)^{n}}{n !}\right] \\
+&amp;=E(1)+it E(X)+\frac{(it)^{2}}{2 !} E\left(X^{2}\right)+\frac{(it)^{3}}{3 !} E\left(X^{3}\right)+\cdots+\frac{(it)^{n}}{n !} E\left(X^{n}\right) \ .
 \end{aligned}
 \]</span> We call it characteristic function because it consists of all the moments of the distribution.</p>
 <blockquote>
