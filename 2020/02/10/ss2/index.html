@@ -203,7 +203,7 @@
                                                             <span class="post-category">
                     Category:
                             
-                                <a href="/blog/categories/Signals-and-Systems-Series/">Signals and Systems Series</a>
+                                <a href="/blog/categories/Signals-and-Systems/">Signals and Systems</a>
                             
                         </span>
                                                             
@@ -270,7 +270,7 @@ f(x) * g(x)=\int_{-\infty}^{\infty} f(\alpha) g(x-\alpha) \mathrm{d} \alpha
 <blockquote>
 <p>　　比如说你的老板命令你干活,你却到楼下打台球去了,后来被老板发现,他非常气愤,扇了你一巴掌(注意,这就是输入信号,脉冲),于是你的脸上会渐渐地(贱贱地)鼓起来一个包,你的脸就是一个系统,而鼓起来的包就是你的脸对巴掌的响应,好,这样就和信号系统建立起来意义对应的联系.下面还需要一些假设来保证论证的严谨:假定你的脸是线性时不变系统,也就是说,无论什么时候老板打你一巴掌,打在你脸的同一位置(这似乎要求你的脸足够光滑,如果你说你长了很多青春痘,甚至整个脸皮处处连续处处不可导,那难度太大了,我就无话可说了哈哈),你的脸上总是会在相同的时间间隔内鼓起来一个相同高度的包来,并且假定以鼓起来的包的大小作为系统输出.好了,那么,下面可以进入核心内容—卷积了! 　　如果你每天都到地下去打台球,那么老板每天都要扇你一巴掌,不过当老板打你一巴掌后,你5分钟就消肿了,所以时间长了,你甚至就适应这种生活了…如果有一天,老板忍无可忍,以0.5秒的间隔开始不间断的扇你的过程,这样问题就来了,第一次扇你鼓起来的包还没消肿,第二个巴掌就来了,你脸上的包就可能鼓起来两倍高,老板不断扇你,脉冲不断作用在你脸上,效果不断叠加了,这样这些效果就可以求和了,结果就是你脸上的包的高度随时间变化的一个函数了(注意理解);如果老板再狠一点,频率越来越高,以至于你都辨别不清时间间隔了,那么,求和就变成积分了.可以这样理解,在这个过程中的某一固定的时刻,你的脸上的包的鼓起程度和什么有关呢?和之前每次打你都有关!但是各次的贡献是不一样的,越早打的巴掌,贡献越小,所以这就是说,某一时刻的输出是之前很多次输入乘以各自的衰减系数之后的叠加而形成某一点的输出,然后再把不同时刻的输出点放在一起,形成一个函数,这就是卷积,卷积之后的函数就是你脸上的包的大小随时间变化的函数.本来你的包几分钟就可以消肿,可是如果连续打,几个小时也消不了肿了,这难道不是一种平滑过程么?反映到公式上,<span class="math inline">\(f(\alpha)\)</span>就是第<span class="math inline">\(\alpha\)</span>个巴掌,<span class="math inline">\(g(x-\alpha)\)</span>就是第<span class="math inline">\(\alpha\)</span>个巴掌在<span class="math inline">\(x\)</span>时刻的作用程度,乘起来再叠加就ok了,大家说是不是这个道理呢?我想这个例子已经非常形象了,你对卷积有了更加具体深刻的了解了吗?(搬运自[8])</p>
 </blockquote>
-<h3 id="为什么需要反褶">为什么需要"反褶"</h3>
+<h3 id="为什么需要反褶">为什么需要&quot;反褶&quot;</h3>
 <p>​ 在很多课本中介绍卷积计算,或者图解卷积计算的时候,都会先把其中一个信号进行反褶,如何理解这一个反褶操作呢?它是必须的吗?</p>
 <p>　　其实反褶操作只是方便图解计算而已,它并非必须的,但却是自然的.如何理解呢?</p>
 <p>​ 因为我们的函数在笛卡尔坐标系上的表示时,<span class="math inline">\(x\)</span>轴正方向水平向右,时间水平向右延伸.系统对信号的响应是从信号产生的时间点开始响应,直到信号消失的时间点;从时间轴上来看就是从左响应到右.下面是一个简单的示例(为了方便表示,我们把信号和系统响应放在同一个坐标系上).</p>
@@ -280,7 +280,7 @@ f(x) * g(x)=\int_{-\infty}^{\infty} f(\alpha) g(x-\alpha) \mathrm{d} \alpha
 <p>上面的演示是将信号拆分开的,我们将其看做一个整体的话就发生反褶了.</p>
 <p><img src="ss2.assets/ReverseConv2.gif" alt="ReverseConv2" /></p>
 <p>所以,对于<strong>图解卷积计算</strong>而言,反褶是自然的.</p>
-<h3 id="为什么叫卷积">为什么叫"卷积"</h3>
+<h3 id="为什么叫卷积">为什么叫&quot;卷积&quot;</h3>
 <p>　　卷积的英文是convolution,为什么翻译成「卷积」呢?请参考[10].</p>
 <blockquote>
 <p>#TODO:制作动画</p>
@@ -289,7 +289,7 @@ f(x) * g(x)=\int_{-\infty}^{\infty} f(\alpha) g(x-\alpha) \mathrm{d} \alpha
 <p><img src="ss2.assets/ConvolutionExample.gif" alt="ConvolutionExample" /></p>
 <h2 id="卷积神经网络cnn-convolution-neural-network">卷积神经网络(CNN: Convolution Neural Network)</h2>
 <p>　　这一节将放在M/D Learning中,在这里先挖一个坑.</p>
-<p>　　不过需要注意的是,CNN中的卷积本质上是一种互相关运算,即没有了"反褶".</p>
+<p>　　不过需要注意的是,CNN中的卷积本质上是一种互相关运算,即没有了&quot;反褶&quot;.</p>
 
                             </div>
 
@@ -302,7 +302,7 @@ f(x) * g(x)=\int_{-\infty}^{\infty} f(\alpha) g(x-\alpha) \mathrm{d} \alpha
                                             <span class="tag">
                     
                     
-                        <a href="/blog/tags/Signals-and-Systems/"># Signals and Systems</a>
+                        <a href="/blog/tags/Engineering/"># Engineering</a>
                     
                         
                 </span>
@@ -332,7 +332,7 @@ f(x) * g(x)=\int_{-\infty}^{\infty} f(\alpha) g(x-\alpha) \mathrm{d} \alpha
         </div>
         <footer id="footer" class="footer">
     <div class="copyright">
-        <span>2020 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+        <span>2020 -2021 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
 </footer>
     </div>
