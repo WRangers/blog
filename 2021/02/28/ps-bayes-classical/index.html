@@ -12,7 +12,7 @@
 
 
 
-<title>Numerical Computation Methods | Interesting Exercises | J. WANG&#39;s Blog</title>
+<title>Probability and Statistics | Bayes and Classical Sects | J. WANG&#39;s Blog</title>
 
 
 
@@ -188,7 +188,7 @@
                         <article class="post-wrap">
                             <header class="post-header">
                                 <h1 class="post-title">
-                                    Numerical Computation Methods | Interesting Exercises
+                                    Probability and Statistics | Bayes and Classical Sects
                                 </h1>
                                 
                                     <div class="post-meta">
@@ -196,14 +196,14 @@
 
                                                 
                                                     <span class="post-time">
-                        Date: <a href="#">February 23, 2021&nbsp;&nbsp;23:44:02</a>
+                        Date: <a href="#">February 28, 2021&nbsp;&nbsp;15:07:47</a>
                         </span>
                                                     
                                                         
                                                             <span class="post-category">
                     Category:
                             
-                                <a href="/blog/categories/Numerical-Computation-Methods/">Numerical Computation Methods</a>
+                                <a href="/blog/categories/Probability-and-Statistics/">Probability and Statistics</a>
                             
                         </span>
                                                             
@@ -213,104 +213,47 @@
 
                             <div class="post-content">
                                 <blockquote>
-<p>I happened to find out two interesting exercises of numerical computation methods when sorting out files lately. Though quite a long time ago, putting them here to commemorate.</p>
+<p><strong>概率论与数理统计</strong>这一部分写得比较散乱,没有什么逻辑关系.不过是认知上的反反复复,徘徊彳亍.</p>
 </blockquote>
-<h1 id="solve-a-differential-equation">1. Solve a differential equation</h1>
-<p>求解 <span class="math display">\[
-\left\{\begin{array}{l}
-    \frac{\mathrm{d} y}{\mathrm{d} x}=x+y \\
-    y(0)=1
-    \end{array}\right.\,,
-\]</span> 给出 <span class="math inline">\(y(10)\)</span> 的估计结果.</p>
-<p><strong>解</strong> <span class="math display">\[
-\begin{equation}
-    \frac{\mathrm{d} y(x)}{\mathrm{d} x} = x + y(x)\tag{1.1}
-\end{equation}
-\]</span> 将上式 <span class="math inline">\(y(x)\)</span> 移到等式左侧,同时等式两边乘上一个 <span class="math inline">\(e^{-x}\)</span> 项,得到 <span class="math display">\[
-\begin{equation}
-e^{-x}\cdot \frac{\mathrm{d} y(x)}{\mathrm{d} x}-e^{-x}y(x) = e^{-x} \cdot x \,.\tag{1.2}
-\end{equation}
-\]</span> 考虑到 <span class="math inline">\((1.3)\)</span> 式 <span class="math display">\[
-\begin{equation}
--e^{-x} = \frac{\mathrm{d}}{\mathrm{d} x}e^{-x}\,,\tag{1.3}
-\end{equation}
-\]</span> 可以得到 <span class="math display">\[
-\begin{equation}
-\frac{\mathrm{d}}{\mathrm{d} x}(e^{-x} \cdot y(x)) = e^{-x} \cdot x \,,\tag{1.4}
-\end{equation}
-\]</span> 对等 <span class="math inline">\((1.4)\)</span> 两边同时积分,得 <span class="math display">\[
-\begin{equation}
-\int_{-\infty}^x \frac{\mathrm{d}}{\mathrm{d} t}(e^{-t} \cdot y(t))\ \mathrm{d}t = \int_{-\infty}^x e^{-t} \cdot t\ \mathrm{d}t \,.
-\end{equation}\tag{1.5}
-\]</span> <span class="math inline">\((1.5)\)</span> 式左边就是 <span class="math inline">\(e^{-x}\cdot y(x)\)</span>,等式两边同时乘 <span class="math inline">\(e^{-x}\)</span> 就得到 <span class="math inline">\(y(x)\)</span> 的表达式,经过计算得到 <span class="math inline">\(y(x)\)</span> 的一般表达式为 <span class="math display">\[
-\begin{equation}
-y(x) = ce^{x}-x-1 \,,\tag{1.6}
-\end{equation}
-\]</span> 代入初值 <span class="math inline">\(y(0) = 1\)</span>,得到 <span class="math inline">\(y(x)\)</span> 的具体表达式为 <span class="math display">\[
-\begin{equation}
-y(x) = 2e^{x}-x-1\,.\tag{1.7}
-\end{equation}
-\]</span></p>
-<p>所以 <span class="math inline">\(y(10)\)</span> 的解析解为<span class="math inline">\(2e^{10}-11\)</span>.</p>
-<hr />
+<p>　　　概率论和数理统计从某种意义上而言是两个不同的学科,用不同的方法论研究同一事物,因而有所交织.数学始于演绎,统计始于归纳.</p>
+<ul>
+<li><p>概率论的数学基础是测度论——严密的数学基础,是<strong>演绎法</strong>,从特殊到一般,自顶向下.</p></li>
+<li><p>数理统计是<strong>归纳法</strong>,从个别到一般,自底向上.</p>
 <blockquote>
-<p>这道题是数值计算方法第一节课老师给我们的思考题——用数值方法求解.上面是一个解析解法,是当时同组的一个同学给出的;我当时用Taylor's Formula的数值求解方法如下.至于什么Euler法由于疫情的原因后来也没时间上这部分的内容,至今仍然不会[汗].</p>
-</blockquote>
-<p>假设欲求函数为 <span class="math inline">\(y(x)\)</span>,根据Taylor's Formula在 <span class="math inline">\(x=0\)</span> 处展开得到 <span class="math display">\[
-\begin{equation}
-    \begin{aligned}
-    y(x)&amp;=\sum_{n=0}^{\infty} \frac{y^{(n)}(0)}{n !}x^{n}\\
-    &amp;=y(0)+\frac{y&#39;(0)}{1!}x+\frac{y&#39;&#39;(0)}{2!}x^2+\frac{y&#39;&#39;&#39;(0)}{3!}x^3+\cdots +\frac{y^{(n)}(0)}{n !}x^{n}\,.
-    \end{aligned}
-\end{equation}\tag{1.8}
-\]</span></p>
-<p>由于 <span class="math inline">\(\frac{\mathrm{d} y(x)}{\mathrm{d} x}=x+y(x)\)</span> 并且 <span class="math inline">\(y(0)=1\)</span>,我们可以通过迭代计算出<span class="math inline">\(y^{(n)}(0), n\in \mathbb{N}\)</span>,于是可以得到 <span class="math inline">\(y(x)\)</span> 的估计函数 <span class="math inline">\(\hat{y}(x)\)</span>. <span class="math display">\[
-\begin{aligned}
-    y&#39;(x)=x+y(x)\, \quad &amp; y&#39;(0)=0+1=1 \ ;\\
-    y&#39;&#39;(x)=1+y&#39;(x)\, \quad &amp; y&#39;&#39;(0)=1+1=2 \ ;\\
-    y&#39;&#39;&#39;(x)=y&#39;&#39;(x)\, \quad &amp; y&#39;&#39;&#39;(0)=2 \ ; \\
-    y&#39;&#39;&#39;&#39;(x)=y&#39;&#39;&#39;(x)\, \quad &amp; y&#39;&#39;&#39;&#39;(0)=2 \ ; \\
-        ....&amp;\ .. \\
-    y^{(n)}(x)=y&amp;^{(n-1)}=2 \,.
-\end{aligned}
-\]</span> 由此,我们可以得到 <span class="math inline">\(y^{(n)}\)</span> 的递推公式 <span class="math inline">\(y^{(n)}=\left\{\begin{array}{ll}  1\, &amp; (n=0,1) \\  2\, &amp; (n \geqslant 2)  \end{array}\right.\)</span>.当<span class="math inline">\(n\geqslant 2\)</span>时, <span class="math inline">\(y^{(n)}\)</span> 恒为 <span class="math inline">\(2\)</span>,可以推测出 <span class="math inline">\(y(x)\)</span> 带有 <span class="math inline">\(ce^{x}\)</span> 项.实际上根据 <span class="math display">\[
-\begin{equation}
-    \begin{aligned}
-        \hat{y}(x)&amp;=1+\frac{1}{1!}x+\frac{2}{2!}x^2+\frac{2}{3!}x^3+\cdots +\frac{2}{n !}x^{n}\\
-            &amp;=2(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+ \frac{x^{n}}{n !})-x-1 
-    \end{aligned}
-\end{equation} \tag{1.9}
-\]</span> 可以得到 <span class="math display">\[
-\begin{equation}
-    y(x)=\lim_{n\rightarrow \infty} \hat{y}(x)= 2e^{x}-x-1 \,.\tag{1.10}
-\end{equation}
-\]</span> <span class="math inline">\((1.10)\)</span> 与解析解是一致的.</p>
-<h1 id="prove-a-equation">2. Prove a equation</h1>
-<blockquote>
-<p>这是一道比较别扭的证明题.</p>
-</blockquote>
-<p>若<span class="math inline">\(f(x)=a_{0}+a_{1} x+\cdots+a_{n-1} x^{n-1}+a_{n} x^{n}\)</span>有 <span class="math inline">\(n\)</span> 个不同实根 <span class="math inline">\(x_1,x_2,\dots,x_n\)</span>,证明: <span class="math display">\[
-\sum_{j=1}^{n} \frac{x_{j}^{k}}{f^{\prime}\left(x_{j}\right)}=\left\{\begin{array}{ll}
-    0&amp;(0 \leqslant k \leqslant n-2) \\
-    a_{n}^{-1}&amp; (k=n-1)
-    \end{array}\right. \,.
-\]</span> <strong>证明</strong></p>
-<p>　　由于 <span class="math inline">\(f(x)=a_{0}+a_{1} x+\cdots+a_{n-1} x^{n-1}+a_{n} x^{n}\)</span> 有 <span class="math inline">\(n\)</span> 个不同实根 <span class="math inline">\(x_1,x_2,\dots,x_n\)</span>,故 <span class="math inline">\(f(x)\)</span> 可写成 <span class="math display">\[
-f(x)=a_n(x-x_1)(x-x_2)\cdots(x-x_n)
-\]</span> 的形式.令 <span class="math inline">\(\omega(x)=(x-x_1)(x-x_2)\cdots(x-x_n)\)</span>,则 <span class="math display">\[
-\omega&#39;(x)=\sum_{j=1}^n(x-x_1)(x-x_2)\cdots(x-x_{j-1})(x-x_{j+1})\cdots(x-x_n)\,,
-\]</span> 代入 <span class="math inline">\(x=x_j\)</span> 得 <span class="math display">\[
-\omega&#39;(x_j)=(x_j-x_1)(x_j-x_2)\cdots(x_j-x_{j-1})(x_j-x_{j+1})\cdots(x_j-x_n)=\prod_{i=1 \atop i \neq j}^{n}\left(x_{j}-x_{i}\right)\,.
-\]</span> 设 <span class="math inline">\(g(x)=x^k\)</span>,则 <span class="math display">\[
-g[x_1,x_2,\cdots,x_n]=\sum_{j=1}^n\frac{g(x_j)}{\omega&#39;(x_j)}=\sum_{j=1}^n\frac{a_n x_j^k}{f&#39;(x_j)}\,.
-\]</span> 由差商与导数的关系,有 <span class="math display">\[
-g[x_1,x_2,\cdots,x_n]=\frac{g^{(n-1)}(\xi)}{(n-1) !}=\frac{\left(\xi^{k}\right)^{(n-1)}}{(n-1) !},\quad \xi \in\left[x_{1}, \cdots, x_{n}\right]\,.
-\]</span> 故有 <span class="math display">\[
-\sum_{j=1}^n\frac{x_j^k}{f&#39;(x_j)}=\frac{\left(x_j^{k}\right)^{(n-1)}}{a_n(n-1) !}\,,
-\]</span> 当 <span class="math inline">\(0 \leqslant k \leqslant n-2\)</span> 时, <span class="math inline">\(\sum_{j=1}^n\frac{x_j^k}{f&#39;(x_j)}=0\)</span>;当 <span class="math inline">\(k=n-1\)</span> 时, <span class="math inline">\(\sum_{j=1}^n\frac{x_j^k}{f&#39;(x_j)}=a_n^{-1}\)</span>.</p>
-<p style="text-align:right;">
-<font size=6>□</font>
+<p>Statistics is the science of collecting, analyzing, presenting, and interpreting data. Governmental needs for census data as well as information about a variety of economic activities provided much of the early impetus for the field of statistics. Currently the need to turn the large amounts of data available in many applied fields into useful information has stimulated both theoretical and practical developments in statistics.</p>
+<p style="text-align:right">
+Encyclopedia Britannica
 </p>
+</blockquote></li>
+</ul>
+<h2 id="两大学派">两大学派</h2>
+<p>　　在统计领域,有两种对立的思想学派:贝叶斯学派和经典学派(也称频率学派),他们之间最重要的区别就是如何看待被估计的未知参数.贝叶斯学派的观点是将其看成是<strong>已知分布的随机变量</strong>,而经典学派的观点是将其看成<strong>未知的待估计的常量</strong>.各自对应的推断估计方法分别是<strong>最大后验估计(Maximum A Posteriori Estimation)</strong>和<strong>最大似然估计(Maximum Likelihood Estimation)</strong>.这是看待事物的两种不同角度.</p>
+<ul>
+<li><p>贝叶斯学派认为世界是不确定的,结果会因获取的信息而异.假设对世界现有一个预先的估计,然后通过获取的信息来不断调整之前的预估值.他们不对事件本身建模,而是从旁观者的角度来看待问题——对于同一事件,不同的人掌握的先验不同的话,那么他们所认为的事件状态也会不同.</p>
+<p>他们认为模型参数源自某种潜在分布,希望从数据中推知该分布.对于数据的观测方式不同或者假设不同,那么推知的该参数也会因此而存在差异.这就是贝叶斯派视角下用来估计参数的常用方法——最大后验概率估计(MAP),这种方法在先验假设比较靠谱的情况下效果显著,随着数据量的增加,先验假设对于模型参数的主导作用会逐渐削弱,相反真实的数据样例会大大占据有利地位.极端情况下,比如把先验假设去掉,或者假设先验满足均匀分布的话,那它和极大似然估计就如出一辙了.</p></li>
+<li><p>频率学派认为世界是确定的,他们为事件本身建模,也就是说事件在多次重复试验中频率趋于一个稳定的值 <span class="math inline">\(p\)</span>,那么这个值就是该事件的概率.</p>
+<p>他们认为模型参数是个定值,希望通过类似解方程组的方式从数据中求得该未知数.这就是频率学派使用的参数估计方法——极大似然估计(MLE),这种方法往往在大数据量的情况下可以很好的还原模型的真实情况.</p></li>
+</ul>
+<h2 id="似然likelihood和概率probility的区别与联系">似然(Likelihood)和概率(Probility)的区别与联系</h2>
+<p>　　参看参考文献[3]和[4]部分回答.</p>
+<p>　　假设 <span class="math inline">\(x\)</span> 是果, <span class="math inline">\(c\)</span> 是因,则 <span class="math display">\[
+P(c|x)=\frac{P(x|c)P(c)}{P(x)}\,.
+\]</span></p>
+<ul>
+<li><span class="math inline">\(P(c|x)\)</span> 是<strong>后验概率</strong>(Posterior Probability).</li>
+<li><span class="math inline">\(P(x|c)\)</span> 是<strong>似然</strong>(Likelihood),将 <span class="math inline">\(c\)</span> 视为参数的话,应该写为 <span class="math inline">\(P(x;c)\)</span>.</li>
+<li><span class="math inline">\(P(c)\)</span> 是<strong>类先验概率</strong>(Class Prior Probability).</li>
+<li><span class="math inline">\(P(x)\)</span> 是<strong>预测先验概率</strong>(Predictor Prior Probability).</li>
+</ul>
+<h2 id="参考文献">参考文献</h2>
+<p>[1] <a href="https://www.zhihu.com/people/yu-mian-73-95" target="_blank" rel="noopener">Rainsley</a>.知乎.<a href="https://zhuanlan.zhihu.com/p/63426876" target="_blank" rel="noopener">第2期 数学与统计学的神秘关系</a>.</p>
+<p>[2] <a href="https://www.zhihu.com/people/hongleizhang" target="_blank" rel="noopener">张小磊</a>.知乎.<a href="https://zhuanlan.zhihu.com/p/40024110" target="_blank" rel="noopener">极大似然估计与最大后验概率估计</a>.</p>
+<p>[3] <a href="https://sdsy888.blog.csdn.net/" target="_blank" rel="noopener">江前云后</a>.CSDN.<a href="https://blog.csdn.net/songyu0120/article/details/85059149" target="_blank" rel="noopener">似然（likelihood）和概率（probability）的区别与联系</a>.</p>
+<p>[4] <a href="https://www.zhihu.com/question/54082000/answer/470252492" target="_blank" rel="noopener">如何理解似然函数?</a>知乎.</p>
+<p>[5] 马同学的数学.<a href="https://www.matongxue.com/madocs/447/" target="_blank" rel="noopener">如何通俗地理解&quot;最大似然估计法&quot;?</a></p>
+<p>[6] <a href="https://www.zhihu.com/people/zhan-mu-si-82" target="_blank" rel="noopener">Carnap</a>.知乎.<a href="https://zhuanlan.zhihu.com/p/59626066" target="_blank" rel="noopener">三大统计推断派系 - 频率学派、似然学派、贝叶斯学派</a>.</p>
+<p>[7] PENG.知乎.<a href="https://zhuanlan.zhihu.com/p/25768606" target="_blank" rel="noopener">概率与似然</a>.</p>
+<p>[8] <a href="https://www.zhihu.com/people/yu-mian-73-95" target="_blank" rel="noopener">Rainsley</a>.知乎.<a href="https://zhuanlan.zhihu.com/p/134036707" target="_blank" rel="noopener">条件概率、全概率公式、贝叶斯公式</a>.</p>
 
                             </div>
 
@@ -323,7 +266,7 @@ g[x_1,x_2,\cdots,x_n]=\frac{g^{(n-1)}(\xi)}{(n-1) !}=\frac{\left(\xi^{k}\right)^
                                             <span class="tag">
                     
                     
-                        <a href="/blog/tags/Engineering/"># Engineering</a>
+                        <a href="/blog/tags/Math/"># Math</a>
                     
                         
                 </span>
@@ -336,13 +279,9 @@ g[x_1,x_2,\cdots,x_n]=\frac{g^{(n-1)}(\xi)}{(n-1) !}=\frac{\left(\xi^{k}\right)^
                                     </section>
                                     <section class="post-nav">
                                         
-                                            <a class="prev" rel="prev" href="/blog/2021/02/28/ps-bayes-classical/">
-                                                Probability and Statistics | Bayes and Classical Sects
-                                            </a>
-                                            
                                                 
-                                                    <a class="next" rel="next" href="/blog/2021/02/23/dsp-exercise/">
-                                                        Digital Signal Processing | A Filter Design Exerciese
+                                                    <a class="next" rel="next" href="/blog/2021/02/23/numeric_methods/">
+                                                        Numerical Computation Methods | Interesting Exercises
                                                     </a>
                                                     
                                     </section>

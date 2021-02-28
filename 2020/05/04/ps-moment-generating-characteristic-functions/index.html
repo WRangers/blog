@@ -270,7 +270,7 @@
 <p>　When a moment generating function exists, it uniquely determines the distribution. This is quite important because it enables us to characterize the probability of a random variable by its generating function.</p>
 <p>　Here, we need to tell the MGF from <em>Probability Generating Function</em>, of a non-negative integer random variable <span class="math inline">\(X\)</span>, which is defined by <span class="math display">\[
 G(t)=E\left(t^{X}\right)=\sum_{x=0}^{\infty} P(x) t^{x}\ . \tag{4}
-\]</span> 　By the way, we may be very curious about that why we define the MGF using the form of <span class="math inline">\(\text{e}\)</span> exponent. That's what will be talked about in <a href="#1">Example 2</a></p>
+\]</span> 　By the way, we may be very curious about that why we define the MGF using the form of <span class="math inline">\(\text{e}\)</span> exponent. That's what will be talked about in <a href="#1">Example 2</a>.</p>
 <p>Now, let dive into the formula <span class="math inline">\((3)\)</span>. We use the Taylor series to prove this. Let's get the Maclaurin expansion of <span class="math inline">\(e^x\)</span>: <span class="math display">\[
 e^{X}=1+X+\frac{X^{2}}{2 !}+\frac{X^{3}}{3 !}+\cdots+\frac{X^{n}}{n !}
 \]</span> then, <span class="math display">\[
@@ -289,7 +289,7 @@ E\left(e^{t X}\right) &amp;=E\left[1+t X+\frac{(t X)^{2}}{2 !}+\frac{(t X)^{3}}{
 \]</span> Let's replace the <span class="math inline">\(x\)</span> with <span class="math inline">\(X\)</span>, take <span class="math inline">\(n\)</span> times of derivative, and we will get the formula <span class="math inline">\((3)\)</span>. Besides, we can see the role of the variable <span class="math inline">\(t\)</span>, who helps us calculate the derivatives and makes the terms (that we are not interested in) zero.</p>
 <h3 id="why-do-we-need-mgf">Why do we need MGF?</h3>
 <p>For convenience. It is much easier to get the expected value using the MGF than the definition of expected values. Using the MGF, it is possible to find moments by taking derivatives rather than doing integrals! The followings are tow examples.</p>
-<h4 id="example-1">Example 1</span></h4>
+<h4 id="example-1">Example 1</h4>
 <p>The expected value of exponential distribution. <span class="math display">\[
 f_{X}(x)=\left\{\begin{array}{cl}
 \lambda \cdot e^{-\lambda x} &amp;  x&gt;0 \\
@@ -302,7 +302,7 @@ f_{X}(x)=\left\{\begin{array}{cl}
 &amp; =\lambda \int_{0}^{\infty} e^{(t-\lambda) x} \mathrm{d} x \quad \text{(Note)}\\
 &amp;=\lambda\left|\frac{1}{t-\lambda} e^{(t-\lambda) x}\right|_{0}^{\infty} \\
 &amp;=\lambda\left(0-\frac{1}{t-\lambda}\right)\\
-&amp;=\frac{\lambda}{\lambda-t}
+&amp;=\frac{\lambda}{\lambda-t}\,.
 \end{aligned}
 \]</span></p>
 <p><strong>Note</strong>: For the MGF to exist, the expected value <span class="math inline">\(E(e^{tx})\)</span> should exist. So, <span class="math inline">\(t-\lambda&lt;0\)</span> is an important condition to meet. Otherwise, the integral won't converge.</p>
@@ -315,7 +315,7 @@ E\left(X^{3}\right)=\frac{\mathrm{d}^{3}}{\mathrm{d} t^{3}}\left(\frac{\lambda}{
 \psi_{X+Y}(t) &amp;=E\left[e^{t(X+Y)}\right] \\
 &amp;=E\left[e^{t X}\right] E\left[e^{t Y}\right] \quad \text{(by independence)}\\
 &amp;=\psi_{X}(t) \psi_{Y}(t)\\
-&amp;=\exp \left\{\left(\mu_{1}+\mu_{2}\right) t+\left(\sigma_{1}^{2}+\sigma_{2}^{2}\right) t^{2} / 2\right\} 
+&amp;=\exp \left\{\left(\mu_{1}+\mu_{2}\right) t+\left(\sigma_{1}^{2}+\sigma_{2}^{2}\right) t^{2} / 2\right\} \,.
 \end{aligned}
 \]</span> Thus the moment generating function of <span class="math inline">\(X+Y\)</span> is that of a normal random variable with mean <span class="math inline">\(\mu_1+\mu_2\)</span> and variance <span class="math inline">\(\sigma_{1}^{2}+\sigma_{2}^{2}\)</span>. By uniqueness, this is the distribution of <span class="math inline">\(X+Y\)</span>.</p>
 <p>　By this example, we make a trivial process becomes a non-trivial one using the MGF.</p>
@@ -328,7 +328,7 @@ E\left(X^{3}\right)=\frac{\mathrm{d}^{3}}{\mathrm{d} t^{3}}\left(\frac{\lambda}{
 <li>The beauty of MGF is, once you have MGF (once the expected value exists), you can get any <span class="math inline">\(n^{th}\)</span> moment. MGF encodes all the moments of a random variable into a single function from which they can be extracted again later.</li>
 <li>A probability distribution is uniquely determined by its MGF. If two random variables have the same MGF, then they must have the same distribution. (<a href="https://math.stackexchange.com/questions/458680/how-to-prove-moment-generating-function-uniqueness-theorem" target="_blank" rel="noopener">Proof</a>)</li>
 <li>For the people (like me) who are curious about the terminology “moments”: <a href="https://stats.stackexchange.com/questions/17595/whats-so-moment-about-moments-of-a-probability-distribution" target="_blank" rel="noopener">Why is a moment called moment?</a></li>
-<li>[Application 🔥] One of the important features of a distribution is how heavy its tails are, especially for risk management in finance. If you recall the 2009 financial crisis, that was essentially the failure to address the possibility of rare events happening. Risk managers understated the kurtosis (kurtosis means ‘bulge’ in Greek) of many financial securities underlying the fund’s trading positions. Sometimes seemingly random distributions with hypothetically smooth curves of risk can have hidden bulges in them. And we can detect those using MGF!</li>
+<li>One of the important features of a distribution is how heavy its tails are, especially for risk management in finance. If you recall the 2009 financial crisis, that was essentially the failure to address the possibility of rare events happening. Risk managers understated the kurtosis (kurtosis means ‘bulge’ in Greek) of many financial securities underlying the fund’s trading positions. Sometimes seemingly random distributions with hypothetically smooth curves of risk can have hidden bulges in them. And we can detect those using MGF!</li>
 </ol>
 <p style="text-align:right">
 ——Aerin Kim
@@ -374,7 +374,7 @@ f(x)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} e^{i t x} F(t) \mathrm{d} t=\frac{1
 \mathcal{L}(s)=\int_{0}^{\infty} e^{-sx} \mathrm{d} F(x)\ . \tag{11}
 \]</span> This integral exists for complex variables <span class="math inline">\(s=a+bi\)</span>, where <span class="math inline">\(a \geqslant 0\)</span>. As in the case of characteristic functions, the Laplace transform uniquely determines the distribution.</p>
 <p>　Here, the number field has been expanded to the whole complex plane.</p>
-<h2 id="how-to-understand-the-functions">How to understand the functions</h2>
+<h2 id="how-to-understand-those-functions">How to Understand those Functions</h2>
 <p>In fact, the MGF, the CF, and the Fourier transform are all special kinds of Laplace transform. They belongs to the field of harmonic analysis. They all map the random variable to another number field, thus getting some magical properties of the random variables. And once again, we gain deeper understanding of <em>transform</em>.</p>
 <h2 id="references">References</h2>
 <ul>
