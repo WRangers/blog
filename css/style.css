@@ -149,8 +149,15 @@ template {
   font-weight: 300;
   font-display: swap;
 }
+@font-face {
+  font-family: 'sxsl';
+  src: url("../fonts/sxsl/sxsl.eot"); /* IE9 */
+  src: url("../fonts/sxsl/sxsl.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */ url("../fonts/sxsl/sxsl.woff2") format('woff2'), url("../fonts/sxsl/sxsl.woff") format('woff'), url("../fonts/sxsl/sxsl.ttf") format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  font-weight: 300;
+  font-display: swap;
+}
 html {
-  font-family: 'Microsoft Jhenghei', Lantinghei SC, 'lanting', PingFang SC, Seguo UI, Microsoft Yahei, Arial;
+  font-family: 'Microsoft Jhenghei', Lantinghei SC, 'lanting', 'sxsl', PingFang SC, Seguo UI, Microsoft Yahei, Arial;
 }
 html::-webkit-scrollbar {
   width: 8px;
@@ -165,7 +172,7 @@ html::-webkit-scrollbar-thumb:hover {
   background-color: #ddd;
 }
 body {
-  font-size: 11pt;
+  font-size: 12pt;
   font-weight: normal;
   line-height: 2em;
   background-color: #fff;
