@@ -222,7 +222,10 @@
                             </header>
 
                             <div class="post-content">
-                                <h2 id="从rgb到hsi的转换">从RGB到HSI的转换</h2>
+                                <blockquote>
+<p>HSI和RGB颜色的相互转换从定义上来看,是直观明了的,但数学的推导却是繁琐的.</p>
+</blockquote>
+<h2 id="从rgb到hsi的转换">从RGB到HSI的转换</h2>
 <p>　　RGB模型是根据单位立方体定义的.然而, HSI模型的颜色分量(色相和饱和度)是根据图1(a)所示的颜色三角形来定义的.在图1(a)中,注意到色点<span class="math inline">\(P\)</span>的色调<span class="math inline">\(H\)</span>是所示矢量相对于红原色轴的角度.因此,当 <span class="math inline">\(H=0^{\circ}\)</span> 时,颜色为红色.当 <span class="math inline">\(H\)</span> 为 <span class="math inline">\(60^{\circ}\)</span> 时,颜色为黄色,以此类推.色点 <span class="math inline">\(P\)</span> 的饱和度 <span class="math inline">\(S\)</span> 是颜色未被白色稀释的程度,与 <span class="math inline">\(P\)</span> 到三角形中心的距离成正比. <span class="math inline">\(P\)</span> 距离三角形中心越远,它的颜色越饱和.</p>
 <p><img src="hsi-rgb.assets/drawing.svg" alt="drawing" /></p>
 <p style="text-align:center">
@@ -295,7 +298,7 @@ S=\frac{|W P|}{\left|W P^{\prime}\right|}=\frac{\left|W Q\right|}{\left|W T\righ
 \left\{
   \begin{aligned}
     H&amp;=\cos ^{-1}\left\{\frac{\frac{1}{2}[(R-G)+(R-B)]}{\left[(R-G)^{2}+(R-B)(G-B)\right]^{1\, /\, 2}}\right\}\,,\\
-    S&amp;=1-\frac{3}{R+G+B}\min \left\{R, G, B\right\}\,\\
+    S&amp;=1-\frac{3}{R+G+B}\min \left\{R, G, B\right\} \, , \\
     I&amp;=\frac{1}{3}(R+G+B)\,,
   \end{aligned}
 \right.\tag{16}
@@ -315,9 +318,10 @@ b=\frac{1}{3}(1-S)\,.\tag{18}
 <p style="text-align:center">
 图 3(a)　　　　　　　　　　　　图 3(b)　　　　　　　　　　　　　　图 4(c)
 </p>
-<p>　　易得平面<span class="math inline">\(\Omega\,//\)</span>平面<span class="math inline">\(bOg\)</span>,又平面<span class="math inline">\(\Omega\, \cap\)</span>平面<span class="math inline">\(P_RP_GP_B=PT\)</span>,平面<span class="math inline">\(bOg\, \cap\)</span>平面<span class="math inline">\(P_RP_GP_B=P_BP_G\)</span>,故 <span class="math inline">\(PT\,//\,P_BP_G\)</span>.因为 <span class="math inline">\(OP_B=OP_G\)</span>, <span class="math inline">\(Q_R\)</span> 为 <span class="math inline">\(P_BP_G\)</span> 的中点,所以 <span class="math inline">\(OQ_R\perp P_BP_G\)</span>;同理得, <span class="math inline">\(P_RQ_R\perp P_BP_G\)</span>.又 <span class="math inline">\(OQ_R \subset\)</span>平面<span class="math inline">\(P_ROQ_R\)</span>, <span class="math inline">\(P_ROQ_R\subset\)</span>平面<span class="math inline">\(P_ROQ_R\)</span>,则 <span class="math inline">\(P_BP_G\perp\)</span>平面<span class="math inline">\(P_ROQ_R\)</span>.由于 <span class="math inline">\(PT\,//\,P_BP_G\)</span>,故 <span class="math inline">\(PT\perp\)</span>平面<span class="math inline">\(P_ROQ_R\)</span>,所以 <span class="math inline">\(PT\perp P_RQ_R\)</span>,则点 <span class="math inline">\(T\)</span> 为点 <span class="math inline">\(P\)</span> 在直线 <span class="math inline">\(P_RQ_R\)</span> 上的投影,且 <span class="math display">\[
+<p>　　易得平面<span class="math inline">\(\Omega\,//\)</span>平面<span class="math inline">\(bOg\)</span>,又平面<span class="math inline">\(\Omega\, \cap\)</span>平面<span class="math inline">\(P_RP_GP_B=PT\)</span>,平面<span class="math inline">\(bOg\, \cap\)</span>平面<span class="math inline">\(P_RP_GP_B=P_BP_G\)</span>,故 <span class="math inline">\(PT\,//\,P_BP_G\)</span>.因为 <span class="math inline">\(OP_B=OP_G\)</span>, <span class="math inline">\(Q_R\)</span> 为 <span class="math inline">\(P_BP_G\)</span> 的中点,所以 <span class="math inline">\(OQ_R\perp P_BP_G\)</span>;同理得, <span class="math inline">\(P_RQ_R\perp P_BP_G\)</span>.又 <span class="math inline">\(OQ_R \subset\)</span>平面<span class="math inline">\(P_ROQ_R\)</span>, <span class="math inline">\(P_RQ_R\subset\)</span>平面<span class="math inline">\(P_ROQ_R\)</span>,则 <span class="math inline">\(P_BP_G\perp\)</span>平面<span class="math inline">\(P_ROQ_R\)</span>.由于 <span class="math inline">\(PT\,//\,P_BP_G\)</span>,故 <span class="math inline">\(PT\perp\)</span>平面<span class="math inline">\(P_ROQ_R\)</span>,所以 <span class="math inline">\(PT\perp P_RQ_R\)</span>,则点 <span class="math inline">\(T\)</span> 为点 <span class="math inline">\(P\)</span> 在直线 <span class="math inline">\(P_RQ_R\)</span> 上的投影,且 <span class="math display">\[
 \left|TW\right|=\left|WP\right|\cos H\,;\tag{19}
-\]</span> 易得 $P_RXT P_ROQ_R $,则 <span class="math display">\[
+\]</span> &gt; 上面这段话证明罗里吧嗦的,其实只要知道平面 <span class="math inline">\(\Omega\)</span> 与平面 <span class="math inline">\(P_BOP_G\)</span> 平行,稍微推导一下就可以得到结论,但是严谨的数学语言说明不得不如此繁琐.</p>
+<p>易得 $P_RXT P_ROQ_R $,则 <span class="math display">\[
 \frac{\left|P_RQ_R\right|}{\left|P_RO\right|}=\frac{a}{d}\,,\tag{20}
 \]</span> 又 <span class="math inline">\(\left|P_RO\right|=1\)</span>, <span class="math inline">\(d=1-r\)</span>, <span class="math inline">\(a=\left|P_RQ_R\right|-\left|WP\right|\cos H-\left|WQ_R\right|\)</span>,代入式 <span class="math inline">\((20)\)</span> 中得 <span class="math display">\[
 \begin{aligned}
