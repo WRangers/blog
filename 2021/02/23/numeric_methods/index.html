@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Numerical Computation Methods | Interesting Exercises | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Numerical Computation Methods | Interesting Exercises
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">February 23, 2021&nbsp;&nbsp;23:44:02</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Numerical-Computation-Methods/">Numerical Computation Methods</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>I happened to find out two interesting exercises of numerical
+computation methods when sorting out files lately. Though quite a long
+time ago, putting them here to commemorate.</p>
+</blockquote>
+<h1 id="solve-a-differential-equation">1. Solve a differential
+equation</h1>
+<p>求解 <span class="math display">\[
+\left\{\begin{array}{l}
+    \frac{\mathrm{d} y}{\mathrm{d} x}=x+y \\
+    y(0)=1
+    \end{array}\right.\,,
+\]</span> 给出 <span class="math inline">\(y(10)\)</span>
+的估计结果.</p>
+<p><strong>解</strong> <span class="math display">\[
+\begin{equation}
+    \frac{\mathrm{d} y(x)}{\mathrm{d} x} = x + y(x)\tag{1.1}
+\end{equation}
+\]</span> 将上式 <span class="math inline">\(y(x)\)</span>
+移到等式左侧,同时等式两边乘上一个 <span
+class="math inline">\(e^{-x}\)</span> 项,得到 <span
+class="math display">\[
+\begin{equation}
+e^{-x}\cdot \frac{\mathrm{d} y(x)}{\mathrm{d} x}-e^{-x}y(x) = e^{-x}
+\cdot x \,.\tag{1.2}
+\end{equation}
+\]</span> 考虑到 <span class="math inline">\((1.3)\)</span> 式 <span
+class="math display">\[
+\begin{equation}
+-e^{-x} = \frac{\mathrm{d}}{\mathrm{d} x}e^{-x}\,,\tag{1.3}
+\end{equation}
+\]</span> 可以得到 <span class="math display">\[
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d} x}(e^{-x} \cdot y(x)) = e^{-x} \cdot x
+\,,\tag{1.4}
+\end{equation}
+\]</span> 对等 <span class="math inline">\((1.4)\)</span>
+两边同时积分,得 <span class="math display">\[
+\begin{equation}
+\int_{-\infty}^x \frac{\mathrm{d}}{\mathrm{d} t}(e^{-t} \cdot y(t))\
+\mathrm{d}t = \int_{-\infty}^x e^{-t} \cdot t\ \mathrm{d}t \,.
+\end{equation}\tag{1.5}
+\]</span> <span class="math inline">\((1.5)\)</span> 式左边就是 <span
+class="math inline">\(e^{-x}\cdot y(x)\)</span>,等式两边同时乘 <span
+class="math inline">\(e^{-x}\)</span> 就得到 <span
+class="math inline">\(y(x)\)</span> 的表达式,经过计算得到 <span
+class="math inline">\(y(x)\)</span> 的一般表达式为 <span
+class="math display">\[
+\begin{equation}
+y(x) = ce^{x}-x-1 \,,\tag{1.6}
+\end{equation}
+\]</span> 代入初值 <span class="math inline">\(y(0) = 1\)</span>,得到
+<span class="math inline">\(y(x)\)</span> 的具体表达式为 <span
+class="math display">\[
+\begin{equation}
+y(x) = 2e^{x}-x-1\,.\tag{1.7}
+\end{equation}
+\]</span></p>
+<p>所以 <span class="math inline">\(y(10)\)</span> 的解析解为<span
+class="math inline">\(2e^{10}-11\)</span>.</p>
+<hr />
+<blockquote>
+<p>这道题是数值计算方法第一节课老师给我们的思考题——用数值方法求解.上面是一个解析解法,是当时同组的一个同学给出的;我当时用Taylor's
+Formula的数值求解方法如下.至于什么Euler法由于疫情的原因后来也没时间上这部分的内容,至今仍然不会[汗].</p>
+</blockquote>
+<p>假设欲求函数为 <span class="math inline">\(y(x)\)</span>,根据Taylor's
+Formula在 <span class="math inline">\(x=0\)</span> 处展开得到 <span
+class="math display">\[
+\begin{equation}
+    \begin{aligned}
+    y(x)&amp;=\sum_{n=0}^{\infty} \frac{y^{(n)}(0)}{n !}x^{n}\\
+    &amp;=y(0)+\frac{y&#39;(0)}{1!}x+\frac{y&#39;&#39;(0)}{2!}x^2+\frac{y&#39;&#39;&#39;(0)}{3!}x^3+\cdots
++\frac{y^{(n)}(0)}{n !}x^{n}\,.
+    \end{aligned}
+\end{equation}\tag{1.8}
+\]</span></p>
+<p>由于 <span class="math inline">\(\frac{\mathrm{d} y(x)}{\mathrm{d}
+x}=x+y(x)\)</span> 并且 <span
+class="math inline">\(y(0)=1\)</span>,我们可以通过迭代计算出<span
+class="math inline">\(y^{(n)}(0), n\in \mathbb{N}\)</span>,于是可以得到
+<span class="math inline">\(y(x)\)</span> 的估计函数 <span
+class="math inline">\(\hat{y}(x)\)</span>. <span class="math display">\[
+\begin{aligned}
+    y&#39;(x)=x+y(x)\, \quad &amp; y&#39;(0)=0+1=1 \ ;\\
+    y&#39;&#39;(x)=1+y&#39;(x)\, \quad &amp; y&#39;&#39;(0)=1+1=2 \ ;\\
+    y&#39;&#39;&#39;(x)=y&#39;&#39;(x)\, \quad &amp;
+y&#39;&#39;&#39;(0)=2 \ ; \\
+    y&#39;&#39;&#39;&#39;(x)=y&#39;&#39;&#39;(x)\, \quad &amp;
+y&#39;&#39;&#39;&#39;(0)=2 \ ; \\
+        ....&amp;\ .. \\
+    y^{(n)}(x)=y&amp;^{(n-1)}=2 \,.
+\end{aligned}
+\]</span> 由此,我们可以得到 <span class="math inline">\(y^{(n)}\)</span>
+的递推公式 <span
+class="math inline">\(y^{(n)}=\left\{\begin{array}{ll}  1\, &amp;
+(n=0,1) \\  2\, &amp; (n \geqslant
+2)  \end{array}\right.\)</span>.当<span class="math inline">\(n\geqslant
+2\)</span>时, <span class="math inline">\(y^{(n)}\)</span> 恒为 <span
+class="math inline">\(2\)</span>,可以推测出 <span
+class="math inline">\(y(x)\)</span> 带有 <span
+class="math inline">\(ce^{x}\)</span> 项.实际上根据 <span
+class="math display">\[
+\begin{equation}
+    \begin{aligned}
+        \hat{y}(x)&amp;=1+\frac{1}{1!}x+\frac{2}{2!}x^2+\frac{2}{3!}x^3+\cdots
++\frac{2}{n !}x^{n}\\
+            &amp;=2(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+
+\frac{x^{n}}{n !})-x-1
+    \end{aligned}
+\end{equation} \tag{1.9}
+\]</span> 可以得到 <span class="math display">\[
+\begin{equation}
+    y(x)=\lim_{n\rightarrow \infty} \hat{y}(x)= 2e^{x}-x-1 \,.\tag{1.10}
+\end{equation}
+\]</span> <span class="math inline">\((1.10)\)</span>
+与解析解是一致的.</p>
+<h1 id="prove-a-equation">2. Prove a equation</h1>
+<blockquote>
+<p>这是一道比较别扭的证明题.</p>
+</blockquote>
+<p>若<span class="math inline">\(f(x)=a_{0}+a_{1} x+\cdots+a_{n-1}
+x^{n-1}+a_{n} x^{n}\)</span>有 <span class="math inline">\(n\)</span>
+个不同实根 <span class="math inline">\(x_1,x_2,\dots,x_n\)</span>,证明:
+<span class="math display">\[
+\sum_{j=1}^{n}
+\frac{x_{j}^{k}}{f^{\prime}\left(x_{j}\right)}=\left\{\begin{array}{ll}
+    0&amp;(0 \leqslant k \leqslant n-2) \\
+    a_{n}^{-1}&amp; (k=n-1)
+    \end{array}\right. \,.
+\]</span> <strong>证明</strong></p>
+<p>　　由于 <span class="math inline">\(f(x)=a_{0}+a_{1}
+x+\cdots+a_{n-1} x^{n-1}+a_{n} x^{n}\)</span> 有 <span
+class="math inline">\(n\)</span> 个不同实根 <span
+class="math inline">\(x_1,x_2,\dots,x_n\)</span>,故 <span
+class="math inline">\(f(x)\)</span> 可写成 <span class="math display">\[
+f(x)=a_n(x-x_1)(x-x_2)\cdots(x-x_n)
+\]</span> 的形式.令 <span
+class="math inline">\(\omega(x)=(x-x_1)(x-x_2)\cdots(x-x_n)\)</span>,则
+<span class="math display">\[
+\omega&#39;(x)=\sum_{j=1}^n(x-x_1)(x-x_2)\cdots(x-x_{j-1})(x-x_{j+1})\cdots(x-x_n)\,,
+\]</span> 代入 <span class="math inline">\(x=x_j\)</span> 得 <span
+class="math display">\[
+\omega&#39;(x_j)=(x_j-x_1)(x_j-x_2)\cdots(x_j-x_{j-1})(x_j-x_{j+1})\cdots(x_j-x_n)=\prod_{i=1
+\atop i \neq j}^{n}\left(x_{j}-x_{i}\right)\,.
+\]</span> 设 <span class="math inline">\(g(x)=x^k\)</span>,则 <span
+class="math display">\[
+g[x_1,x_2,\cdots,x_n]=\sum_{j=1}^n\frac{g(x_j)}{\omega&#39;(x_j)}=\sum_{j=1}^n\frac{a_n
+x_j^k}{f&#39;(x_j)}\,.
+\]</span> 由差商与导数的关系,有 <span class="math display">\[
+g[x_1,x_2,\cdots,x_n]=\frac{g^{(n-1)}(\xi)}{(n-1)
+!}=\frac{\left(\xi^{k}\right)^{(n-1)}}{(n-1) !},\quad \xi
+\in\left[x_{1}, \cdots, x_{n}\right]\,.
+\]</span> 故有 <span class="math display">\[
+\sum_{j=1}^n\frac{x_j^k}{f&#39;(x_j)}=\frac{\left(x_j^{k}\right)^{(n-1)}}{a_n(n-1)
+!}\,,
+\]</span> 当 <span class="math inline">\(0 \leqslant k \leqslant
+n-2\)</span> 时, <span
+class="math inline">\(\sum_{j=1}^n\frac{x_j^k}{f&#39;(x_j)}=0\)</span>;当
+<span class="math inline">\(k=n-1\)</span> 时, <span
+class="math inline">\(\sum_{j=1}^n\frac{x_j^k}{f&#39;(x_j)}=a_n^{-1}\)</span>.</p>
+<p style="text-align:right;">
+<font size=6>□</font>
+</p>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Engineering/"> Engineering</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2021/02/28/ps-bayes-classical/">
+                                                Probability and Statistics | Bayes and Classical Sects
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2021/02/23/dsp-exercise/">
+                                                        Digital Signal Processing | A Filter Design Exerciese
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

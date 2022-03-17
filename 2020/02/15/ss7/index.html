@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Signals and Systems | Ploe-zero Diagram and Frequency Response | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Signals and Systems | Ploe-zero Diagram and Frequency Response
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">February 15, 2020&nbsp;&nbsp;11:44:49</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Signals-and-Systems/">Signals and Systems</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>#TODO:<span class="math inline">\(S\)</span>域和<span
+class="math inline">\(Z\)</span>域分别对应着什么,对应关系;用manim制作动画.</p>
+</blockquote>
+<p>　　这个内容[1]和[2]都没有仔细地讲,[5]十分详实地介绍了这一内容.下文的内容基本就是搬运了.</p>
+<h2 id="频率响应">频率响应</h2>
+<p>　　大一学习电路基础的时候,其实都没有搞清楚频率响应是什么,老师也没有讲;后来学了模电才稍微有了点眉目.简单说,就是信号(傅里叶级数谐波)的频率、幅值发生的时候,同一个系统的响应对这些变化的响应是怎样的.</p>
+<h2 id="零极图">零极图</h2>
+<p>　　请看课本!嘻嘻.</p>
+<h2 id="s域零极图与频率响应"><span
+class="math inline">\(S\)</span>域零极图与频率响应</h2>
+<p>　　实际上,最常见的系统函数都可以表示为<span
+class="math inline">\(s\)</span>的多项式的比值: <span
+class="math display">\[
+\mathrm{H}(s)=\frac{\mathrm{N}(s)}{\mathrm{D}(s)}=A
+\frac{\left(s-z_{1}\right)\left(s-z_{2}\right)
+\cdots\left(s-z_{M}\right)}{\left(s-p_{1}\right)\left(s-p_{2}\right)
+\cdots\left(s-p_{N}\right)}\tag{7.1}
+\]</span> 这个系统的频率响应就是 <span class="math display">\[
+\mathrm{H}(j \omega)=A \frac{\left(j \omega-z_{1}\right)\left(j
+\omega-z_{2}\right) \cdots\left(j \omega-z_{M}\right)}{\left(j
+\omega-p_{1}\right)\left(j \omega-p_{2}\right) \cdots\left(j
+\omega-p_{N}\right)}. \tag{7.2}
+\]</span> 比如<span class="math inline">\(\mathrm{H}(s)=\frac{3
+s}{s+3}\)</span>,其频率响应为<span class="math inline">\(\mathrm{H}(j
+\omega)=3 \frac{j \omega}{j
+\omega+3}\)</span>.我们图上用向量表示如下;</p>
+<p>#TODO</p>
+<p><img src="ss7.assets/image-20200215121538571.png"
+alt="image-20200215121538571" /></p>
+<p>频率改变的时候,向量也会发生改变. <span class="math display">\[
+|\mathrm{H}(j \omega)|=3 \frac{|j \omega|}{|j \omega+3|} \tag{7.3}
+\]</span></p>
+<p><span class="math display">\[
+\angle \mathrm{H}(j \omega)=\underbrace{\angle 3}_{=0}+\angle j
+\omega-\angle(j \omega+3)
+\tag{7.4}
+\]</span></p>
+<p>式<span class="math inline">\((7.3)\)</span>是频率响应的模值,式<span
+class="math inline">\((7.4)\)</span>是频率响应的幅角.我们让<span
+class="math inline">\(\omega\)</span>从<span
+class="math inline">\(\infty\)</span>到<span
+class="math inline">\(-\infty\)</span>变化(反过来也行),然后绘制式<span
+class="math inline">\((7.3)\)</span>、<span
+class="math inline">\((7.4)\)</span>的图像,得到的就是完整的频率响应.</p>
+<p>#TODO</p>
+<p><img src="ss7.assets/image-20200215122430885.png"
+alt="image-20200215122430885" /></p>
+<p>可见这是一个高通滤波器.这就是从极零图推断出频率响应的方法.</p>
+<h3 id="more-examples">More Examples</h3>
+<ul>
+<li><span class="math inline">\(\mathrm{H}(s)=\frac{s^{2}+2
+s+17}{s^{2}+4 s+104}\)</span></li>
+</ul>
+<p><span class="math display">\[
+H(s)=\frac{(s+1-j 4)(s+1+j 4)}{(s+2-j 10)(s+2+j 10)} \\
+\mathrm{H}(j \omega)=\frac{(j \omega+1-j 4)(j \omega+1+j 4)}{(j
+\omega+2-j 10)(j \omega+2+j 10)}\\
+|\mathrm{H}(j \omega)|=\frac{|j \omega+1-j 4||j \omega+1+j
+4|}{|\omega+2-j 10||j \omega+2+j 10|}\\
+\angle \mathrm{H}(j \omega)=\angle(j \omega+1-j 4)+\angle(j \omega+1+j
+4)-[\angle(j \omega+2-j 10)+\angle(j \omega+2+j 10)]
+\]</span></p>
+<p>#TODO</p>
+<p><img src="ss7.assets/image-20200215123924603.png"
+alt="image-20200215123924603" /></p>
+<p><img src="ss7.assets/image-20200215123938143.png"
+alt="image-20200215123938143" /></p>
+<p><img src="ss7.assets/image-20200215124228859.png"
+alt="image-20200215124228859" /></p>
+<p><img src="ss7.assets/image-20200215124247937.png"
+alt="image-20200215124247937" /></p>
+<p><img src="ss7.assets/image-20200215124309148.png"
+alt="image-20200215124309148" /></p>
+<p><img src="ss7.assets/image-20200215124341727.png"
+alt="image-20200215124341727" /></p>
+<p><img src="ss7.assets/image-20200215124412702.png"
+alt="image-20200215124412702" /></p>
+<p><img src="ss7.assets/image-20200215124437438.png"
+alt="image-20200215124437438" /></p>
+<p><img src="ss7.assets/image-20200215124500926.png"
+alt="image-20200215124500926" /></p>
+<p><img src="ss7.assets/image-20200215124523099.png"
+alt="image-20200215124523099" /></p>
+<h3 id="判断技巧">判断技巧</h3>
+<p>对于<span
+class="math inline">\(s\)</span>域的系统函数,我们可以用更简单的技巧来判断这个系统的滤波性质.简单说就是"分子通什么,滤波器就通什么".</p>
+<ul>
+<li><span
+class="math inline">\(\mathrm{H}=\frac{1}{s}\)</span>.分母的次数是<span
+class="math inline">\(1\)</span>,分子的次数是<span
+class="math inline">\(0\)</span>,分子次数相对于分母是低次,所以是低通滤波器.</li>
+<li><span
+class="math inline">\(\mathrm{H}=\frac{s^2}{s^2+s+1}\)</span>.分子是高次,是高通滤波器.</li>
+<li><span
+class="math inline">\(\mathrm{H}=\frac{s}{s^2+s+1}\)</span>.分子是中间次,是带通滤波器.</li>
+</ul>
+<p>可以拿上一小节的例子一一比对.</p>
+<h2 id="z域零极图与频率响应"><span
+class="math inline">\(Z\)</span>域零极图与频率响应</h2>
+<p>​ 假设系统函数 <span class="math display">\[
+\mathrm{H}(z)=\frac{z}{z^{2}-z / 2+5 /
+16}=\frac{z}{\left(z-p_{1}\right)\left(z-p_{2}\right)} \tag{7.5}
+\]</span></p>
+<p><span class="math display">\[
+\left|\mathrm{H}\left(e^{j \Omega}\right)\right|=\frac{\left|e^{j
+\Omega}\right|}{\left|e^{j \Omega}-p_{1}\right|\left|e^{j
+\Omega}-p_{2}\right|} \tag{7.6}
+\]</span></p>
+<p><span class="math display">\[
+\angle \mathrm{H}\left(e^{j \Omega}\right)=\angle e^{j
+\Omega}-\angle\left(e^{j \Omega}-p_{1}\right)-\angle\left(e^{j
+\Omega}-p_{2}\right) \tag{7.7}
+\]</span></p>
+<p><img src="ss7.assets/image-20200215130622444.png"
+alt="image-20200215130622444" /></p>
+<p><img src="ss7.assets/image-20200215130749745.png"
+alt="image-20200215130749745" /></p>
+<p>这里与<span class="math inline">\(s\)</span>域的区别是<span
+class="math inline">\(z\)</span>域上的频率响应是周期性的.</p>
+<h3 id="more-examples-1">More Examples</h3>
+<ul>
+<li><span class="math inline">\(H(z)=\frac{z^{2}-0.96
+z+0.9028}{z^{2}-1.56 z+0.8109}\)</span></li>
+</ul>
+<p><span class="math display">\[
+\mathrm{H}(z)=\frac{(z-0.48+j 0.82)(z-0.48-j 0.82)}{(z-0.78+j
+0.45)(z-0.78-j 0.45)}\\
+\]</span></p>
+<p><img src="ss7.assets/image-20200215131433862.png"
+alt="image-20200215131433862" /></p>
+<ul>
+<li><span
+class="math inline">\(\mathrm{H}(z)=\frac{0.0686}{\left(z^{2}-1.087
+z+0.3132\right)\left(z^{2}-1.315 z+0.6182\right)}\)</span></li>
+</ul>
+<p><span class="math display">\[
+\mathrm{H}(z)=\frac{0.0686}{(z-0.5435+j 0.1333)(z-0.5435-j
+0.1333)(z-0.6575+j 0.4312)(z-0.6575-j 0.4312)}
+\]</span></p>
+<p><img src="ss7.assets/image-20200215131538630.png"
+alt="image-20200215131538630" /></p>
+<h3 id="与s域区分">与<span class="math inline">\(S\)</span>域区分</h3>
+<p>　　<span
+class="math inline">\(Z\)</span>域上系统函数滤波特性的判断就没有<span
+class="math inline">\(S\)</span>域那样的技巧了,简单说就是因为<span
+class="math inline">\(Z\)</span>域到<span
+class="math inline">\(S\)</span>域的映射是多值的.</p>
+<blockquote>
+<p>本来还想写<strong>系统稳定性</strong>这一节,但这个记结论很简单,但要理解这个结论并不是那么简单.我就偷懒不写了,以后有空补上.</p>
+</blockquote>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Engineering/"> Engineering</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/04/04/hexo/">
+                                                Hexo Memorandum
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/02/14/ss6/">
+                                                        Signals and Systems | Laplace Transformation
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

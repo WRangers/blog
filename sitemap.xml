@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2021/07/29/latex-pagebox/</loc>
+    
+    <lastmod>2022-03-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/jottings/index.html</loc>
+    
+    <lastmod>2021-12-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2021/04/02/hsi-rgb/</loc>
+    
+    <lastmod>2021-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2021/07/15/image-registration/</loc>
+    
+    <lastmod>2021-07-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch1.html</loc>
+    
+    <lastmod>2021-07-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2021/06/05/textbook/</loc>
+    
+    <lastmod>2021-06-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2021/03/27/cm/</loc>
+    
+    <lastmod>2021-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/06/01/imaginary-number/</loc>
+    
+    <lastmod>2021-04-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/04/12/complex-0-entry/</loc>
+    
+    <lastmod>2021-03-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/05/07/ps-exponential-distribution/</loc>
+    
+    <lastmod>2021-03-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/05/25/maxwell/</loc>
+    
+    <lastmod>2021-03-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2021/02/28/ps-bayes-classical/</loc>
+    
+    <lastmod>2021-02-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/05/06/ps-poisson-distribution/</loc>
+    
+    <lastmod>2021-02-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/05/04/ps-moment-generating-characteristic-functions/</loc>
+    
+    <lastmod>2021-02-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2021/02/23/numeric_methods/</loc>
+    
+    <lastmod>2021-02-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/04/14/circuit-capacitance-inductance/</loc>
+    
+    <lastmod>2021-02-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2021/02/23/dsp-exercise/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/02/15/ss7/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/02/14/ss6/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/02/13/ss5/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/02/12/ss4/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/02/11/ss3/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/02/10/ss2/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/02/09/ss1/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/02/08/ss0/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/04/26/language-in-thought-and-action/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/04/08/wdf-language/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/04/19/why-study/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/04/10/wdf-love/</loc>
+    
+    <lastmod>2021-02-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch7.html</loc>
+    
+    <lastmod>2020-06-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch8.html</loc>
+    
+    <lastmod>2020-06-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch5.html</loc>
+    
+    <lastmod>2020-06-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch6.html</loc>
+    
+    <lastmod>2020-06-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/hilbert-transform.html</loc>
+    
+    <lastmod>2020-06-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch4.html</loc>
+    
+    <lastmod>2020-06-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch3.html</loc>
+    
+    <lastmod>2020-06-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch2.html</loc>
+    
+    <lastmod>2020-06-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/calculus-exterior-derivative.html</loc>
+    
+    <lastmod>2020-05-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/04/14/calculus-differential/</loc>
+    
+    <lastmod>2020-05-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/calculus-coordinate-system.html</loc>
+    
+    <lastmod>2020-05-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/04/04/hexo/</loc>
+    
+    <lastmod>2020-05-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/gitbook.html</loc>
+    
+    <lastmod>2020-04-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/sphinx.html</loc>
+    
+    <lastmod>2020-04-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/onhold/git.html</loc>
+    
+    <lastmod>2020-04-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/category/index.html</loc>
+    
+    <lastmod>2020-04-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tag/index.html</loc>
+    
+    <lastmod>2020-04-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://wrangers.github.io/blog</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Math/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Circuit/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Experience/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Engineering/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Image-Registration/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Thought/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/LaTeX/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Physics/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Reading/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Culture/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/The-Calculus/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Circuit/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Complex-Analysis/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Tech/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Digital-Signal-Processing/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Image-Processing/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Notes-of-Nothing/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/LaTeX-and-Typography/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Physics/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Numerical-Computation-Methods/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Probability-and-Statistics/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/Signals-and-Systems/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>

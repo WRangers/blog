@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>LaTeX | How to Add a Frame of the Whole Page? | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    LaTeX | How to Add a Frame of the Whole Page?
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">July 29, 2021&nbsp;&nbsp;11:38:47</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/LaTeX-and-Typography/">LaTeX and Typography</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <p>　　最近在用LaTeX排版时有一个需求——页面加框,这是一个很简单的需求,但实际上遇到了一些小问题.</p>
+<h2 id="方案一-fancybox">方案一 <code>fancybox</code></h2>
+<p>　　使用<code>fancybox</code>插入页面框是最为简捷的,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">%% 导言区</span><br><span class="line">\documentclass[11pt]&#123;article&#125;</span><br><span class="line">\usepackage&#123;fancybox&#125;</span><br><span class="line"></span><br><span class="line">%% 正文</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">% \fancypage&#123;&lt;不包含页眉页脚的页面框&gt;&#125;&#123;&lt;包含页眉页脚的页面框&gt;&#125;</span><br><span class="line">\fancypage&#123;</span><br><span class="line">\setlength&#123;\fboxsep&#125;&#123;8pt&#125;    % 设置框线与版心边距</span><br><span class="line">\setlength&#123;\fboxrule&#125;&#123;0.8pt&#125; % 设置框线的粗细</span><br><span class="line">\setlength&#123;\shadowsize&#125;&#123;0pt&#125; % 设置投影距离</span><br><span class="line">\shadowbox&#125;&#123;&#125;</span><br><span class="line">...</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>　　这样的设置本应该没有什么问题,但是我的排版内容比较特殊,不同字段的不同颜色导致页面的框线、甚至是内容本身的颜色出现问题,但也没有办法,毕竟人家<code>fancybox</code>作者就说了——</p>
+<blockquote>
+<p><strong>Warning</strong>: The commands described in this section
+change LATEX’s output routine, and may not work with document styles
+that do the same. Also, bad arguments can cause serious errors with
+uninformative error messages.</p>
+</blockquote>
+<p><img src="latex-pagebox.assets/image-20210729195951694.png"
+alt="image-20210729195951694" /></p>
+<h2 id="方案二-eso-pic">方案二 <code>eso-pic</code></h2>
+<p>　　经过一番查找,采用另一种方案,虽然比较曲折,但可以解决上述问题,并且更加灵活,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line"></span><br><span class="line">\usepackage&#123;tikzpagenodes&#125; % 定位页面位置的宏包</span><br><span class="line">\usetikzlibrary&#123;calc&#125;</span><br><span class="line"></span><br><span class="line">\usepackage&#123;eso-pic&#125;</span><br><span class="line">\newcommand&#123;\addframe&#125;&#123;</span><br><span class="line">  \AddToShipoutPicture&#123;</span><br><span class="line">  \begin&#123;tikzpicture&#125;[remember picture, overlay, black] % 此处如果不加上black,还是会出现框线颜色改变的问题</span><br><span class="line">      \draw[line width&#x3D;1pt]</span><br><span class="line">           ($(current page text area.north west) +(-5mm,5mm)$) % 这里的位置可以自定义</span><br><span class="line">           rectangle</span><br><span class="line">           ($(current page text area.south east) +(5mm,-5mm)$);</span><br><span class="line">  \end&#123;tikzpicture&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">\newcommand&#123;\removeframe&#125;&#123;\ClearShipoutPicture&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">\addframe		% 添加页面框</span><br><span class="line">....</span><br><span class="line">\removeframe    % 去除页面框</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>　　此方案解决了方案一的问题.</p>
+<p><img src="latex-pagebox.assets/image-20210729201131345.png"
+alt="image-20210729201131345" /></p>
+<h2 id="参考">参考</h2>
+<p>[1] <a
+href="https://mirrors.cqu.edu.cn/CTAN/macros/latex/contrib/fancybox/fancybox-doc.pdf">fancybox
+Documentation– Variants of and other games with boxes</a></p>
+<p>[2] <a
+href="http://blog.sina.com.cn/s/blog_5e16f1770100gvwq.html">LaTex技巧229：用
+fancybox 宏包给页面加边框</a></p>
+<p>[3] <a
+href="https://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/eso-pic/eso-pic.pdf">eso-pic
+Documentation – Add picture commands (or backgrounds) to every
+page</a></p>
+<p>[4] <a
+href="https://tex.stackexchange.com/questions/167039/is-there-any-easy-way-to-put-boxes-around-text-of-selected-pages-with-the-page-n">Is
+there any easy way to put boxes around text of selected pages with the
+page number below the box?</a></p>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/LaTeX/"> LaTeX</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                                
+                                                    <a class="next" rel="next" href="/blog/2021/07/15/image-registration/">
+                                                        Image Registration of Remote Sensing Images
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

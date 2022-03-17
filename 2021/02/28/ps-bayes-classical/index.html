@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Probability and Statistics | Bayes and Classical Sects | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Probability and Statistics | Bayes and Classical Sects
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">February 28, 2021&nbsp;&nbsp;15:07:47</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Probability-and-Statistics/">Probability and Statistics</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p><strong>概率论与数理统计</strong>这一部分写得比较散乱,没有什么逻辑关系.不过是认知上的反反复复,徘徊彳亍.</p>
+</blockquote>
+<p>　　　概率论和数理统计从某种意义上而言是两个不同的学科,用不同的方法论研究同一事物,因而有所交织.数学始于演绎,统计始于归纳.</p>
+<ul>
+<li><p>概率论的数学基础是测度论——严密的数学基础,是<strong>演绎法</strong>,从特殊到一般,自顶向下.</p></li>
+<li><p>数理统计是<strong>归纳法</strong>,从个别到一般,自底向上.</p>
+<blockquote>
+<p>Statistics is the science of collecting, analyzing, presenting, and
+interpreting data. Governmental needs for census data as well as
+information about a variety of economic activities provided much of the
+early impetus for the field of statistics. Currently the need to turn
+the large amounts of data available in many applied fields into useful
+information has stimulated both theoretical and practical developments
+in statistics.</p>
+<p style="text-align:right">
+Encyclopedia Britannica
+</p>
+</blockquote></li>
+</ul>
+<h2 id="两大学派">两大学派</h2>
+<p>　　在统计领域,有两种对立的思想学派:贝叶斯学派和经典学派(也称频率学派),他们之间最重要的区别就是如何看待被估计的未知参数.贝叶斯学派的观点是将其看成是<strong>已知分布的随机变量</strong>,而经典学派的观点是将其看成<strong>未知的待估计的常量</strong>.各自对应的推断估计方法分别是<strong>最大后验估计(Maximum
+A Posteriori Estimation)</strong>和<strong>最大似然估计(Maximum
+Likelihood Estimation)</strong>.这是看待事物的两种不同角度.</p>
+<ul>
+<li><p>贝叶斯学派认为世界是不确定的,结果会因获取的信息而异.假设对世界现有一个预先的估计,然后通过获取的信息来不断调整之前的预估值.他们不对事件本身建模,而是从旁观者的角度来看待问题——对于同一事件,不同的人掌握的先验不同的话,那么他们所认为的事件状态也会不同.</p>
+<p>他们认为模型参数源自某种潜在分布,希望从数据中推知该分布.对于数据的观测方式不同或者假设不同,那么推知的该参数也会因此而存在差异.这就是贝叶斯派视角下用来估计参数的常用方法——最大后验概率估计(MAP),这种方法在先验假设比较靠谱的情况下效果显著,随着数据量的增加,先验假设对于模型参数的主导作用会逐渐削弱,相反真实的数据样例会大大占据有利地位.极端情况下,比如把先验假设去掉,或者假设先验满足均匀分布的话,那它和极大似然估计就如出一辙了.</p></li>
+<li><p>频率学派认为世界是确定的,他们为事件本身建模,也就是说事件在多次重复试验中频率趋于一个稳定的值
+<span class="math inline">\(p\)</span>,那么这个值就是该事件的概率.</p>
+<p>他们认为模型参数是个定值,希望通过类似解方程组的方式从数据中求得该未知数.这就是频率学派使用的参数估计方法——极大似然估计(MLE),这种方法往往在大数据量的情况下可以很好的还原模型的真实情况.</p></li>
+</ul>
+<h2
+id="似然likelihood和概率probility的区别与联系">似然(Likelihood)和概率(Probility)的区别与联系</h2>
+<p>　　参看参考文献[3]和[4]部分回答.</p>
+<p>　　假设 <span class="math inline">\(x\)</span> 是果, <span
+class="math inline">\(c\)</span> 是因,则 <span class="math display">\[
+P(c|x)=\frac{P(x|c)P(c)}{P(x)}\,.
+\]</span></p>
+<ul>
+<li><span class="math inline">\(P(c|x)\)</span>
+是<strong>后验概率</strong>(Posterior Probability).</li>
+<li><span class="math inline">\(P(x|c)\)</span>
+是<strong>似然</strong>(Likelihood),将 <span
+class="math inline">\(c\)</span> 视为参数的话,应该写为 <span
+class="math inline">\(P(x;c)\)</span>.</li>
+<li><span class="math inline">\(P(c)\)</span>
+是<strong>类先验概率</strong>(Class Prior Probability).</li>
+<li><span class="math inline">\(P(x)\)</span>
+是<strong>预测先验概率</strong>(Predictor Prior Probability).</li>
+</ul>
+<h2 id="参考文献">参考文献</h2>
+<p>[1] <a
+href="https://www.zhihu.com/people/yu-mian-73-95">Rainsley</a>.知乎.<a
+href="https://zhuanlan.zhihu.com/p/63426876">第2期
+数学与统计学的神秘关系</a>.</p>
+<p>[2] <a
+href="https://www.zhihu.com/people/hongleizhang">张小磊</a>.知乎.<a
+href="https://zhuanlan.zhihu.com/p/40024110">极大似然估计与最大后验概率估计</a>.</p>
+<p>[3] <a href="https://sdsy888.blog.csdn.net/" target="_blank" rel="noopener">江前云后</a>.CSDN.<a
+href="https://blog.csdn.net/songyu0120/article/details/85059149">似然（likelihood）和概率（probability）的区别与联系</a>.</p>
+<p>[4] <a
+href="https://www.zhihu.com/question/54082000/answer/470252492">如何理解似然函数?</a>知乎.</p>
+<p>[5] 马同学的数学.<a
+href="https://www.matongxue.com/madocs/447/">如何通俗地理解"最大似然估计法"?</a></p>
+<p>[6] <a
+href="https://www.zhihu.com/people/zhan-mu-si-82">Carnap</a>.知乎.<a
+href="https://zhuanlan.zhihu.com/p/59626066">三大统计推断派系 -
+频率学派、似然学派、贝叶斯学派</a>.</p>
+<p>[7] PENG.知乎.<a
+href="https://zhuanlan.zhihu.com/p/25768606">概率与似然</a>.</p>
+<p>[8] <a
+href="https://www.zhihu.com/people/yu-mian-73-95">Rainsley</a>.知乎.<a
+href="https://zhuanlan.zhihu.com/p/134036707">条件概率、全概率公式、贝叶斯公式</a>.</p>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Math/"> Math</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2021/03/27/cm/">
+                                                The Complex Number in Circuits
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2021/02/23/numeric_methods/">
+                                                        Numerical Computation Methods | Interesting Exercises
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

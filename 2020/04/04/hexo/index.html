@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Hexo Memorandum | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Hexo Memorandum
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">April 4, 2020&nbsp;&nbsp;18:30:03</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Tech/">Tech</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>Github+Hexo搭建个人主页/博客备忘录.</p>
+</blockquote>
+<h2 id="数学公式渲染">数学公式渲染</h2>
+<p>由于渲染器会对一些符号进行转义,会出现一些数学公式不能正常显示的现象,有两个解决方案.</p>
+<h3 id="方案一">方案一</h3>
+<p>Mathjax会先对数学公式进行转义,导致一些数学公式无法正确显示.解决方案如下:</p>
+<p>在本地文件夹中打开<code>nodes_modules/marked/lib/marked.js</code>:</p>
+<p>修改</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">escape</span>: <span class="regexp">/^\\([!"#$%&amp;'()*+,\-./:;&lt;=&gt;?@\[\]\\^_`&#123;|&#125;~])/</span>,</span><br></pre></td></tr></table></figure>
+<p>为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">escape</span>: <span class="regexp">/^\\([!"#$%&amp;'()*+,\-./:;&lt;=&gt;?@\[\]^_`|~])/</span>,</span><br></pre></td></tr></table></figure>
+<p>删除对<code>\{</code>,<code>\}</code>的转义,使得方程组可以正常显示:</p>
+<p><span class="math display">\[
+y(t)=\left\{\begin{array}{ll}
+0, &amp; x(t)&lt;0 \\
+x(t)+x(t-2), &amp; x(t) \geqslant 0
+\end{array}\right.
+\]</span></p>
+<blockquote>
+<p>展示数学环境中换行<code>\\</code>得用<code>\\\\</code>,暂时没有解决,也可以不解决;但在行内数学环境<code>$...$</code>中,<code>\\</code>是可识别的.对齐数学环境中要用<code>\*</code>代替<code>*</code>.</p>
+</blockquote>
+<h3 id="方案二">方案二</h3>
+<p>修改markdown渲染器,这一方案更为彻底和方便.</p>
+<p>首先在电脑安装<code>pandoc</code>,然后卸载原来的渲染器,一般默认为<code>marked</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br></pre></td></tr></table></figure>
+<p>安装新的渲染器:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure>
+<p>使用<code>pandoc</code>渲染会出现自动为图片添加题注,如果想要去掉图注,在<code>_config.yml</code>中添加:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line">  <span class="attr">extensions:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">'-implicit_figures'</span></span><br></pre></td></tr></table></figure>
+<p>即可隐藏图注.</p>
+<h2 id="阿里云域名绑定">阿里云域名绑定</h2>
+<ol type="1">
+<li><p>在阿里云挑一个心仪的域名,掏钱,实名认证.</p></li>
+<li><p>在本地博客的<code>source</code>目录下创建文件<code>CNAME</code>,内容为域名,例如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">junx.wang</span><br></pre></td></tr></table></figure>
+<p>这一步相当于Github
+Pages的重定位,如果是<code>CNAME</code>放在根目录,每次重新部署这个文件都会被清掉.</p></li>
+<li><p>审核通过后,在阿里云上打开域名管理,进行解析:</p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 20%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>记录类型</th>
+<th>主机记录</th>
+<th>记录值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>www</td>
+<td>192.30.252.153</td>
+<td>该IP地址即表示访问Github Pages</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>www</td>
+<td>192.30.252.153</td>
+<td>该IP地址即表示访问Github Pages</td>
+</tr>
+<tr class="odd">
+<td>@</td>
+<td>CNAME</td>
+<td>UserName.github.io.</td>
+<td>表示将<code>http://xxx.com</code>这个主域名映射<code>xxx.github.io</code><br />最后面的小点<code>.</code>不要漏掉</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>等待2-10分钟,访问自己的域名即可.</p></li>
+</ol>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://my.oschina.net/u/3029314/blog/2875604" target="_blank" rel="noopener">GitHub Pages
+绑定阿里云域名</a>. OSCHINA.</li>
+<li><a href="https://www.jianshu.com/p/d92ea8542673" target="_blank" rel="noopener">Github Pages
+绑定阿里云域名</a>. 简书.</li>
+</ul>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Experience/"> Experience</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/04/08/wdf-language/">
+                                                Origin of Differences between Chinese and Western Culture | Language
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/02/15/ss7/">
+                                                        Signals and Systems | Ploe-zero Diagram and Frequency Response
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

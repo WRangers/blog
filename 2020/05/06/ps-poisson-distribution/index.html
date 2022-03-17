@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Probability and Statistics | Poisson Distribution | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Probability and Statistics | Poisson Distribution
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">May 6, 2020&nbsp;&nbsp;10:18:57</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Probability-and-Statistics/">Probability and Statistics</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <h2 id="definition">Definition</h2>
+<p>A Poisson random variable has a PMF given by <span
+class="math display">\[
+p_{X}(k)=e^{-\lambda} \frac{\lambda^{k}}{k !}, \quad k=0,1,2, \ldots,
+\tag{1}
+\]</span> where <span class="math inline">\(\lambda\)</span> is a
+positive parameter charactering the PMF. This is a legitimate PMF
+because <span class="math display">\[
+\sum_{k=0}^{\infty} e^{-\lambda} \frac{\lambda^{k}}{k
+!}=e^{-\lambda}\left(1+\lambda+\frac{\lambda^{2}}{2
+!}+\frac{\lambda^{3}}{3 !}+\cdots\right)=e^{-\lambda} e^{\lambda}=1\ .
+\]</span></p>
+<h2 id="number-feature">Number Feature</h2>
+<h3 id="expected-value">Expected Value</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{E}(X) &amp;=\sum_{i=0}^{\infty} i P(X=i) \\
+&amp;=\sum_{i=1}^{\infty} i \frac{e^{-\lambda} \lambda^{i}}{i !} \\
+&amp;=\lambda e^{-\lambda} \sum_{i=1}^{\infty}
+\frac{\lambda^{i-1}}{(i-1) !} \\
+&amp;=\lambda e^{-\lambda} \sum_{i=0}^{\infty} \frac{\lambda^{i}}{i !}
+\\
+&amp;=\lambda e^{-\lambda} e^{\lambda} \\
+&amp;=\lambda  \,.
+\end{aligned} \tag{2}
+\]</span></p>
+<h3 id="variance">Variance</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\mathrm{E}\left(X^{2}\right) &amp;=\sum_{i=0}^{\infty} i^{2} P(X=i) \\
+&amp;=\sum_{i=1}^{\infty} i^{2} \frac{e^{-\lambda} \lambda^{i}}{i !} \\
+&amp;=\lambda e^{-\lambda} \sum_{i=1}^{\infty} \frac{i
+\lambda^{i-1}}{(i-1) !} \\
+&amp;=\lambda e^{-\lambda} \sum_{i=1}^{\infty} \frac{1}{(i-1) !}
+\frac{\mathrm{d}}{\mathrm{d} \lambda}\left(\lambda^{i}\right) \\
+&amp;=\lambda e^{-\lambda} \frac{\mathrm{d}}{\mathrm{d}
+\lambda}\left[\sum_{i=1}^{\infty} \frac{\lambda^{i}}{(i-1) !}\right] \\
+&amp;=\lambda e^{-\lambda} \frac{\mathrm{d}}{\mathrm{d}
+\lambda}\left[\lambda \sum_{i=1}^{\infty} \frac{\lambda^{i-1}}{(i-1)
+!}\right] \\
+&amp;=\lambda e^{-\lambda} \frac{\mathrm{d}}{\mathrm{d}
+\lambda}\left(\lambda e^{\lambda}\right)=\lambda
+e^{-\lambda}\left(e^{\lambda}+\lambda
+e^{\lambda}\right)=\lambda+\lambda^{2}\ ,
+\end{aligned} \tag{3}
+\]</span></p>
+<p>or <span class="math display">\[
+\begin{aligned}
+E\left(X^{2}\right) &amp;=E[X(X-1)+X]=E[X(X-1)]+E(X) \\
+&amp;=\sum_{k=0}^{\infty} k(k-1) \frac{\lambda^{k}}{k !}
+\mathrm{e}^{-\lambda}+\lambda=\lambda^{2} \mathrm{e}^{-\lambda}
+\sum_{k=2}^{\infty} \frac{\lambda^{k-2}}{(k-2)
+!}+\lambda=\lambda^{2}+\lambda \ .
+\end{aligned} \tag{4}
+\]</span> Then <span class="math display">\[
+D(X)=E\left(X^{2}\right)-E^{2}(X)=\lambda^{2}+\lambda-\lambda^{2}=\lambda
+\ . \tag{5}
+\]</span></p>
+<h3 id="the-moment-generating-function">The Moment Generating
+Function</h3>
+<p><span class="math display">\[
+M_{X}(t)=E\left[e^{t X}\right]=\sum_{x=0}^{\infty} e^{t x}
+\frac{e^{-\lambda} \lambda^{x}}{x !}=e^{-\lambda} \sum_{x=0}^{\infty}
+\frac{\left(e^{t} \lambda\right)^{x}}{x
+!}=e^{\lambda\left(e^{t}-1\right)}. \tag{6}
+\]</span></p>
+<p>The sum of dependent Poisson random variables still obeys Poisson
+distribution. It's easy to proof using the MGF.</p>
+<h2 id="source">Source</h2>
+<p>Poisson distribution has strong relationship with binomial
+distribution. And it needs to talk with Bernoulli distribution.</p>
+<h3 id="bernoulli-distribution">Bernoulli Distribution</h3>
+<p>It is a one-time randomized trial, whose PMF is <span
+class="math display">\[
+p_{X}(k)=\left\{\begin{array}{ll}
+p, &amp; \text { if } k=1 \\
+1-p, &amp; \text { if } k=0 \ .
+\end{array}\right. \tag{7}
+\]</span> For all its simplicity, the Bernoulli random variable is very
+important. In practice, it is used to model generic probabilistic
+situations with just two outcomes. Furthermore, by combining multiple
+Bernoulli random variables, one can construct more complicated random
+variables, such as the binomial random variable.</p>
+<h3 id="binomial-distribution">Binomial Distribution</h3>
+<p>A coin is tossed <span class="math inline">\(n\)</span> times. At
+each toss, the coin comes up a head with probability <span
+class="math inline">\(p,\)</span> and a tail with probability <span
+class="math inline">\(1-p,\)</span> independent of prior tosses. Let
+<span class="math inline">\(X\)</span> be the number of heads in the
+<span class="math inline">\(n\)</span>-toss sequence. We refer to <span
+class="math inline">\(X\)</span> as a binomial random variable with
+parameters <span class="math inline">\(n\)</span> and <span
+class="math inline">\(p .\)</span> The PMF of <span
+class="math inline">\(X\)</span> is <span class="math display">\[
+p_{X}(k)=P(X=k)=\left(\begin{array}{l}
+n \\
+k
+\end{array}\right) p^{k}(1-p)^{n-k}, \quad k=0,1, \ldots, n\ , \tag{8}
+\]</span> which can be regarded as the PMF of multiple Bernoulli
+trials.</p>
+<h3 id="poisson-distribution">Poisson Distribution</h3>
+<p>When the binomial distribution's <span
+class="math inline">\(n\)</span> is very large but the <span
+class="math inline">\(p\)</span> is very small, it becomes the Poisson
+distribution: <span class="math display">\[
+\begin{aligned}
+\lim _{n \rightarrow \infty} P(X=k) &amp;=\lim _{n \rightarrow
+\infty}\left(\begin{array}{c}
+n \\
+k
+\end{array}\right) p^{k}(1-p)^{n-k} \\
+&amp;=\lim _{n \rightarrow \infty} \frac{n !}{(n-k) ! k
+!}\left(\frac{\lambda}{n}\right)^{k}\left(1-\frac{\lambda}{n}\right)^{n-k}
+\\
+&amp;=\lim _{n \rightarrow \infty} \underbrace{\left[\frac{n
+!}{n^{k}(n-k) !}\right]}_{F}\left(\frac{\lambda^{k}}{k !}\right)
+\underbrace{\left(1-\frac{\lambda}{n}\right)^{n}}_{\rightarrow \exp
+(-\lambda)}
+\underbrace{\left(1-\frac{\lambda}{n}\right)^{-k}}_{\rightarrow 1} \\
+&amp;=\lim _{n \rightarrow \infty}
+\underbrace{\left[\left(1-\frac{1}{n}\right)\left(1-\frac{2}{n}\right)
+\ldots\left(1-\frac{k-1}{n}\right)\right]}_{\rightarrow
+1}\left(\frac{\lambda^{k}}{k !}\right)
+\underbrace{\left(1-\frac{\lambda}{n}\right)^{n}}_{\rightarrow \exp
+(-\lambda)}
+\underbrace{\left(1-\frac{\lambda}{n}\right)^{-k}}_{\rightarrow 1}\\
+&amp;=\left(\frac{\lambda^{k}}{k !}\right) \exp (-\lambda)\ ,
+\end{aligned}
+\]</span> where <span class="math inline">\(\lambda =np\)</span>. Note
+that <span class="math inline">\(\displaystyle \lim _{n \rightarrow
+\infty}\left(1-\frac{\lambda}{n}\right)^{n}=e^{-\lambda}\)</span>, so
+the Poisson distribution is <span class="math display">\[
+P(X=k)=e^{-\lambda} \frac{\lambda^{k}}{k !}, \quad k=0,1,2, \ldots
+\]</span> 　As for how to understand Poisson distribution, there is a
+good <a href="https://www.matongxue.com/madocs/858/" target="_blank" rel="noopener">explanation</a>.
+Poisson distribution is the limit of binomial distribution with a very
+small <span class="math inline">\(p\)</span>, and the normal
+distribution is the limit of binomial distribution with a vary lager
+<span class="math inline">\(n\)</span>, making the discrete distribution
+become the continuous one.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Dimitri P. Bertsekas and John N. Tsitsiklis. Introduction to
+Probability. Second Edition. Athena Scientific, Belmont, Massachusetts.
+2008.</li>
+<li>知乎. <a
+href="https://www.zhihu.com/question/36214010">二项分布、泊松分布和正态分布的区别及联系?</a></li>
+<li>马同学的数学. <a
+href="https://www.matongxue.com/madocs/858/">如何理解泊松分布?</a></li>
+<li>Wikipedia. <a
+href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson
+distribution</a>.</li>
+</ul>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Math/"> Math</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/05/07/ps-exponential-distribution/">
+                                                Probability and Statistics | Exponential Distribution
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/05/04/ps-moment-generating-characteristic-functions/">
+                                                        Probability and Statistics | Moment Generating, Characteristic Functions, and Laplace Transforms
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

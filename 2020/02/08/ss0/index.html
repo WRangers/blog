@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Signals and Systems | Introduction | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Signals and Systems | Introduction
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">February 8, 2020&nbsp;&nbsp;21:33:57</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Signals-and-Systems/">Signals and Systems</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>NOTICE:整个系列的内容都已经写完了,但太忙了,没有足够的精力把剩下的动画做完,会陆陆续续更新!若有发现错误,还请不吝赐教,予以斧正!</p>
+</blockquote>
+<p>　　写信号与系统系列笔记的想法萌生于期末复习的时候.没有什么特别的目的,就是一个输出罢了.如能对读者在理解上有些许益处就足够得满满当当了.</p>
+<p>　　这个系列讲的都是一些老师从来不会讲的,强烈建议学习了相关的内容,对基本概念和公式有些了解之后，再阅读本系列相关的内容!</p>
+<p style="text-align:center;">
+<strong><font color=black size=6 face='Centaur'>CONTENTS</font></strong>
+</p>
+<p style="text-align:center">
+<strong><font color=#8B0000 size=4 face='Centaur' >
+<a href="http://junx.wang/blog/2020/02/09/ss1/" target="_blank" rel="noopener">1.系统时变性质的判断</a>　<br />
+<a href="http://junx.wang/blog/2020/02/10/ss2/" target="_blank" rel="noopener">2.理解卷积</a>　　　　　　<br />
+<a href="http://junx.wang/blog/2020/02/11/ss3/" target="_blank" rel="noopener">3.计算卷积</a>　　　　　　<br />
+<a href="http://junx.wang/blog/2020/02/12/ss4/" target="_blank" rel="noopener">4.傅里叶级数－变换</a>　　<br />
+<a href="http://junx.wang/blog/2020/02/13/ss5/" target="_blank" rel="noopener">5.周期傅里叶变换与抽样</a><br/>
+<a href="http://junx.wang/blog/2020/02/14/ss6/" target="_blank" rel="noopener">6.拉普拉斯变换</a>　　　　<br />
+<a href="http://junx.wang/blog/2020/02/15/ss7/" target="_blank" rel="noopener">7.零极图与频率响应　</a>　
+</font></strong>
+</p>
+<p style="text-align:center;">
+<strong><font color=black size=6 face='Centaur'>BIBLIOGRAPHY</font></strong>
+</p>
+<p>　　关于参考文献在这里安利/吐槽一下!</p>
+<p>　　我上课用的课本是[1],书大体上还不错的(但错误不少),但排版实在惹人嫌,特别是绘图的质量,值得诟病!吴京老师上课还是很稳的,我的科任王老师上课也很可!</p>
+<p>　　奥本海默[2]那一本习题真多,难题怪题也真多,也可能是我练得少吧,没见过世面.哦对!我有证据怀疑[1]抄袭[2],当然了,中国教科书就是如此,十分理解!但是[1]这么多年了还不改版就说不过去了.</p>
+<p>　　[4]这一本最初是在网上随意下的电子书,看着挺不错的,想买但绝版了.淘到了一本二手的,八三年的书——黄得不像书样,内容还是很不错的,但大部分内容偏旧,过时了也不讲了,但是对于这门课的理解有很大的益处(这也意味着没搞懂的话就更晕了).</p>
+<p>　　[5]实绝是一本好书,详实易懂!本来是要找作者Roberts的另外一本书<em>Foundation
+of Signals and
+Systems</em>,但找不到,买也买不起(￥2000+),代购无门.后来找到这一本,称之为宝藏不过分——强推!</p>
+<p>　　其他的都是一些挺好的文章和视频,都是在整个学期的学习过程中积累下来的,有时间看看还是挺不错的.强推Youtube/BiliBili的3Blue1Brown频道!本系列的动画就是用他写的Manim动画引擎生成的(吐槽一下:这个库真心折腾人,比Latex还折腾).</p>
+<p>[1] 信号与系统(第二版).吴京等.长沙:国防科技大学出版社.2004.</p>
+<p>[2] 信号与系统(第二版).Alan V.
+Oppenheim.北京:电子工业出版社.2012.</p>
+<p>[3] 信号与系统(第二版)配套题库(上、下).来源网络.</p>
+<p>[4]
+信号与系统例题分析及习题.乐正友,杨为理,应启珩.北京:清华大学出版社.1983.</p>
+<p>[5] Signals and Systems: Analysis Using Transform Method and
+MATLAB(Second Edition). M. J. Roberts. The McGraw-Hill Companies, Inc..
+2012.</p>
+<p>[6] Animation Engine: <a
+href="https://github.com/3b1b/manim">Manimlib</a>.3b1b.</p>
+<p>[7] 马同学的数学:<a
+href="https://www.matongxue.com/madocs/32/">如何通俗地理解卷积?</a></p>
+<p>[8] <a href="https://blog.csdn.net/bitcarmanlee" target="_blank" rel="noopener">bitcarmanlee</a>.<a
+href="https://blog.csdn.net/bitcarmanlee/article/details/54729807">最容易理解的对卷积(convolution)的解释</a>.CSDN.</p>
+<p>[9] <a href="http://colah.github.io/" target="_blank" rel="noopener">colah's blog</a>. <a
+href="http://colah.github.io/posts/2014-07-Understanding-Convolutions/">Understanding
+Convolutions</a>.</p>
+<p>[10] <a href="https://www.zhihu.com/people/jing-zhe-511" target="_blank" rel="noopener">荆哲</a>.<a
+href="https://www.zhihu.com/question/54677157">卷积为什么叫「卷」积?</a>.知乎.</p>
+<p>[11] <a href="https://www.zhihu.com/people/jimbozhang" target="_blank" rel="noopener">张俊博</a>.<a
+href="https://www.zhihu.com/question/22298352/answer/34267457">如何通俗易懂地解释卷积?</a>
+知乎.</p>
+<p>[12] <a
+href="https://www.bilibili.com/video/av62763042">微分方程概论-第四章：但什么是傅立叶级数呢？-从热流到画圈圈</a>.
+3B1B. BiliBili.</p>
+<p>[13] <a
+href="https://www.bilibili.com/video/av63251517/?spm_id_from=333.788.videocard.0">12分钟的傅立叶级数动画</a>.
+3B1B. BiliBili.</p>
+<p>[14] <a
+href="https://www.bilibili.com/video/av19141078">形象展示傅里叶变换</a>.
+3B1B. BiliBili.</p>
+<p>[15] <a
+href="https://www.bilibili.com/video/av63666593">微分方程概论-第五章:在3.14分钟内理解<span
+class="math inline">\(e^{i\pi}\)</span></a>. 3B1B. BiliBili.</p>
+<p>[16] 马同学的数学:<a
+href="https://www.matongxue.com/madocs/473.html">如何通俗地理解傅立叶变换?</a></p>
+<p>[17] 马同学的数学:<a
+href="https://www.matongxue.com/madocs/619.html">如何理解傅立叶级数公式?</a></p>
+<p>[18] 马同学的数学:<a
+href="https://www.matongxue.com/madocs/712.html">从傅立叶级数到傅立叶变换</a></p>
+<p>[19] 马同学的数学:<a
+href="https://www.matongxue.com/madocs/1709/">复数，通往真理的最短路径</a></p>
+<p>[20] 马同学的数学:<a
+href="https://www.matongxue.com/madocs/2066/">欧拉公式，复数域的成人礼</a></p>
+<p>[21] <a
+href="https://www.bilibili.com/video/av26786159?from=search&amp;seid=14141271080477822702">如何通俗地理解虚数?</a>
+妈咪说MommyTalk. BiliBili.</p>
+<p>[22] <a
+href="https://www.bilibili.com/video/av29019452?from=search&amp;seid=3380693728710989784">真实的虚数</a>.
+<a href="https://www.youtube.com/user/LeiosOS" target="_blank" rel="noopener">LeiosOS - YouTube</a></p>
+<p>[23] <a
+href="https://www.cnblogs.com/BitArt/archive/2012/11/24/2786390.html">一幅图弄清楚DFT与DTFT,DFS的关系</a>.
+BitArt. cnblogs.</p>
+<p>[24] <a
+href="https://www.bilibili.com/video/av11339177">欧拉公式与初等群论</a>.
+3B1B. BiliBili.</p>
+<p>[25] <a
+href="https://www.bilibili.com/video/av26328393?from=search&amp;seid=10448092272814670103">直观解释拉普拉斯变换</a>.
+BiliBili. Youtube. PS.说实在的,我没觉得很直观.</p>
+<p>[26] <a
+href="https://www.bilibili.com/video/av74633059?from=search&amp;seid=10448092272814670103">What
+does the Laplace Transform really tell us? A visual explanation (plus
+applications)</a>. BiliBili. Youtube.</p>
+<p>[27] 马同学的数学:<a
+href="https://www.matongxue.com/madocs/723/">如何理解拉普拉斯变换?</a></p>
+<p>[28] <a
+href="https://blog.csdn.net/hnxyxiaomeng/article/details/81333568"><span
+class="math inline">\(Z\)</span>变换零点、极点分布与系统特性的关系</a>.
+CSDN.</p>
+<p>[29] <a
+href="%5Bhttp://www.hhzjkx.cn/wenda/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E9%9B%B6%E6%9E%81%E7%82%B9%E5%9B%BE%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F%5D(http://www.hhzjkx.cn/wenda/如何通过零极点图如何判断滤波器类型？)">如何通过零极点图如何判断滤波器类型?</a>.
+好好免费小说网.</p>
+<p>[30] <a
+href="https://www.zybang.com/question/29a7076397e7665e3e3c6ca2de57bcde.html">如何根据零极点分布判断滤波器类型</a>.
+作业帮.</p>
+<p>[31] <a
+href="https://zhidao.baidu.com/question/262466514.html">怎样根据系统函数的零极点个数和类型判断滤波器类型?</a>.
+百度知道.</p>
+<p>[32] <a
+href="https://www.zhihu.com/question/52386929">如何通过零极点图如何判断滤波器类型?</a>.
+知乎.</p>
+<p>[33] <a
+href="https://www.jianshu.com/p/1d1db72f39da">拉普拉斯变换与<span
+class="math inline">\(Z\)</span>变换的收敛域理解</a>. 简书.</p>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Engineering/"> Engineering</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/02/09/ss1/">
+                                                Signals and Systems | Time Invariant Property
+                                            </a>
+                                            
+                                                
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

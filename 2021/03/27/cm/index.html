@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>The Complex Number in Circuits | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    The Complex Number in Circuits
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">March 27, 2021&nbsp;&nbsp;9:17:54</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Circuit/">Circuit</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>在学习《随机信号分析与处理》的时候曾写过一篇 <a
+href="https://junx.wang/blog/2020/06/01/imaginary-number/">Are Imaginary
+Numbers Really Real?</a>
+而今学《微波技术与天线》,谁知又和复数杠上了……</p>
+</blockquote>
+<h2 id="问题">问题</h2>
+<p>　　对于平行无耗传输线的纯驻波状态,终端负载短路时,终端反射系数 <span
+class="math inline">\(\Gamma_l=-1\)</span>,驻波系数<span
+class="math inline">\(\rho\rightarrow\infty\)</span>,此时,传输线上任意一点
+<span class="math inline">\(z\)</span> 处的反射系数 <span
+class="math inline">\(\Gamma(z)=-e^{-\mathrm{j}2\beta z}\)</span> ,代入
+<span class="math display">\[
+\left\{\begin{aligned}
+U(z)&amp;=U_{+}(z)+U_{-}(z)=A_{1} \mathrm{e}^{j \beta z}[1+\Gamma(z)]\,,
+\\
+I(z)&amp;=I_{+}(z)+I_{-}(z)=\frac{A_{1}}{Z_{0}} \mathrm{e}^{j \beta
+z}[1-\Gamma(z)]\,,
+\end{aligned}\right.
+\]</span> 整理得 <span class="math display">\[
+\left\{\begin{aligned}
+U(z)&amp;=\mathrm{j} 2 A_{1} \sin \beta z \,,\\
+I(z)&amp;=\frac{2 A_{1}}{Z_{0}} \cos \beta z\,.
+\end{aligned}\right.\tag{1}
+\]</span> 设 <span class="math inline">\(A_1=|A_1|e^{j\phi_0}\)</span>
+,考虑时间因子 <span class="math inline">\(e^{j\omega t}\)</span>
+,则传输线上的电压、电流瞬时表达式为 <span class="math display">\[
+\left\{\begin{aligned}
+u(z, t)&amp;=2\left|A_{1}\right| \cos \left(\omega
+t+\phi_{0}+\frac{\pi}{2}\right) \sin \beta z \,,\\
+i(z, t)&amp;=\frac{2\left|A_{1}\right|}{Z_{0}} \cos \left(\omega
+t+\phi_{0}\right) \cos \beta z \,.
+\end{aligned}\right.\tag{2}
+\]</span> 现在我们来计算输入阻抗,根据式 <span
+class="math inline">\((1)\)</span> 有 <span class="math display">\[
+Z_{\mathrm{in}}(z)=\frac{U(z)}{I(z)}=\frac{\mathrm{j} 2 A_{1} \sin \beta
+z}{\frac{2 A_{1}}{Z_{0}} \cos \beta z}=\mathrm{j}Z_0\tan\beta
+z\,;\tag{3}
+\]</span> 而根据式 <span class="math inline">\((2)\)</span> 有 <span
+class="math display">\[
+Z_{\mathrm{in}}=\frac{u(z,t)}{i(z,t)}=\frac{2\left|A_{1}\right| \cos
+\left(\omega t+\phi_{0}+\frac{\pi}{2}\right) \sin \beta z
+}{\frac{2\left|A_{1}\right|}{Z_{0}} \cos \left(\omega t+\phi_{0}\right)
+\cos \beta z}=-Z_0\tan\left(\omega t+\phi_{0}\right)\tan\beta
+z\,.\tag{4}
+\]</span> 对比式 <span class="math inline">\((3)\)</span> 和 式 <span
+class="math inline">\((4)\)</span>,问题就在于究竟那个是正确的?根据式
+<span class="math inline">\((3)\)</span>,传输线的输入阻抗只与位置 <span
+class="math inline">\(z\)</span> 有关系;而式 <span
+class="math inline">\((4)\)</span> 不仅与位置 <span
+class="math inline">\(z\)</span> 还与时间 <span
+class="math inline">\(t\)</span>
+有关系,说明传输线上各点的输入阻抗是时变的.我们该怎么解释这个矛盾?</p>
+<p>　　首先说明本文的结论——式 <span class="math inline">\((3)\)</span>
+是正确的,而式 <span class="math inline">\((4)\)</span>
+是有偏颇的.但在解释这个问题之前,我们先看另外一个问题.</p>
+<h2 id="同个问题">"同个"问题</h2>
+<p><img src="cm.assets/fig1.svg" alt="fig1" /></p>
+<p style="text-align:center">
+图1 电路图
+</p>
+<p>　　对于图1的电路,假设电容两端的电压为 <span
+class="math inline">\(u(t)=\sin(\omega t)\)</span>,则电流 <span
+class="math inline">\(i(t)=\omega\cos( \omega
+t)\)</span>,电压与电流的比值如下: <span class="math display">\[
+\qquad u( \omega t)/i(\omega t)=\tan(\omega t)/\omega\,,\tag{5}
+\]</span> 为方便分析,可以视 <span
+class="math inline">\(\omega=1\;\mathrm{rad/s}\)</span>,但为了形式统一,还是显式地写出来.</p>
+<p>　　电容两端的电压 <span class="math inline">\(u(t)\)</span>,电流
+<span class="math inline">\(i(t)\)</span> 和 电压与电流的比值 <span
+class="math inline">\(u(t)/i(t)\)</span>
+如图2所示.很显然,电容两端的电压与电流比值并不等于电容的阻抗 <span
+class="math inline">\(Z_C=1/\mathrm{j}\omega\)</span>.
+这个矛盾与上一个问题的矛盾是一致的,显然这不是"微波"独有的问题.解释了这个问题,上一个问题的也就迎刃而解.</p>
+<p><img src="cm.assets/fig2.svg" alt="fig2" /></p>
+<p style="text-align:center">
+图2 电压、电流和电压与电流的比值
+</p>
+<p>　　其实要得到正确的电容阻抗也很简单,我们把电压和电流用相量表示:
+<span class="math display">\[
+\dot{U}=e^{\mathrm{j}0}\,,\qquad \dot{I}=\omega
+e^{\mathrm{j}{\pi}/{4}}\,,
+\]</span> 则 <span class="math display">\[
+\dot{U}/\dot{I}=e^{\mathrm{j}0}/\omega
+e^{\mathrm{j}{\pi}/{4}}=\frac{1}{\mathrm{j}\omega}=Z_C\,.\tag{6}
+\]</span> 式 <span class="math inline">\((5)\)</span>
+用相量计算得到的是正确的,与用微分方程 <span
+class="math inline">\(i(t)=C\frac{\mathrm{d}u(t)}{\mathrm{d}t}\)</span>计算的结果也是吻合的;形式上也同式
+<span class="math inline">\((3)\)</span>
+用时谐的形式计算一样.那为什么这样才是正确的呢?</p>
+<p>　　首先我们需要解决下面两个问题:</p>
+<ul>
+<li>相量与时谐的形式的一致性;</li>
+<li>复数 <span class="math inline">\(\mathrm{j}\)</span>
+是怎么被引入到电路中的,在电路中的意义是什么.</li>
+</ul>
+<h2 id="相量与时谐的形式的一致性">相量与时谐的形式的一致性</h2>
+<p>　　写此节的作用在于说明相量和时谐形式的信号本质上是一致的,才能让式
+<span class="math inline">\((5)\)</span> 的正确性与式 <span
+class="math inline">\((3)\)</span> 的正确性无缝衔接.</p>
+<p>　　相量是用于分析正弦电流电路稳定状态的一种工具,如果没有相量电路分析并非就分析不下去了,我们还可以用常微分方程来分析,前者的提出正是为了代替后者,减小电路分析和计算的难度.需要特别说明的是,相量法仅仅针对正弦电路,
+<span class="math inline">\(Z_L=\mathrm{j}\omega L\)</span> 和 <span
+class="math inline">\(X_C=1/\mathrm{j}\omega C\)</span>
+计算也仅适用于正弦稳态电路(因为所有的推导都是基于正弦电路,这也从某种程度上说明了正弦函数的特殊性和在自然界中的本质性);对于非正弦电路,我们需要借助傅里叶级数(变换),相量才适用.</p>
+<p>　　根据欧拉公式,我们可以把一个正弦量分解为一对共轭的复指数函数:
+<span class="math display">\[
+\begin{aligned}
+u_{\mathrm{s}}&amp;=\frac{1}{2}\left[U_{\mathrm{sm}}e^{\mathrm{j}(\omega
+t+\phi_u)}+U_{\mathrm{sm}}e^{\mathrm{j}(\omega t-\phi_u)} \right]\,,\\
+i&amp;=\frac{1}{2}\left[I_{\mathrm{s}}e^{\mathrm{j}(\omega
+t+\phi_u)}+I_{\mathrm{s}}e^{\mathrm{j}(\omega t-\phi_u)} \right]\,,
+\end{aligned}
+\]</span>
+根据叠加定理和数学理论,只要对其中一个分量进行分析求解,就能写出全部结果,如只取
+<span
+class="math inline">\(u_{\mathrm{s}}=U_{\mathrm{sm}}e^{\mathrm{j}(\omega
+t+\phi_u)}\)</span>,只是数学形式上的变换,跟用 <span
+class="math inline">\(u_\mathrm{s}=U_{\mathrm{sm}}\cos(\omega
+t+\phi_u)\)</span> 计算并无实质性的区别,相量便定义为 <span
+class="math inline">\(\dot{U}_{\mathrm{s}}=U_\mathrm{s}e^{\mathrm{j}\phi_u}\)</span>
+(省略了 <span class="math inline">\(\omega\)</span> 和 <span
+class="math inline">\(t\)</span>).</p>
+<p>　　时谐电磁场中,常用复数形式表示电压和电流等物理量.设 <span
+class="math inline">\(u(r, t)\)</span> 是 一个以角频率 <span
+class="math inline">\(\omega\)</span>
+随时间呈时谐变化的标量函数,其瞬时表示式为 <span class="math display">\[
+u(\boldsymbol{r}, t)=u_{\mathrm{m}}(\boldsymbol{r}) \cos [\omega
+t+\phi(\boldsymbol{r})]\,,\tag{7}
+\]</span> 式中 <span
+class="math inline">\(u_{\mathrm{m}}(\boldsymbol{r})\)</span>
+为振幅,它仅为空间坐标的函数; <span class="math inline">\(\omega\)</span>
+为角频率; <span class="math inline">\(\phi(\boldsymbol{r})\)</span>
+是与时间无关的初相位.利用复数取实部表示方法,可将式 <span
+class="math inline">\((6)\)</span> 写成 <span class="math display">\[
+u(\boldsymbol{r},
+t)=\operatorname{Re}\left[u_{\mathrm{m}}(\boldsymbol{r})
+\mathrm{e}^{\mathrm{j} \phi(\boldsymbol{r})} \mathrm{e}^{\mathrm{j}
+\omega t}\right]=\operatorname{Re}\left[\dot{u}(\boldsymbol{r})
+\mathrm{e}^{\mathrm{j} \omega t}\right]\,,
+\]</span> 式中 <span class="math display">\[
+\dot{u}(\boldsymbol{r})=u_{\mathrm{m}}(\boldsymbol{r})
+\mathrm{e}^{\mathrm{j} \phi(\boldsymbol{r})}\,,
+\]</span> 称为复振幅,或称为 <span
+class="math inline">\(u(\boldsymbol{r}, t)\)</span>
+的复数或时谐形式.</p>
+<p>　　对比相量与时谐形式,显然本质上他们是一致的.</p>
+<h2 id="电路分析中复数的引入">电路分析中复数的引入</h2>
+<p>　　下面我们来看看复数是怎么被引入到电路分析中的.</p>
+<h3 id="emathrmjtheta-的-几何意义"><span
+class="math inline">\(e^{\mathrm{j}\theta}\)</span> 的 几何意义</h3>
+<p>　　任意复数 <span
+class="math inline">\(A=|A|e^{\mathrm{j}\theta}\)</span>
+在复平面上相当于把 <span class="math inline">\(e^{\mathrm{j}0}\)</span>
+也就是向量 <span class="math inline">\((1,0)\)</span> 的模值伸缩为 <span
+class="math inline">\(|A|\)</span>, 再逆时针旋转一个角度 <span
+class="math inline">\(\theta\)</span>.
+这一点从欧拉公式上也是显而易见的(更多说明可以参考[4,5]).</p>
+<h3 id="电容电感的数学模型">电容、电感的数学模型</h3>
+<p>　　我们对电感和电容的数学建模如下: <span class="math display">\[
+u=L \frac{\mathrm{d} i}{\mathrm{d} t}\,,
+\]</span></p>
+<p><span class="math display">\[
+i=C\frac{\mathrm{d}u}{\mathrm{d}t}\,,
+\]</span></p>
+<p>对于正弦电路,微分正好蕴藏着<strong>相移 <span
+class="math inline">\(\pi/2\)</span></strong> 这一信息,而 <span
+class="math inline">\(\mathrm{j}=1\times e^{\mathrm{j}\pi/2}\)</span>
+的物理意义正好代表相移 <span class="math inline">\(\pi/2\)</span>,故一个
+<span class="math inline">\(\mathrm{j}\)</span>
+就将微分方程化繁为简.但更重要的是,这个 <span
+class="math inline">\(\mathrm{j}\)</span>
+揭示了一个我们平常并不关注的一个维度——波的本质上是三维的,其传输如图3所示.利用欧拉公式
+<span class="math inline">\(e^{\mathrm{j}\omega t}=\cos
+t+\mathrm{j}\sin(t)\)</span>,我们一般所指的波只是其实部;或者说我们只是看到了一个投影(或切片).在[3]中,<a
+href="https://www.zhihu.com/people/waveview">WaveView</a>的回答说:<strong>对自然界实际的物理量和信号,都不存在虚数一说;用虚数是为了数学处理方便.</strong>首先<strong>虚数</strong>这个说法是不合适的,这样的说法总是致使我们错认为
+<span class="math inline">\(\mathrm{j}\)</span>
+是不存在的,关于复数存不存在之前已经在 <a
+href="https://junx.wang/blog/2020/06/01/imaginary-number/">Are Imaginary
+Numbers Really Real?</a>
+中讨论过了——复数是"真实存在"的,便不再赘述.引入复数是为了数学处理方便的说法诚然正确,但仅仅只是为了数学分析方便吗?私以为不然,正是复数的引入才让我们看到信号的全貌,而我们为什么要拒绝这种全貌——蜷缩在二维的视角中呢?</p>
+<p><img src="cm.assets/image-20210327185206847.png"
+alt="image-20210327185206847" /></p>
+<p style="text-align:center">
+图3 三维空间中的波形与投影(等有时间再用Manim做一个动画)
+</p>
+<p>　　在这里,复数 <span class="math inline">\(\mathrm{j}\)</span>
+的物理意义(之一)可以说是"相位",打双引号是因为这种表征是隐式的,而非显式的(要么通过
+<span class="math inline">\(e\)</span>
+复指数表现出来,要么通过实部虚部求反正切表现出来).</p>
+<p>　　回到<strong>"同一"问题</strong>的讨论上来,将式 <span
+class="math inline">\((5)\)</span> 重写如下 <span
+class="math display">\[
+\qquad u( \omega t)/i(\omega t)=\tan(\omega t)/\omega\,,\tag{5}
+\]</span>
+这里我们用的是电压和电流在实轴上的投影来算阻抗,由于存在相移,显然已经没有什么意义——相当我们在二维世界中推导三维世界的中的结果,信息(即维度)的缺失导致推导出来的结论存在偏颇.如果硬要对式
+<span class="math inline">\((4)\)</span> 有什么解释的话,大概只能说 <span
+class="math inline">\(\tan(\omega t)/\omega\)</span>
+是一个等效的电阻;将图2中的电容替换成阻值按照 <span
+class="math inline">\(\tan(\omega t)/\omega\)</span>
+规律变化的电阻,同样在等效电阻的两端施加 <span
+class="math inline">\(u(t)=\sin (t)\)</span>
+的电压,我们得到的电压和电流变化规律与电容两端的电压电流变化是一致的.</p>
+<p>　　将式 <span class="math inline">\((6)\)</span> 重写如下: <span
+class="math display">\[
+\dot{U}/\dot{I}=e^{\mathrm{j}0}/\omega
+e^{\mathrm{j}{\pi}/{4}}=\frac{1}{\mathrm{j}\omega}=Z_C\,,\tag{6}
+\]</span> 姑且将其运算称为"几何"运算(也就是复数的基本运算),而式 <span
+class="math inline">\((4)\)</span>
+中的运算称为"算术"运算.算术运算对于纯电阻的情况是成立的,因为电阻不会导致电流或者电压发生相移,即任何时刻电压和电流都是同相的,所以我们也没必要从三维的角度来看待这个问题.算术运算是几何运算的一种特殊情况.</p>
+<h2 id="回答问题">回答问题</h2>
+<p>　　根据以上的解释,对于<strong>问题</strong>中的式 <span
+class="math inline">\((3)\)</span> 和式 <span
+class="math inline">\((4)\)</span> <span class="math display">\[
+Z_{\mathrm{in}}(z)=\frac{U(z)}{I(z)}=\frac{\mathrm{j} 2 A_{1} \sin \beta
+z}{\frac{2 A_{1}}{Z_{0}} \cos \beta z}=\mathrm{j}Z_0\tan\beta
+z\,,\tag{3}
+\]</span></p>
+<p><span class="math display">\[
+Z_{\mathrm{in}}=\frac{u(z,t)}{i(z,t)}=\frac{2\left|A_{1}\right| \cos
+\left(\omega t+\phi_{0}+\frac{\pi}{2}\right) \sin \beta z
+}{\frac{2\left|A_{1}\right|}{Z_{0}} \cos \left(\omega t+\phi_{0}\right)
+\cos \beta z}=-Z_0\tan\left(\omega t+\phi_{0}\right)\tan\beta
+z\,,\tag{4}
+\]</span></p>
+<p>孰是孰非的问题也就不言而喻了.</p>
+<p>　　如果不采用时谐形式计算,我们能够得到正确答案吗?答案是肯定的——借助工具常微分方程.
+<span class="math display">\[
+\begin{aligned}
+C&amp;=i(t)/\frac{\mathrm{d}u(t)}{\mathrm{d}t}\\
+&amp;=\left[\frac{2\left|A_{1}\right|}{Z_{0}} \cos \left(\omega
+t+\phi_{0}\right) \cos \beta
+z\right]\bigg/\left[-2\omega\left|A_{1}\right| \cos \left(\omega
+t+\phi_{0}\right) \sin \beta z\right]\\
+&amp;=\frac{1}{-\omega Z_0 \tan\beta z}\,,
+\end{aligned}\tag{8}
+\]</span> 故 <span class="math display">\[
+Z_{\mathrm{in}}=\frac{1}{\mathrm{j}\omega C}=-\frac{\omega Z_0 \tan\beta
+z}{\mathrm{j}\omega}=\mathrm{j}Z_0 \tan\beta z\,,
+\]</span> 其结果与式 <span class="math inline">\((3)\)</span> 一致的.式
+<span class="math inline">\((8)\)</span> 的计算针对的是图5中 <span
+class="math inline">\(z\in
+(\frac{\lambda}{4},\frac{\lambda}{2})\)</span> 的等效情况.</p>
+<p><img src="cm.assets/fig3.svg" alt="fig3" /></p>
+<p style="text-align:center">
+图4 终端短路线中的纯驻波状态
+</p>
+<p>　　对于等效电感呢?其实也是一样的, <span class="math display">\[
+\begin{aligned}
+L&amp;=u(t)/\frac{\mathrm{d}i(t)}{\mathrm{d}t}\\
+&amp;=\left[2\left|A_{1}\right| \cos \left(\omega
+t+\phi_{0}+\frac{\pi}{2}\right) \sin \beta
+z\right]\bigg/\left[  -\frac{2\left|A_{1}\right|\omega}{Z_{0}} \sin
+\left(\omega t+\phi_{0}\right) \cos \beta z\right]\\
+&amp;=\left[-2\left|A_{1}\right| \sin \left(\omega t+\phi_{0}\right)
+\sin \beta
+z\right]\bigg/\left[  -\frac{2\left|A_{1}\right|\omega}{Z_{0}} \sin
+\left(\omega t+\phi_{0}\right) \cos \beta z\right]\\
+&amp;=\frac{Z_0\tan\beta z}{\omega}\,,
+\end{aligned}\tag{9}
+\]</span> 则 <span class="math display">\[
+Z_{\mathrm{in}}=\mathrm{j}\omega L=\mathrm{j}\omega\frac{Z_0\tan\beta
+z}{\omega}=\mathrm{j}Z_0 \tan\beta z\,,
+\]</span> 结果同样一致.这里 <span
+class="math inline">\(Z_{\mathrm{in}}\)</span>
+不过是物理意义上的等效"电容"和"电感"而已,数字规律是一样的(符合 <span
+class="math inline">\(\mathrm{j}Z_0 \tan\beta z\)</span>
+的规律),故怎么算都是一样的.</p>
+<p>　　但是对于一般情况,我们并不先验地知道电阻元件是纯电阻、感性还是容性,也就无法判断是用下面哪个式子来算:
+<span class="math display">\[
+u=L \frac{\mathrm{d} i}{\mathrm{d} t}\,,\qquad
+i=C\frac{\mathrm{d}u}{\mathrm{d}t}\,.
+\]</span></p>
+<p>但是用相量或时谐形式来运算,我们总能得到正确的答案,而不需要先验地知道元件到底是呈什么性质.这也佐证了复数的引入让电路分析或者信号处理上升到更为本质的层面,而不是仅仅为了数学分析的方便.</p>
+<h2 id="后记">后记</h2>
+<p>　　写完本文,又想到一个哲学的问题——数学是人类的发明还是发现?个人选择后者.</p>
+<p>　　<span class="math inline">\(\sin(t)\)</span> 函数与 <span
+class="math inline">\(\cos(t)\)</span> 函数相位上相差 <span
+class="math inline">\(\pi/2\)</span>,而二者的微分结果在相位上亦相差
+<span
+class="math inline">\(\pi/2\)</span>,由此我们引入复数来表征物理量的相位关系;而正弦函数正是傅里叶级数的基底,通过傅里叶级数和傅里叶变换我们又可以将这种分析方法推广到任意信号的分析.这种多米诺骨牌效应般环环相扣的设计,非深邃的宇宙而无人可以孕育.我们所窥见的构建宇宙的数学法则大概也只是冰山一角罢.</p>
+<blockquote>
+<p>I believe that mathematical reality lies outside us, that our
+function is to discover or observe it, and that the theorems which we
+prove, and which we describe grandiloquently as our <em>creations</em>,
+are simply our notes of our observations.</p>
+<p style="text-align:right">
+<i>A Mathematician's Apology</i> by G. H. Hardy
+</p>
+</blockquote>
+<h2 id="参考文献">参考文献</h2>
+<p>[1]
+微波技术与天线.第四版.刘学观,郭辉萍[M].西安:西安电子科技大学出版社.2016.</p>
+<p>[2] 电路.第五版.邱关源,罗先觉[M].北京:高等教育出版社.2006.</p>
+<p>[3] <a
+href="https://www.zhihu.com/question/359911012">信号中的虚部的物理意义是什么?</a>.
+知乎.</p>
+<p>[4] <a
+href="https://www.bilibili.com/video/av11339177">欧拉公式与初等群论</a>.
+3B1B. BiliBili.</p>
+<p>[5] <a
+href="https://www.bilibili.com/video/av63666593">微分方程概论-第五章:在3.14分钟内理解<span
+class="math inline">\(e^{i\pi}\)</span></a>. 3B1B. BiliBili.</p>
+<p>[6]
+电磁场与电磁波.第四版.谢处方,饶克谨[M].北京:高等教育出版社.2006.</p>
+<p>[7] 绘图工具: <span class="math inline">\(\mathrm{\LaTeX}\)</span>
+宏包 <span class="math inline">\(\mathrm{PGF}\,\&amp;\,
+\mathrm{Ti}k\mathrm{z}\)</span> 以及 Manim 动画引擎.</p>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Math/"> Math</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2021/04/02/hsi-rgb/">
+                                                Conversion Between HSI and RGB
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2021/02/28/ps-bayes-classical/">
+                                                        Probability and Statistics | Bayes and Classical Sects
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

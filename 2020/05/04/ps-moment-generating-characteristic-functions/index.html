@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Probability and Statistics | Moment Generating, Characteristic Functions, and Laplace Transforms | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Probability and Statistics | Moment Generating, Characteristic Functions, and Laplace Transforms
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">May 4, 2020&nbsp;&nbsp;16:33:40</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Probability-and-Statistics/">Probability and Statistics</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <h2 id="prologue">Prologue</h2>
+<p>When I was a freshman, learning the course <em>Probability and
+Statistics</em>, I was confused about the concept
+<strong>moment</strong>, and the same concept in Chinese is “矩”. Until
+I got some ideas about it, I also realized the profound meaning of
+Chinese, which is a little bit like the original of the word
+<em>moment</em>. Magical the languages are, that's not the point I want
+to focus on. Let's dive into the subject.</p>
+<h2 id="moment">Moment</h2>
+<center>
+<table>
+<thead>
+<tr class="header">
+<th>Moment</th>
+<th>Uncentered</th>
+<th>Centered</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1st</td>
+<td><span class="math inline">\(E(x)=\mu\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2nd</td>
+<td><span class="math inline">\(E\left(X^{2}\right)\)</span></td>
+<td><span class="math inline">\(E\left((X-\mu)^{2}\right)\)</span></td>
+</tr>
+<tr class="odd">
+<td>3rd</td>
+<td><span class="math inline">\(E\left(X^{3}\right)\)</span></td>
+<td><span class="math inline">\(E\left((X-\mu)^{3}\right)\)</span></td>
+</tr>
+<tr class="even">
+<td>4th</td>
+<td><span class="math inline">\(E\left(X^{4}\right)\)</span></td>
+<td><span class="math inline">\(E\left((X-\mu)^{4}\right)\)</span></td>
+</tr>
+</tbody>
+</table>
+</center>
+<p><span class="math display">\[
+\begin{array}{ll}\operatorname{Mean}(X) &amp; =E(X) \\
+\operatorname{Var}(X) &amp; =E\left[(X-\mu)^{2}\right]=\sigma^{2} \\
+\text {Skewness}(X) &amp; =E\left[(X-\mu)^{3}\right] / \sigma^{3} \\
+\text {Kurtosis}(X) &amp; =E\left[(X-\mu)^{4}\right] /
+\sigma^{4}\end{array}
+\]</span></p>
+<h2 id="moment-generating-functions-mgf">Moment Generating Functions
+(MGF)</h2>
+<p>The <em>moment generating function</em> of <span
+class="math inline">\(X\)</span> is defined by <span
+class="math display">\[
+\begin{aligned}
+\psi(t) &amp;=E\left[e^{tX}\right] \\
+&amp;=\int e^{t X} \mathrm{d} F(x) .
+\end{aligned} \tag{1}
+\]</span> All the moments of <span class="math inline">\(X\)</span> can
+be successively obtained by differentiating <span
+class="math inline">\(\psi\)</span> and then evaluating at <span
+class="math inline">\(t=0\)</span>. That is, <span
+class="math display">\[
+\begin{aligned}
+&amp;\psi^{\prime}(t)=E\left[X e^{t X}\right],\\
+&amp;\psi^{\prime \prime}(t)=E\left[X^{2} e^{t X}\right],\\
+&amp;\qquad\quad \cdots\\
+&amp;\psi^{n}(t)=E\left[X^{n} e^{t X}\right].
+\end{aligned} \tag{2}
+\]</span> Evaluating at <span class="math inline">\(t=0\)</span> yields
+<span class="math display">\[
+\psi^{n}(0)=E\left[X^{n}\right], \ n \geqslant 1\ . \tag{3}
+\]</span> It should be noted that we have assumed that it is justifiable
+to interchange the differentiation and integration operations. This is
+usually the case.</p>
+<p>　When a moment generating function exists, it uniquely determines
+the distribution. This is quite important because it enables us to
+characterize the probability of a random variable by its generating
+function.</p>
+<p>　Here, we need to tell the MGF from <em>Probability Generating
+Function</em>, of a non-negative integer random variable <span
+class="math inline">\(X\)</span>, which is defined by <span
+class="math display">\[
+G(t)=E\left(t^{X}\right)=\sum_{x=0}^{\infty} P(x) t^{x}\ . \tag{4}
+\]</span> 　By the way, we may be very curious about that why we define
+the MGF using the form of <span class="math inline">\(\text{e}\)</span>
+exponent. That's what will be talked about in <a href="#1">Example
+2</a>.</p>
+<p>Now, let dive into the formula <span
+class="math inline">\((3)\)</span>. We use the Taylor series to prove
+this. Let's get the Maclaurin expansion of <span
+class="math inline">\(e^x\)</span>: <span class="math display">\[
+e^{X}=1+X+\frac{X^{2}}{2 !}+\frac{X^{3}}{3 !}+\cdots+\frac{X^{n}}{n !}
+\]</span> then, <span class="math display">\[
+e^{t X}=1+t x+\frac{(t X)^{2}}{2 !}+\frac{(t X)^{3}}{3
+!}+\cdots+\frac{(t X)^{n}}{n !}\ .
+\]</span> Take the expected value: <span class="math display">\[
+\begin{aligned}
+E\left(e^{t X}\right) &amp;=E\left[1+t X+\frac{(t X)^{2}}{2 !}+\frac{(t
+X)^{3}}{3 !}+\cdots+\frac{(t X)^{n}}{n !}\right] \\
+&amp;=E(1)+t E(X)+\frac{t^{2}}{2 !} E\left(X^{2}\right)+\frac{t^{3}}{3
+!} E\left(X^{3}\right)+\cdots+\frac{t^{n}}{n !} E\left(X^{n}\right) \ .
+\end{aligned}
+\]</span> Now, take a derivative with respect to <span
+class="math inline">\(t\)</span>: <span class="math display">\[
+\begin{aligned}
+\frac{\mathrm{d}}{\mathrm{d} t} E\left(e^{t
+X}\right)&amp;=\frac{\mathrm{d}}{\mathrm{d} t}\left[E(1)+t
+E(X)+\frac{t^{2}}{2 !} E\left(X^{2}\right)+\frac{t^{3}}{3 !}
+E\left(X^{3}\right)+\cdots+\frac{t^{n}}{n !} E\left(X^{n}\right)\right]
+\\
+&amp;=0+E(X)+0+0+\cdots+0 \quad (\text{Let }t=0)\\
+&amp;=E(X) \ .
+\end{aligned}
+\]</span> Let's replace the <span class="math inline">\(x\)</span> with
+<span class="math inline">\(X\)</span>, take <span
+class="math inline">\(n\)</span> times of derivative, and we will get
+the formula <span class="math inline">\((3)\)</span>. Besides, we can
+see the role of the variable <span class="math inline">\(t\)</span>, who
+helps us calculate the derivatives and makes the terms (that we are not
+interested in) zero.</p>
+<h3 id="why-do-we-need-mgf">Why do we need MGF?</h3>
+<p>For convenience. It is much easier to get the expected value using
+the MGF than the definition of expected values. Using the MGF, it is
+possible to find moments by taking derivatives rather than doing
+integrals! The followings are tow examples.</p>
+<h4 id="example-1">Example 1</h4>
+<p>The expected value of exponential distribution. <span
+class="math display">\[
+f_{X}(x)=\left\{\begin{array}{cl}
+\lambda \cdot e^{-\lambda x} &amp;  x&gt;0 \\
+0 &amp; \text { else }
+\end{array}\right.
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\psi(t)=E\left[e^{t X}\right]&amp;=\int_{0}^{\infty} e^{t x} \cdot
+\lambda e^{-\lambda x} \mathrm{d} x \\
+&amp; =\lambda \int_{0}^{\infty} e^{(t-\lambda) x} \mathrm{d} x \quad
+\text{(Note)}\\
+&amp;=\lambda\left|\frac{1}{t-\lambda} e^{(t-\lambda)
+x}\right|_{0}^{\infty} \\
+&amp;=\lambda\left(0-\frac{1}{t-\lambda}\right)\\
+&amp;=\frac{\lambda}{\lambda-t}\,.
+\end{aligned}
+\]</span></p>
+<p><strong>Note</strong>: For the MGF to exist, the expected value <span
+class="math inline">\(E(e^{tx})\)</span> should exist. So, <span
+class="math inline">\(t-\lambda&lt;0\)</span> is an important condition
+to meet. Otherwise, the integral won't converge.</p>
+<p>　Once we have the MGF: <span
+class="math inline">\(\lambda/(\lambda-t)\)</span>, calculating moments
+becomes just a matter of taking derivatives, which is easier than the
+integrals to calculate the expected value directly. <span
+class="math display">\[
+E\left(X^{3}\right)=\frac{\mathrm{d}^{3}}{\mathrm{d}
+t^{3}}\left(\frac{\lambda}{\lambda-t}\right) \quad \text{is easier than}
+\quad E\left(X^{3}\right)=\int_{0}^{\infty} x^{3} \lambda e^{-\lambda x}
+\mathrm{d} x \ .
+\]</span></p>
+<h4 id="example-2"><span id="1">Example 2</span></h4>
+<p>Let <span class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span> be independent normal random variables
+with respective means <span class="math inline">\(\mu_{1}\)</span> and
+<span class="math inline">\(\mu_{2}\)</span> and respective variances
+<span class="math inline">\(\sigma_{1}^{2}\)</span> and <span
+class="math inline">\(\sigma_{2}^{2} .\)</span> The moment generating
+function of their sum is given by <span class="math display">\[
+\begin{aligned}
+\psi_{X+Y}(t) &amp;=E\left[e^{t(X+Y)}\right] \\
+&amp;=E\left[e^{t X}\right] E\left[e^{t Y}\right] \quad \text{(by
+independence)}\\
+&amp;=\psi_{X}(t) \psi_{Y}(t)\\
+&amp;=\exp \left\{\left(\mu_{1}+\mu_{2}\right)
+t+\left(\sigma_{1}^{2}+\sigma_{2}^{2}\right) t^{2} / 2\right\} \,.
+\end{aligned}
+\]</span> Thus the moment generating function of <span
+class="math inline">\(X+Y\)</span> is that of a normal random variable
+with mean <span class="math inline">\(\mu_1+\mu_2\)</span> and variance
+<span class="math inline">\(\sigma_{1}^{2}+\sigma_{2}^{2}\)</span>. By
+uniqueness, this is the distribution of <span
+class="math inline">\(X+Y\)</span>.</p>
+<p>　By this example, we make a trivial process becomes a non-trivial
+one using the MGF.</p>
+<p>　In my opinion, the MGP derives from the Laplace transform. Thus it
+inherits the form of <span class="math inline">\(e\)</span> exponent.
+The power of <span class="math inline">\(e\)</span> exponent lies in the
+converting between <em>multiplication</em> and <em>addition</em>.</p>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<ol type="1">
+<li>For any valid MGF, <span class="math inline">\(M(0) = 1\)</span>.
+Whenever you compute an MGF, plug in <span class="math inline">\(t =
+0\)</span> and see if you get <span
+class="math inline">\(1\)</span>.</li>
+<li>Moments provide a way to specify a distribution. For example, you
+can completely specify the normal distribution by the first two moments
+which are a mean and variance. As you know multiple different moments of
+the distribution, you will know more about that distribution. If there
+is a person that you haven’t met, and you know about their height,
+weight, skin color, favorite hobby, etc., you still don’t necessarily
+fully know them but are getting more and more information about
+them.</li>
+<li>The beauty of MGF is, once you have MGF (once the expected value
+exists), you can get any <span class="math inline">\(n^{th}\)</span>
+moment. MGF encodes all the moments of a random variable into a single
+function from which they can be extracted again later.</li>
+<li>A probability distribution is uniquely determined by its MGF. If two
+random variables have the same MGF, then they must have the same
+distribution. (<a
+href="https://math.stackexchange.com/questions/458680/how-to-prove-moment-generating-function-uniqueness-theorem">Proof</a>)</li>
+<li>For the people (like me) who are curious about the terminology
+“moments”: <a
+href="https://stats.stackexchange.com/questions/17595/whats-so-moment-about-moments-of-a-probability-distribution">Why
+is a moment called moment?</a></li>
+<li>One of the important features of a distribution is how heavy its
+tails are, especially for risk management in finance. If you recall the
+2009 financial crisis, that was essentially the failure to address the
+possibility of rare events happening. Risk managers understated the
+kurtosis (kurtosis means ‘bulge’ in Greek) of many financial securities
+underlying the fund’s trading positions. Sometimes seemingly random
+distributions with hypothetically smooth curves of risk can have hidden
+bulges in them. And we can detect those using MGF!</li>
+</ol>
+<p style="text-align:right">
+——Aerin Kim
+</p>
+</blockquote>
+<h2 id="characteristic-functions-cf">Characteristic Functions (CF)</h2>
+<p>As the moment generating function of a random variable <span
+class="math inline">\(X\)</span> need not exist, it is theoretically
+convenient to define the <em>characteristic function</em> of <span
+class="math inline">\(X\)</span> by <span class="math display">\[
+\phi(t)=E\left[e^{itX}\right], \ -\infty&lt;t&lt;\infty \ , \tag{5}
+\]</span> where <span class="math inline">\(i=\sqrt{-1}\)</span>. It can
+be shown that <span class="math inline">\(\phi\)</span> <strong>always
+exists</strong> and, like the moment generating function, uniquely
+determines the distribution of <span
+class="math inline">\(X\)</span>.</p>
+<p>　Similar to the MGF above, we can also get the Maclaurin expansion
+of formula <span class="math inline">\((5)\)</span>: <span
+class="math display">\[
+\begin{aligned}
+E\left(e^{it X}\right) &amp;=E\left[1+it X+\frac{(it X)^{2}}{2
+!}+\frac{(it X)^{3}}{3 !}+\cdots+\frac{(it X)^{n}}{n !}\right] \\
+&amp;=E(1)+it E(X)+\frac{(it)^{2}}{2 !}
+E\left(X^{2}\right)+\frac{(it)^{3}}{3 !}
+E\left(X^{3}\right)+\cdots+\frac{(it)^{n}}{n !} E\left(X^{n}\right) \ .
+\end{aligned}
+\]</span> We call it characteristic function because it consists of all
+the moments of the distribution.</p>
+<blockquote>
+<p>A generating function is a clothesline on which we hang up a sequence
+of numbers for display.</p>
+<p style="text-align:right">
+——Herbert Wilf
+</p>
+</blockquote>
+<p>The same with the characteristic function. Compared with the MGF, CF
+expands the number domain from <span
+class="math inline">\(\mathbb{R}\)</span> to <span
+class="math inline">\(\mathbb{C}\)</span>, however, the latter one is
+limited within the imaginary axis, not the whole complex plane. And
+that's enough for most of the cases.</p>
+<h3 id="relationship-with-fourier-transform">Relationship with Fourier
+Transform</h3>
+<p>We know that the Fourier transform is defined by <span
+class="math display">\[
+F(t)=\int_{-\infty}^{\infty} f(x) e^{-i t x} \mathrm{d} x\ . \tag{6}
+\]</span> Compared with CF <span class="math display">\[
+\begin{aligned}
+\phi_{X}(t) &amp;=E\left[e^{i t X}\right] \\
+&amp;=\int_{-\infty}^{+\infty} e^{i t x} f(x) \mathrm{d} x \ ,
+\end{aligned}\tag{7}
+\]</span> it's obvious that the tow function are conjugated: <span
+class="math inline">\(\phi_X(t)=\overline{F(t)}\)</span>.</p>
+<p>　Similarly, we can get the <span class="math inline">\(f(x)\)</span>
+form <span class="math inline">\(\phi_X(t)\)</span> through Fourier
+inversion: <span class="math display">\[
+f(x)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} e^{i t x} F(t) \mathrm{d}
+t=\frac{1}{2 \pi} \int_{-\infty}^{\infty} e^{i t x}
+\overline{\phi_{X}(t)} \mathrm{d} t \ . \tag{8}
+\]</span></p>
+<hr />
+<p>We may define the joint moment generating of the random variables
+<span class="math inline">\(X_1,X_2,\dots,X_n\)</span> by <span
+class="math display">\[
+\psi\left(t_{1}, \ldots, t_{n}\right)=E\left[\exp \left\{\sum_{i=1}^{n}
+t_{1} X_{1}\right\}\right]\ , \tag{9}
+\]</span> or the joint characteristic function by <span
+class="math display">\[
+\phi\left(t_{1}, \ldots, t_{n}\right)=E\left[\exp \left\{i
+\sum_{j=1}^{n} t_{1} X_{1}\right\}\right]\ . \tag{10}
+\]</span> It may be proven that the joint moment generating function
+(when it exists) or the joint characteristic function uniquely
+determines the joint distribution.</p>
+<h2 id="laplace-transforms">Laplace Transforms</h2>
+<p>When dealing with random variables that only assume non-negative
+values, it is sometimes more convenient to use <em>Laplace
+transforms</em> rather than characteristic functions. The Laplace
+transform of the distribution <span class="math inline">\(F\)</span> is
+defined by <span class="math display">\[
+\mathcal{L}(s)=\int_{0}^{\infty} e^{-sx} \mathrm{d} F(x)\ . \tag{11}
+\]</span> This integral exists for complex variables <span
+class="math inline">\(s=a+bi\)</span>, where <span
+class="math inline">\(a \geqslant 0\)</span>. As in the case of
+characteristic functions, the Laplace transform uniquely determines the
+distribution.</p>
+<p>　Here, the number field has been expanded to the whole complex
+plane.</p>
+<h2 id="how-to-understand-those-functions">How to Understand those
+Functions</h2>
+<p>In fact, the MGF, the CF, and the Fourier transform are all special
+kinds of Laplace transform. They belongs to the field of harmonic
+analysis. They all map the random variable to another number field, thus
+getting some magical properties of the random variables. And once again,
+we gain deeper understanding of <em>transform</em>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Sheldon M. Ross. Stochastic Processes. Second Edition. John Wiley
+&amp; Sons, Inc. 1996.</li>
+<li>Reddit. <a
+href="https://www.reddit.com/r/Physics/comments/2og3tf/why_is_a_moment_called_a_moment/">Why
+is a moment called a moment?</a></li>
+<li>马同学的数学. <a
+href="https://www.matongxue.com/madocs/412.html">如何理解概率论中的“矩”?</a></li>
+<li>马同学的数学. <a
+href="https://www.matongxue.com/madocs/742/">如何理解统计中的特征函数?</a></li>
+<li>百度百科. <a
+href="%5Bhttps://baike.baidu.com/item/%E7%9F%A9/5340997%5D(https://baike.baidu.com/item/矩/5340997)">矩</a>.</li>
+<li>知乎. <a
+href="https://www.zhihu.com/question/19915565">统计学中「矩」这个概念是怎么引入的?它为什么被称为矩?它与物理意义上的矩有什么相同与不同?</a></li>
+<li>ThoughtCo. <a
+href="https://www.thoughtco.com/what-are-moments-in-statistics-3126234">What
+Are Moments in Statistics?</a></li>
+<li>YouTube/Ben1994. <a
+href="https://www.youtube.com/watch?v=OKdjid9FeKk">Introduction to
+Moment Generating Functions</a>.</li>
+<li>Aerin Kim. <a
+href="https://towardsdatascience.com/moment-generating-function-explained-27821a739035">Moment
+Generating Function Explained</a>.</li>
+<li>Math.StackExchange. <a
+href="https://math.stackexchange.com/questions/172567/what-kind-of-book-would-show-where-the-inspiration-for-the-laplace-transform-cam">What
+kind of book would show where the inspiration for the Laplace transform
+came from?</a>.</li>
+<li>Math.StackExchange. <a
+href="https://hsm.stackexchange.com/questions/3420/what-is-the-history-of-moment-generating-functions-and-the-more-general-charact">What
+is the history of moment generating functions, and the more general
+characteristic functions?</a></li>
+</ul>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Math/"> Math</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/05/06/ps-poisson-distribution/">
+                                                Probability and Statistics | Poisson Distribution
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/04/26/language-in-thought-and-action/">
+                                                        Excerpt | Language in Thought and Action
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Conversion Between HSI and RGB | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Conversion Between HSI and RGB
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">April 2, 2021&nbsp;&nbsp;19:13:34</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Image-Processing/">Image Processing</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>HSI和RGB颜色的相互转换从定义上来看,是直观明了的,但数学的推导却是繁琐的.</p>
+</blockquote>
+<h2 id="从rgb到hsi的转换">从RGB到HSI的转换</h2>
+<p>　　RGB模型是根据单位立方体定义的.然而,
+HSI模型的颜色分量(色相和饱和度)是根据图1(a)所示的颜色三角形来定义的.在图1(a)中,注意到色点<span
+class="math inline">\(P\)</span>的色调<span
+class="math inline">\(H\)</span>是所示矢量相对于红原色轴的角度.因此,当
+<span class="math inline">\(H=0^{\circ}\)</span> 时,颜色为红色.当 <span
+class="math inline">\(H\)</span> 为 <span
+class="math inline">\(60^{\circ}\)</span> 时,颜色为黄色,以此类推.色点
+<span class="math inline">\(P\)</span> 的饱和度 <span
+class="math inline">\(S\)</span> 是颜色未被白色稀释的程度,与 <span
+class="math inline">\(P\)</span> 到三角形中心的距离成正比. <span
+class="math inline">\(P\)</span> 距离三角形中心越远,它的颜色越饱和.</p>
+<p><img src="hsi-rgb.assets/drawing.svg" alt="drawing" /></p>
+<p style="text-align:center">
+图 1(a)　　　　　　　　　　　　　　　　图 1(b)
+</p>
+<p>　　在HSI模型中,强度是根据一条垂直于三角形并通过其中心的线来测量的.沿着三角形下面这条线的强度趋于从暗到黑.相反,在三角形以上的强度则从亮到白.</p>
+<p>　　在三维色彩空间中结合色相、饱和度和强度可以得到图1(b)所示的三面金字塔状结构.这个结构表面的任何一点都代表了一种纯饱和的颜色.该颜色的色调取决于它相对于红原色轴的角度,其强度取决于它与黑色点的垂直距离(也就是说,与黑色的距离越大,该颜色的强度越大).类似的结论也适用于结构内部的点,唯一的区别是颜色在接近垂直轴时变得不那么饱和.</p>
+<p>　　HSI模型中的颜色是根据归一化后的红色、绿色和蓝色值定义的，以RGB原色给出
+<span class="math display">\[
+r=\frac{R}{R+G+B}\,,\tag{1}
+\]</span></p>
+<p><span class="math display">\[
+g=\frac{G}{R+G+B}\,,\tag{2}
+\]</span></p>
+<p><span class="math display">\[
+b=\frac{B}{R+G+B}\,,\tag{3}
+\]</span></p>
+<p>故 <span class="math inline">\(r,g,b\in [0,1]\)</span>,且 <span
+class="math display">\[
+r+g+b=1\,.\tag{4}
+\]</span> 注意, 虽然 <span class="math inline">\(R,G\)</span> 和 <span
+class="math inline">\(B\)</span> 能同时达到最大值,但归一化值仍满足式
+<span
+class="math inline">\((4)\)</span>.事实上,这个方程的平面包含了HSI三角形.</p>
+<p><img src="hsi-rgb.assets/drawing-1618293307094.svg"
+alt="drawing" /></p>
+<p style="text-align:center">
+图 2(a)　　　　　　　　　　　　图 2(b)　　　　　　　　　　　　　　图
+2(c)
+</p>
+<p>　　对于任意的 <span class="math inline">\(R,G\)</span> 和 <span
+class="math inline">\(B\)</span> 分量,每一个在范围 <span
+class="math inline">\([0,1]\)</span> 内, HSI的强度分量定义为 <span
+class="math display">\[
+I=\frac{1}{3}(R+G+B)\,,\tag{5}
+\]</span> 其值在 <span class="math inline">\([0,1]\)</span> 范围内.</p>
+<p>　　下一步是获得 <span class="math inline">\(H\)</span> 和 <span
+class="math inline">\(S\)</span> 分量,为了从图2的几何约束中得到 <span
+class="math inline">\(H\)</span>,我们作如下条件说明:</p>
+<p>　　(a) 点 <span class="math inline">\(W\)</span> 的坐标为 <span
+class="math inline">\((1\,/\,3,1\,/\,3,1\,/\,3)\)</span>;</p>
+<p>　　(b) 任一点 <span class="math inline">\(P\)</span> 的坐标为 <span
+class="math inline">\((r,g,b)\)</span>,且被约束在以 <span
+class="math inline">\(\triangle P_RP_GP_B\)</span> 为边界的平面内;</p>
+<p>　　(c) 从原点到 <span class="math inline">\(W\)</span> 的向量记为
+<span class="math inline">\(\boldsymbol{w}\)</span>.类似地,从原点到点
+<span class="math inline">\(P_R\)</span> 和 <span
+class="math inline">\(P\)</span> 的向量分别记为 <span
+class="math inline">\(\boldsymbol{p}_R\)</span> 和 <span
+class="math inline">\(\boldsymbol{p}\)</span>;</p>
+<p>　　(d) 直线 <span class="math inline">\(P_iQ_i\)</span>, <span
+class="math inline">\(i=R,G,B\)</span>,交于点 <span
+class="math inline">\(W\)</span>;</p>
+<p>　　(e) 令 <span
+class="math inline">\(r_0=R\,/\,I,g_0=G\,/\,I,b_0=B\,/\,I\)</span>,其中
+<span class="math inline">\(I\)</span> 在式 <span
+class="math inline">\((5)\)</span> 中给出,从图2(a)可以看出, <span
+class="math inline">\(P_RQ_R\)</span> 是点 <span
+class="math inline">\((r_0,g_0,b_0)\)</span> 满足 <span
+class="math inline">\(g_0=b_0\)</span> 的轨迹.同理,沿着 <span
+class="math inline">\(P_B Q_B\)</span> 有 <span
+class="math inline">\(r_0=g_0\)</span>,沿着 <span
+class="math inline">\(P_G Q_G\)</span> 有 <span
+class="math inline">\(r_0=b_0\)</span>;</p>
+<p>　　(f) 在以 <span class="math inline">\(\triangle P_RQ_RP_G\)</span>
+为边界的平面区域内,任意点都满足 <span class="math inline">\(g_0\geqslant
+b_0\)</span>.在 <span class="math inline">\(\triangle P_RQ_RP_B\)</span>
+区域范围内的任意点都满足 <span class="math inline">\(b_0\geqslant
+g_0\)</span>.因此,直线 <span class="math inline">\(P_RQ_R\)</span> 将
+<span class="math inline">\(g_0 &gt; b_0\)</span> 的区域与 <span
+class="math inline">\(g_0 &lt;b_0\)</span> 的区域分开.同理,直线 <span
+class="math inline">\(P_GQ_G\)</span> 将 <span class="math inline">\(b_0
+&gt; r_0\)</span> 的区域与 <span class="math inline">\(b_0
+&lt;r_0\)</span> 的区域分开,直线 <span
+class="math inline">\(P_BQ_B\)</span> 将 <span class="math inline">\(g_0
+&gt; r_0\)</span> 的区域与 <span class="math inline">\(g_0
+&lt;r_0\)</span> 的区域分开;</p>
+<p>　　(g) 对于 <span class="math inline">\(i=R,G\)</span> 或 <span
+class="math inline">\(B\)</span>, <span class="math inline">\(\left|W
+Q_{i}\right| \,/\,\left|P_{i} Q_{i}\right|=1 \,/\, 3\)</span> 且 <span
+class="math inline">\(\left|W P_{i}\right| \,/\,\left|P_{i}
+Q_{i}\right|=2 \,/\, 3\)</span> (<span
+class="math inline">\(|\cdot|\)</span>代表长度);</p>
+<p>　　(h) <span class="math inline">\(RG\)</span> 扇区定义为以 <span
+class="math inline">\(\triangle WP_RP_G\)</span> 为边界的区域, <span
+class="math inline">\(GB\)</span> 扇区定义为以 <span
+class="math inline">\(\triangle WP_GP_B\)</span> 为边界的区域, <span
+class="math inline">\(BR\)</span> 扇区定义为以 <span
+class="math inline">\(\triangle WP_BP_R\)</span> 为边界的区域.</p>
+<p>　　在图2(a)中,任意颜色的色调由线段 <span
+class="math inline">\(WP_R\)</span> 与 <span
+class="math inline">\(WP\)</span>
+之间的夹角定义,矢量形式如图2(b)所示,由向量 <span
+class="math inline">\(\boldsymbol{p}_R -\boldsymbol{w}\)</span> 与向量
+<span class="math inline">\(\boldsymbol{p}-\boldsymbol{w}\)</span>
+之间的夹角定义.例如, <span class="math inline">\(H=0^{\circ}\)</span>
+对应红色, <span class="math inline">\(H=120^{\circ}\)</span>
+对应绿色,以此类推.尽管角 <span class="math inline">\(H\)</span>
+可以通过任意经过 <span class="math inline">\(W\)</span>
+的线来测量,但以红原色轴来测量色调是一种惯例.一般来说,下式适用于<span
+class="math inline">\(0^{\circ}\leqslant H \leqslant
+180^{\circ}\)</span>: <span class="math display">\[
+\big(\boldsymbol{p}-\boldsymbol{w}\big)
+\cdot\left(\boldsymbol{p}_{R}-\boldsymbol{w}\right)=\big\|\boldsymbol{p}-\boldsymbol{w}\big\|\left\|\boldsymbol{p}_{R}-\boldsymbol{w}\right\|
+\cos H\,,\tag{6}
+\]</span> 其中 <span class="math inline">\((\boldsymbol{x})
+\cdot(\boldsymbol{y})=\boldsymbol{x}^{\mathrm{T}}
+\boldsymbol{y}=\|\boldsymbol{x}\|\|\boldsymbol{y}\| \cos H\)</span>
+表示两个向量的点积或内积, <span class="math inline">\(||\cdot
+||\)</span> 表示向量的范数(模).</p>
+<p>　　根据条件(a)和(b), <span class="math display">\[
+\big\|\boldsymbol{p}-\boldsymbol{w}\big\|=\left[\left(r-\frac{1}{3}\right)^{2}+\left(g-\frac{1}{3}\right)^{2}+\left(b-\frac{1}{3}\right)^{2}\right]^{1
+\,/\, 2}\,,\tag{7}
+\]</span> 代入式 <span class="math inline">\((1)\)</span>-<span
+class="math inline">\((3)\)</span>,得 <span class="math display">\[
+\big\|\boldsymbol{p}-\boldsymbol{w}\big\|=\left[\frac{9\left(R^{2}+G^{2}+B^{2}\right)-3(R+G+B)^{2}}{9(R+G+B)^{2}}\right]^{1
+\,/ \,2}\,.\tag{8}
+\]</span> 由于向量 <span class="math inline">\(\boldsymbol{p}_R\)</span>
+和 <span class="math inline">\(\boldsymbol{w}\)</span>
+各自从原点延伸到点 <span class="math inline">\((1,0,0)\)</span> 和 <span
+class="math inline">\((1\,/\,3,1\,/\,3,1\,/\,3)\)</span>,故 <span
+class="math display">\[
+\left\|\boldsymbol{p}_{R}-\boldsymbol{w}\right\|=\left(\frac{2}{3}\right)^{1
+\,/\, 2}\,,\tag{9}
+\]</span> 故 <span class="math display">\[
+\begin{aligned}
+  \big(\boldsymbol{p}-\boldsymbol{w}\big)
+\cdot\left(\boldsymbol{p}_{R}-\boldsymbol{w}\right)
+&amp;=\frac{2}{3}\left(r-\frac{1}{3}\right)-\frac{1}{3}\left(g-\frac{1}{3}\right)+\frac{1}{3}\left(b-\frac{1}{3}\right)
+\\
+  &amp;=\frac{2 R-G-B}{3(R+G+B)}\,.
+  \end{aligned}\tag{10}
+\]</span> 从式 <span class="math inline">\((6)\)</span> 得 <span
+class="math display">\[
+H=\cos ^{-1}\left[\frac{\big(\boldsymbol{p}-\boldsymbol{w}\big)
+\cdot\left(\boldsymbol{p}_{R}-\boldsymbol{w}\right)}{\big\|\boldsymbol{p}-\boldsymbol{w}\big\|\left\|\boldsymbol{p}_{R}-\boldsymbol{w}\right\|}\right]\,,\tag{11}
+\]</span> 代入 <span class="math inline">\((8)\)</span>-<span
+class="math inline">\((10)\)</span> ,得 <span class="math display">\[
+H=\cos^{-1}\left\{\frac{\frac{1}{2}[(R-G)+(R-B)]}{\left[(R-G)^{2}+(R-B)(G-B)\right]^{1
+\,/\, 2}}\right\}\,,\tag{12}
+\]</span> 此式适用于 <span class="math inline">\(0^{\circ}\leqslant H
+\leqslant 180^{\circ}\)</span>.如果 <span
+class="math inline">\(b_0&gt;g_0\)</span>,则 <span
+class="math inline">\(H\)</span> 大于 <span
+class="math inline">\(180^{\circ}\)</span>,此时,令 <span
+class="math inline">\(H=360^{\circ}-H\)</span>.有时候 <span
+class="math inline">\(H\)</span> 也用正切表示: <span
+class="math inline">\(\cos ^{-1}(x)=90^{\circ}-\tan ^{-1}\left(x \,/\,
+\sqrt{1-x^{2}}\right)\)</span>.但式 <span
+class="math inline">\((12)\)</span>
+不仅更加直观,也更易于在硬件上实现.</p>
+<p>　　从图2(a)得点 <span class="math inline">\(P\)</span> 处的饱和度
+<span class="math display">\[
+S=\frac{|W P|}{\left|W P^{\prime}\right|}=\frac{\left|W
+Q\right|}{\left|W T\right|}=\frac{\left|W T\right|-\left|Q
+T\right|}{\left|W T\right|}\,,\tag{13}
+\]</span> 其中点 <span class="math inline">\(T\)</span> (见图2(b))为点
+<span class="math inline">\(W\)</span> 在 <span
+class="math inline">\(rg\)</span> 平面上的投影, 直线 <span
+class="math inline">\(WT\)</span> 平行于 <span
+class="math inline">\(b\)</span> 轴.令点 <span
+class="math inline">\(Q\)</span> 为点 <span
+class="math inline">\(P\)</span> 在 <span
+class="math inline">\(WT\)</span> 上的投影, <span
+class="math inline">\(PQ\)</span> 平行于 <span
+class="math inline">\(rg\)</span> 平面;第二个等号后面一项根据 <span
+class="math inline">\(\triangle PWQ \cong \triangle P&#39;WT\)</span>
+得到.由于 <span class="math inline">\(\left|WT\right|=1\,/\,3\)</span>,
+<span class="math inline">\(\left|QT\right|=b\)</span>,则 <span
+class="math display">\[
+\begin{aligned}
+  S &amp;=3\left(\frac{1}{3}-b\right) \\
+  &amp;=1-3 b \\
+  &amp;=1-b_{0}\,,
+\end{aligned}\tag{14}
+\]</span> 其中最后一步根据式 <span
+class="math inline">\((4)\)</span>和条件(e)得到.在 <span
+class="math inline">\(RG\)</span> 扇区中,记 <span
+class="math inline">\(b_0=\min
+\left\{r_0,b_0,g_0\right\}\)</span>.类似地, <span
+class="math display">\[
+\begin{aligned}
+  S &amp;=1-\min \left\{r_{0}, g_{0}, b_{0}\right\} \\
+  &amp;=1-\frac{3}{R+G+B}\min \left\{R, G, B\right\}
+\end{aligned}\tag{15}
+\]</span> 对于位于HSI三角形中的任意一点都是成立的.</p>
+<p>　　综上可得 <span class="math display">\[
+\left\{
+  \begin{aligned}
+    H&amp;=\cos
+^{-1}\left\{\frac{\frac{1}{2}[(R-G)+(R-B)]}{\left[(R-G)^{2}+(R-B)(G-B)\right]^{1\,
+/\, 2}}\right\}\,,\\
+    S&amp;=1-\frac{3}{R+G+B}\min \left\{R, G, B\right\} \, , \\
+    I&amp;=\frac{1}{3}(R+G+B)\,,
+  \end{aligned}
+\right.\tag{16}
+\]</span> 当 <span
+class="math inline">\((B\,/\,I)&gt;(G\,/\,I)\)</span>时,令<span
+class="math inline">\(H=360^{\circ}-H\)</span>.如果 <span
+class="math inline">\(S=0\)</span>,则 <span
+class="math inline">\(\left|WP\right|=0\)</span>,意味着 <span
+class="math inline">\(W\)</span> 和 <span
+class="math inline">\(P\)</span> 重合,此时 <span
+class="math inline">\(H\)</span> 的定义没有意义,所以色度在饱和度为 <span
+class="math inline">\(0\)</span> 的时候没有定义.类似地,饱和度在强度
+<span class="math inline">\(I=0\)</span> 时没有定义.</p>
+<h2 id="从hsi到rgb的转换">从HSI到RGB的转换</h2>
+<p>　　i.对于 <span class="math inline">\(RG\)</span> 扇区 <span
+class="math inline">\(\left(0^{\circ}&lt;H \leqslant
+120^{\circ}\right)\)</span>,由于 <span class="math display">\[
+\begin{aligned}
+    S&amp;=1-\frac{3}{R+G+B}\min \left\{R,G,B\right\}\\
+    &amp;=1-\min\left\{r_0,g_0,b_0\right\}\\
+    &amp;=1-b_0 \quad
+\left(RG扇区中b_0=\min\left\{r_0,g_0,b_0\right\}\right)\\
+    &amp;=1-3b\,,
+\end{aligned}\tag{17}
+\]</span> 故 <span class="math display">\[
+b=\frac{1}{3}(1-S)\,.\tag{18}
+\]</span> 　　由图3(b)可知 <span class="math inline">\(r\)</span> 值为点
+<span class="math inline">\(P\)</span> 在红原色轴上的投影.图3(c)中的
+<span class="math inline">\(\triangle P_ROQ_R\)</span> 与图3(a)中的
+<span class="math inline">\(\triangle P_ROQ_R\)</span> 相对应.直线 <span
+class="math inline">\(OP_R\)</span> 对应红原色轴,虚线 <span
+class="math inline">\(TX\)</span> 是<span
+class="math inline">\(\triangle P_ROQ_R\)</span> 所在平面与包含点 <span
+class="math inline">\(p\)</span> 且与 <span
+class="math inline">\(Or\)</span> 轴相垂直的平面 <span
+class="math inline">\(T&#39;XP&#39;&#39;\)</span> (记为平面 <span
+class="math inline">\(\Omega\)</span>,如图3(a)中的灰色区域所示)的交线.</p>
+<p><img src="hsi-rgb.assets/drawing-1618293439394.svg"
+alt="drawing" /></p>
+<p style="text-align:center">
+图 3(a)　　　　　　　　　　　　图 3(b)　　　　　　　　　　　　　　图
+4(c)
+</p>
+<p>　　易得平面<span class="math inline">\(\Omega\,//\)</span>平面<span
+class="math inline">\(bOg\)</span>,又平面<span
+class="math inline">\(\Omega\, \cap\)</span>平面<span
+class="math inline">\(P_RP_GP_B=PT\)</span>,平面<span
+class="math inline">\(bOg\, \cap\)</span>平面<span
+class="math inline">\(P_RP_GP_B=P_BP_G\)</span>,故 <span
+class="math inline">\(PT\,//\,P_BP_G\)</span>.因为 <span
+class="math inline">\(OP_B=OP_G\)</span>, <span
+class="math inline">\(Q_R\)</span> 为 <span
+class="math inline">\(P_BP_G\)</span> 的中点,所以 <span
+class="math inline">\(OQ_R\perp P_BP_G\)</span>;同理得, <span
+class="math inline">\(P_RQ_R\perp P_BP_G\)</span>.又 <span
+class="math inline">\(OQ_R \subset\)</span>平面<span
+class="math inline">\(P_ROQ_R\)</span>, <span
+class="math inline">\(P_RQ_R\subset\)</span>平面<span
+class="math inline">\(P_ROQ_R\)</span>,则 <span
+class="math inline">\(P_BP_G\perp\)</span>平面<span
+class="math inline">\(P_ROQ_R\)</span>.由于 <span
+class="math inline">\(PT\,//\,P_BP_G\)</span>,故 <span
+class="math inline">\(PT\perp\)</span>平面<span
+class="math inline">\(P_ROQ_R\)</span>,所以 <span
+class="math inline">\(PT\perp P_RQ_R\)</span>,则点 <span
+class="math inline">\(T\)</span> 为点 <span
+class="math inline">\(P\)</span> 在直线 <span
+class="math inline">\(P_RQ_R\)</span> 上的投影,且 <span
+class="math display">\[
+\left|TW\right|=\left|WP\right|\cos H\,;\tag{19}
+\]</span></p>
+<blockquote>
+<p>上面这段话证明罗里吧嗦的,其实只要知道平面 <span
+class="math inline">\(\Omega\)</span> 与平面 <span
+class="math inline">\(P_BOP_G\)</span>
+平行,稍微推导一下就可以得到结论,但是严谨的数学语言说明不得不如此繁琐.</p>
+</blockquote>
+<p>易得 $P_RXT P_ROQ_R $,则 <span class="math display">\[
+\frac{\left|P_RQ_R\right|}{\left|P_RO\right|}=\frac{a}{d}\,,\tag{20}
+\]</span> 又 <span class="math inline">\(\left|P_RO\right|=1\)</span>,
+<span class="math inline">\(d=1-r\)</span>, <span
+class="math inline">\(a=\left|P_RQ_R\right|-\left|WP\right|\cos
+H-\left|WQ_R\right|\)</span>,代入式 <span
+class="math inline">\((20)\)</span> 中得 <span class="math display">\[
+\begin{aligned}
+    r
+&amp;=\frac{\left|WQ_R\right|}{\left|P_RQ_R\right|}+\frac{\left|WP\right|}{\left|P_RQ_R\right|}\cos
+H\\
+    &amp;=\frac{1}{3}+\frac{\left|WP\right|}{\left|P_RQ_R\right|}\cos
+H\quad \left(\text{由条件}(\text{d})得\left|P_{R} Q_{R}\right|=3\left|W
+Q_{R}\right|\right)\,.
+  \end{aligned}\tag{21}
+\]</span> 　　在图3(a)中,有 <span class="math display">\[
+S=\frac{\left|WP\right|}{\left| WP&#39;\right|}\,,\tag{22}
+\]</span> 故 <span class="math inline">\(\left|WP\right|=S\left|
+WP&#39;\right|\)</span>.在图3(b)中,易得 <span
+class="math inline">\(\angle\,P_RWQ_B=60^{\circ}\)</span>,则 <span
+class="math inline">\(\angle\,P&#39;WQ_B=\)</span><span
+class="math inline">\(\angle\,P_RWQ_B-H=60^{\circ}\)</span><span
+class="math inline">\(-H\)</span>,则 <span class="math display">\[
+\left| W Q_{B}\right|=\left|W P&#39;\right| \cos
+\left(60^{\circ}-H\right)\,,\tag{23}
+\]</span> 又有 <span
+class="math inline">\(\left|WQ_B\right|=\left|WQ_R\right|\)</span>,代入式
+<span class="math inline">\((23)\)</span> 中得 <span
+class="math display">\[
+\begin{aligned}
+  r &amp;=\frac{1}{3}+\frac{S\left|W Q_{R}\right| \cos H}{P_{R} Q_{R}
+\mid \cos \left(60^{\circ}-H\right)} \\
+  &amp;=\frac{1}{3}\left[1+\frac{S \cos H}{\cos
+\left(60^{\circ}-H\right)}\right]\quad
+\left(\text{由条件}(\text{d})得\left|P_{R} Q_{R}\right|=3\left|W
+Q_{R}\right|\right)\,.
+  \end{aligned}\tag{24}
+\]</span> 　　已知 <span class="math inline">\(r,b\)</span>,则 <span
+class="math display">\[
+g=1-r-b\,.\tag{25}
+\]</span> 综上,对于 <span class="math inline">\(RG\)</span> 扇区 <span
+class="math inline">\(\left(0^{\circ}&lt;H \leqslant
+120^{\circ}\right)\)</span>,从HSI到RGB的变换为 <span
+class="math display">\[
+\left\{
+    \begin{aligned}
+      b&amp;=\frac{1}{3}(1-S)\,,\\
+      r&amp;=\frac{1}{3}\left[1+\frac{S \cos H}{\cos
+\left(60^{\circ}-H\right)}\right]\,,\\
+      g&amp;=1-r-b\,,
+    \end{aligned}
+  \right.\tag{26}
+\]</span> 代入 <span class="math inline">\(I=(R+G+B)\,/\,3\)</span>,得
+<span class="math display">\[
+\left\{
+    \begin{aligned}
+      B&amp;=I(1-S)\,,\\
+      R&amp;=I\left[1+\frac{S \cos H}{\cos
+\left(60^{\circ}-H\right)}\right]\,,\\
+      G&amp;=3I-R-B\,.
+    \end{aligned}
+  \right.\tag{27}
+\]</span> 　　ii.对于 <span class="math inline">\(GB\)</span> 扇区 <span
+class="math inline">\(\left(120^{\circ}&lt;H \leqslant
+240^{\circ}\right)\)</span>,由中心对称关系,对式 <span
+class="math inline">\((27)\)</span> 做变量替换即可(如图4所示).令 <span
+class="math inline">\(H=H-120^{\circ}\)</span>,且 <span
+class="math display">\[
+R\rightarrow G\,,\qquad G\rightarrow B\,,\qquad B\rightarrow R\,,
+\]</span> 得 <span class="math display">\[
+\left\{
+    \begin{aligned}
+      R&amp;=I(1-S)\,,\\
+      G&amp;=I\left[1+\frac{S \cos\left(H-120^{\circ}\right)}{\cos
+\left(180^{\circ}-H\right)}\right]\,,\\
+      B&amp;=3I-R-G\,.
+    \end{aligned}
+  \right.\tag{28}
+\]</span> <img src="hsi-rgb.assets/drawing-1618293605418.svg"
+alt="drawing" /></p>
+<p style="text-align:center">
+图 4　　　　　　　　　　　　　　　图 5
+</p>
+<p>　　iii.对于 <span class="math inline">\(BR\)</span> 扇区 <span
+class="math inline">\(\left(240^{\circ}&lt;H \leqslant
+360^{\circ}\right)\)</span>,同理作变量替换(如图5所示).令 <span
+class="math inline">\(H=H-240^{\circ}\)</span>,且 <span
+class="math display">\[
+R\rightarrow B\,,\qquad G\rightarrow B\,,\qquad B\rightarrow G\,,
+\]</span> 得 <span class="math display">\[
+\left\{
+    \begin{aligned}
+      G&amp;=I(1-S)\,,\\
+      B&amp;=I\left[1+\frac{S \cos\left(H-240^{\circ}\right)}{\cos
+\left(300^{\circ}-H\right)}\right]\,,\\
+      R&amp;=3I-G-B\,.
+    \end{aligned}
+  \right.\tag{29}
+\]</span> 　　综上所述,从HSI到RGB的变换为 <span class="math display">\[
+\begin{array}{l}
+\left\{
+\begin{aligned}
+    0^{\circ}&amp;&lt;H \leqslant 120^{\circ}\,,\\
+    B&amp;=I(1-S)\,,\\
+    R&amp;=I\left[1+\frac{S \cos H}{\cos
+\left(60^{\circ}-H\right)}\right]\,,\\
+    G&amp;=3I-R-B\,.
+\end{aligned}
+\right.\\[3mm]
+\left\{
+\begin{aligned}
+    0^{\circ}&amp;&lt;H \leqslant 120^{\circ}\,,\\
+    B&amp;=I(1-S)\,,\\
+    R&amp;=I\left[1+\frac{S \cos H}{\cos
+\left(60^{\circ}-H\right)}\right]\,,\\
+    G&amp;=3I-R-B\,.
+\end{aligned}
+\right.\\[3mm]
+\left\{
+\begin{aligned}
+    240^{\circ}&amp;&lt;H \leqslant 360^{\circ}\,,\\
+    G&amp;=I(1-S)\,,\\
+    B&amp;=I\left[1+\frac{S \cos\left(H-240^{\circ}\right)}{\cos
+\left(300^{\circ}-H\right)}\right]\,,\\
+    R&amp;=3I-G-B\,.
+\end{aligned}
+\right.
+\end{array}
+\]</span></p>
+<p>HSI颜色模型与各扇区对应的色盘如图6所示.</p>
+<p><img src="hsi-rgb.assets/image-20210413141441131.png"
+alt="image-20210413141441131" /></p>
+<p style="text-align:center">
+图 6
+</p>
+<h2 id="参考文献">参考文献</h2>
+<p>Gonzalez and Woods, Digital Image Processing, 1st ed. Addison-Wesley,
+1992.</p>
+<p style="text-align:center">
+<a href="./hsi_rgb.pdf">PDF版本</a>　|　<a href="./hsi_rgb.tex"><span
+class="math inline">\(\mathrm{\LaTeX}\)</span>版本</a>
+</p>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Math/"> Math</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2021/06/05/textbook/">
+                                                Self-talking about Textbooks
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2021/03/27/cm/">
+                                                        The Complex Number in Circuits
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

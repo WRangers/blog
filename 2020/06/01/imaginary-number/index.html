@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Are Imaginary Numbers Really Real? | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Are Imaginary Numbers Really Real?
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">June 1, 2020&nbsp;&nbsp;18:51:53</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Notes-of-Nothing/">Notes of Nothing</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <p><a
+href="https://www.youtube.com/channel/UConVfxXodg78Tzh5nNu85Ew">Welch
+Labs</a> once posted a series of videos named <a
+href="https://www.youtube.com/watch?v=T647CGsuOVU&amp;list=PLiaHhY2iBX9g6KIvZ_703G3KJXapKkNaF"><em>Imaginary
+Numbers Are Real</em></a>. As for the question that are imaginary
+numbers real? The answer is YES. I have mentioned that in my previous
+post <a href="http://junx.wang/blog/2020/02/12/ss4/" target="_blank" rel="noopener"><em>Signals and
+Systems | Fourier Series and Transformation</em></a>. However, in
+reality, we may still ask the question that <strong>Are Imaginary
+Numbers Really Real?</strong> And the answer is also definitely YES.</p>
+<p>　Before answering the question, I'd like to introduce another
+question —— does justice really exist? It seems a silly question, but if
+you think deeply, you'll find it ambiguous and hard to answer. I quote
+Prof.Xiang Luo's answer here.</p>
+<blockquote>
+<p>　　大家觉得这个世界上存在正义吗?正义是人的发明还是人的发现.正义是主观的还是客观的.有很多同学认为正义是主观的,认为正义之只是人类的一种设计.如果你持这种观点,其实你就根本性地取消了正义这个概念.因为正义既然只是人的设计,那此一时也彼一时也.当然这是人类历史上最古老的争论,所以为什么希望大家要看经典.早在古希腊柏拉图时代,就探讨过人类社会有没有正义这个问题.当时就有三派观点.第一派,柏拉图假苏格拉底之口认为正义是客观存在的;还有第二派,色拉叙马霍斯认为正义简直就是搞笑,只是相对的,没有绝对的对,也没有绝对的错,强权即真理;还有第三派持怀疑论,我不知道有没有正义,也许有,也许没有,我表示怀疑.但在我个人看来,在理想国中柏拉图以非常非常严谨的逻辑,彻底地驳斥了相对主义——正义一定是客观存在的.用我个人的理解,至少从逻辑上,从经验上,从类比上,我们认为正义一定是客观存在的.</p>
+<p>　　首先从逻辑上,同学们是不是经常性会感觉有些事情不正义.有没有这种感觉?当你认为一个事情不正义的时候,一定在逻辑上有一个反对面叫什么呢?叫正义!因为如果没有正义这个概念,你认为一个事情不正义毫无意义.各位理解我的意义没有.如果我们认为一个事情不公平,那一定有与它相对应的公平这个概念.这是逻辑上的问题,从逻辑上来说,当你认为这个世界上没有绝对的对,也没有绝对的错,你在逻辑上犯下了一个重大的谬论——因为当你认为没有什么是绝对的对,也没有什么是绝对的错;这个观点本身就是什么的?就是绝对的.你本身就在主张一种绝对的观点.我说清楚没有.</p>
+<p>　　第二是经验论.在经验上,就如刚才所说的,我们每一个人都会经验到一些不正义的事情;我们每个人的内心深处是不是渴望正义概念的存在.大家注意到,人的所有的感觉一定是有所投射的客观对象.我渴了,所以一定有什么的存在?有水的存在;我饿了,所有一定有什么的存在?有食物的存在.甚至包括我有性欲也一定有什么的存在?有性欲所指向的对象.那么人类为什么有对公平的感觉,因为一定存在一个什么?存在一个公平所指向的对象.否则这种感觉是没有意义的.</p>
+<p>　　最后是类比论.我经常问同学们,我最近写了一本书叫《圆圈正义》.我一直在思考这个问题,大家能画出圆这个概念吗?你能画出一个完美的圆吗?同学们觉得完美的圆这个概念存不存在?圆这个概念是人的发明还是人的发现.圆这个概念是主观的还是客观的?是客观的.但是人所画的圆圆不圆?都不圆.你用任何仪器所花的圆都是不圆的,但是圆的这个概念存不存在?存在.我们人类不断地在追求一个完美的圆,但是我们在现实生活中永远画不出一个完美的圆.我们画不出完美的圆不代表圆的这个概念就不存在,因为它是我们前进的方向.</p>
+<p>　　我们虽然看不到正义,但不代表正义这个概念不存在,他依然是我们前进的方向.我们所有的法律人为什么要追求公平、正义?因为正义是客观存在的,它不断地挑动着我们的心弦,让我们虽不能至,心向往之,这就叫做正义.我非常喜欢一部台剧,叫做我们与恶的距离.里面有一句台词非常打动我.他说什么呢?他说看见的不用去相信,看不见的才要去相信.看见的正义你不需要去相信,看不见的正义才是需要去相信的.虽然我们在现实生活中经常性看不见正义,但是我们依然相信正义是存在的.</p>
+</blockquote>
+<p>　OK. Let's stop digressing. And I'd like to convert the question
+<em>Are Imaginary Numbers Really Real</em> into <em>Do Imaginary Numbers
+Really Exist in Reality</em>. Is the concept of imaginary numbers an
+invention or a discovery of people? In the course of <em>Stochastic
+Processes</em>, my teacher asked us a question that did you think the
+complex signals were really exist? And the essence of that question is
+equal to whether imaginary numbers are really exist.</p>
+<p>　Experiencedly, we naturally acknowledge the existence of natural
+numbers, integers, minus, irrational numbers and so on. But why do we
+think the imaginary numbers are not really subconsciously? In fact, the
+name of imaginary numbers is misleading. I'll say complex numbers in the
+followings. Natural numbers, integers, minus, and irrational numbers are
+all the abstract concepts from the nature, which are proposed by human
+beings. So is the complex number. If you don't admit the complex
+numbers' existence, you also deny all the number systems.</p>
+<p>　Even though, you may say that we can find the natural numbers and
+others in reality, but we can't find the complex numbers. We need to
+define the meaning of the word <em>existence</em> first. We can find
+something in reality means the existence of something. That is, there is
+something in reality corresponds to the its concept. We say we can find
+the natural numbers in our life because we say an apple, two apples and
+three pears. That's the natural number. And we say half a bottle of milk
+and minus seven degrees Celsius —— fraction and minus. But do you find
+that those are not numbers at all? They are the concrete objects of the
+corresponding number concept. Following this logic, we not only can't
+find the complex numbers but also others numbers in reality. Therefore,
+we must admit the fact that complex numbers are really real. However, we
+can find the complex numbers in life indeed, like the reactance,
+three-phase AC and so on. Now, you may refute that those are all
+invented by people, not real. It's wrong. We invent a lot of concepts
+and objects which never exist thousands of years ago. But you can't deny
+that they are not true. So the question is how you understand the word
+<em>existence</em>. From where I stand, either a object or a concept,
+it's either concrete or abstract, if we can find a lot of corresponding
+affairs, and it can be applied in our life, then it's genuine.</p>
+<p>　Philosophically, maybe we don't understand the world. Take the
+function <span class="math inline">\(y=x^2\)</span> as an example, in
+the domain of complex numbers, the graph of it is four-dimensional.
+However, we live in a three-dimensional space, can the limit of our
+perspective and imagination is three-dimensional. Thus we never know
+what a four-dimensional graph looks like. If it is possible that we live
+in a four-dimensional world, but we can only see the three dimension of
+it, resulting in that we can't fully understand the world. On this
+point, you can't deny the existence of complex numbers.</p>
+<p>　Complex numbers are really real!</p>
+<hr />
+<p>Let's continue Prof.Xiang Luo's speech:</p>
+<blockquote>
+<p>　这就是法律的目的性解释.要朝着正义去前进,而不是朝着邪恶去前进.当然我刚才从逻辑论、经验论、类比论进行了说明,但其实还有很多立场可以进行说明,比如说认识论.回到刚才刚才柏拉图的场.有很多人陷入了一种怀疑主义,认为这个世界上可能没有正义.那我现在想问你一个问题——大家所有的认识论来源于理性还是来源于相信?你所有的认识论来源于理性还是相信?怀疑主义是理性时代的咒诅.同学们去过南极洲吗?这个世界上有南极洲吗?你凭什么认为有?真的客观存在吗?你去过吗?地图上有,有可能是假的.有可能我身边的人组织了一个大大的阴谋骗我说这个世界上有南极洲.中国历史上有秦朝吗?你凭什么认为有?你去过吗?你说司马迁写过史记,司马迁难道有可能不是在骗你吗?或者他自己也被骗了.出土的文物有没有可能是假的.大家有没有发现,如果你持一种怀疑主义的立场,你所有的认识论都是不稳固的.我甚至这么说,你确不确定你是你爹生的.你做过DNA鉴定吗?即便现在做过,你确不确定你爹是你爹的爹的爹生的?你也不确定,所以这是认识论的问题.理性不是唯一的认识论依据.我们人类所有的思考其实都是建立在相信的基础上.我们相信存在正义,而正义一定是客观存在的.我还要告诉各位,如果你的认识论基础是怀疑主义的.你一定要思考一个问题,在逻辑上的问题.你所怀疑的一切难道不是值得怀疑的吗?你大脑用来做出怀疑主义的这个结论的这个构造,这个推论,难道不值得怀疑吗?就是说你的怀疑本身是不是应该去怀疑的?我好想说得太深了,我只是想提醒各位——公平和正义是存在的,法律要追求公平和正义.</p>
+</blockquote>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Thought/"> Thought</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2021/02/23/dsp-exercise/">
+                                                Digital Signal Processing | A Filter Design Exerciese
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/05/25/maxwell/">
+                                                        Maxwell's Equations
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

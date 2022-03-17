@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Capacitance and Inductance | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Capacitance and Inductance
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">April 14, 2020&nbsp;&nbsp;21:18:58</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Circuit/">Circuit</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>重新梳理电感和电容的相关知识.</p>
+</blockquote>
+<h2 id="电感">电感</h2>
+<h3 id="电流与电压关系推导">电流与电压关系推导</h3>
+<p>根据法拉第电磁感应定律: <span class="math display">\[
+\mathcal{E}=-N \frac{\mathrm{d} \Phi}{\mathrm{d} t}=-N \frac{\mathrm{d}
+\Phi}{\mathrm{d} i} \frac{\mathrm{d} i}{\mathrm{d} t} ,
+\]</span> 设电感<span class="math inline">\(L=N\frac{\mathrm{d}
+\Phi}{\mathrm{d} i}\)</span>,则 <span class="math display">\[
+\mathcal{E}=-L \frac{\mathrm{d} i}{\mathrm{d} t}.
+\]</span> 故一个典型的电感元件的电压是电流关系是: <span
+class="math display">\[
+u=L \frac{\mathrm{d} i}{\mathrm{d} t}.
+\]</span></p>
+<h3 id="阻抗">阻抗</h3>
+<h3 id="作用">作用</h3>
+<p>电感的作用是抵抗电流的变化,但是这种作用与电阻阻碍电流的流动是有区别的.电阻阻碍电流的流动的特征是消耗电能,而电感则纯粹是抵抗电流的变化.当电流增加时电感抵抗电流的增加;当电流小时电感抵抗电流的减小.电感抵抗电流变化的过程并不消耗电能,当电流增加时它会将能量以磁场的形式暂时储存起来,等到电流减小时它又会将磁场的能量释放出来,其效应就是抵抗电流的变化.抵抗的效果与电流变化的快慢相关.</p>
+<h2 id="电容">电容</h2>
+<h3 id="电流与电压关系推导-1">电流与电压关系推导</h3>
+<p>由定义 <span class="math display">\[
+C=\frac{Q}{U}
+\]</span> 得 <span class="math display">\[
+C=\frac{\mathrm{d}q}{\mathrm{d}u}.
+\]</span> 又 <span class="math display">\[
+i=\frac{\mathrm{d}q}{\mathrm{d}t},
+\]</span> 故 <span class="math display">\[
+\mathrm{d}u=\frac{i\mathrm{d}t}{C} ,
+\]</span> 得 <span class="math display">\[
+u=\frac{1}{C} \int_{-\infty}^{t}i \mathrm{d}t.
+\]</span></p>
+<h3 id="阻抗-1">阻抗</h3>
+<h3 id="作用-1">作用</h3>
+<p>当电性相反的电荷分别在电容器的两端累积,电容器两端的电势差和电荷产生的电场开始增加.累积电荷越多,为抵抗电场所需要传的功就越大.储存在电容器的能量等于建立电容两端的电压和电场所需要的能量.</p>
+<h2 id="谐振">谐振</h2>
+<p>　　谐振是物理中的共振在电路中的一种特殊表现,谐振频率就是电路的共振频率.</p>
+<p>　　无论是电感和电容并联,还是串联的电路发生谐振,其表现为每一时刻,电感释放(储存)的能量等于电容储存(释放)的能量,此时不消耗电源额外的能量;二者的整体表现为视在功率为<span
+class="math inline">\(0\)</span>.其本质是能量在电场和磁场的相互转换.</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a
+href="https://blog.csdn.net/qq_29545231/article/details/79941213">理论知识:电感感应电压公式，纯电感正弦电路感应电压公式，纯电容正弦电路电流公式的推导</a>.
+CSDN.</li>
+<li><a
+href="%5Bhttps://zh.wikipedia.org/wiki/%E7%94%B5%E6%84%9F%5D(https://zh.wikipedia.org/wiki/电感)">电感</a>.
+Wikipedia.</li>
+<li><a
+href="%5Bhttps://zh.wikipedia.org/wiki/%E7%94%B5%E5%AE%B9%E5%99%A8%5D(https://zh.wikipedia.org/wiki/电容器)">电容</a>.
+Wikipedia.</li>
+</ul>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Circuit/"> Circuit</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/04/14/calculus-differential/">
+                                                The Calculus | Derivative and Differential
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/04/12/complex-0-entry/">
+                                                        Visual Complex Analysis | Entry
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

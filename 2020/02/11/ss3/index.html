@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Signals and Systems | Computing Convolution | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Signals and Systems | Computing Convolution
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">February 11, 2020&nbsp;&nbsp;22:16:23</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Signals-and-Systems/">Signals and Systems</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>#TODO:补充答案;补充一题多解;补充方波与方波卷积的快速手算.</p>
+</blockquote>
+<p>　　手工计算卷积是一门<strong>手艺活</strong>,特别是在还没学傅里叶变换、拉普拉斯变换或<span
+class="math inline">\(Z\)</span>变换的时候.比较恶心的就是卷积过程中出现分部积分和反因果信号/序列,以及绝对值符号.计算就是老老实实地算,学习了傅里叶等变换后就会有很多奇技淫巧,会方便和快很多(但再怎么快也快不过计算机用FFT算).</p>
+<p>　　下面放几道题,太懒了就不打答案了,有兴趣的话算一算吧.</p>
+<h2 id="连续时间卷积">连续时间卷积</h2>
+<blockquote>
+<ul>
+<li><span class="math inline">\(f_1(t)=\cos
+(t)·[u(t)-u(t-\frac{\pi}{2})], \ f_2(t)=(1-e^{-at})u(t)\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><span class="math inline">\(f_{1}(t)=\mathrm{e}^{-a t} u(t), \
+f_{2}(t)=\sin (t) u(t-2 \pi)\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><span class="math inline">\(f_{1}(t)=2 \mathrm{e}^{-t}[u(t)-u(t-3)],
+\ f_{2}(t)=4[u(t)-u(t-2)]\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><span class="math inline">\(f_{1}(t)=\left\{\begin{array}{ll}1,
+&amp; 1 \leqslant t \leqslant 3 \\ 0, &amp; \text { Others
+}\end{array}\right.,\)</span> <span
+class="math inline">\(f_{2}(t)=\left\{\begin{array}{ll}t-1, &amp; 1
+\leqslant t \leqslant 3 \\ 0, &amp; \text { Others
+}\end{array}\right.\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><span class="math inline">\(e^{-|t-1|} * u(t)\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><p>若<span
+class="math inline">\(y(t)=f_1(t)*f_2(t)\)</span>,计算<span
+class="math inline">\(f_1(2t)*f_2(2t)\)</span>.</p>
+<p>解: <span class="math display">\[
+\begin{aligned}
+y(t) &amp;=f_{1}(t) * f_{2}(t) \\
+&amp;=\int_{-\infty}^{+\infty} f_{1}(k) f_{2}(t-k) \mathrm{d} k
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+f_{1}(a t) * f_{2}(a t)=\int_{-\infty}^{+\infty} f_{1}(a k)
+f_{2}[a(t-k)] \mathrm{d} k
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+y(a t) &amp;=\int_{-\infty}^{+\infty} f_{1}(k) f_{2}(a t-k) \mathrm{d} k
+\\
+&amp;\overset{k=am}{=} \int_{-\infty}^{+\infty} f_{1}(a m) f_{2}(a t-a
+m) \mathrm{d}(a m) \\
+&amp;=a \int_{-\infty}^{+\infty} f_{1}(a m) f_{2}(a t-a m) \mathrm{d}(a
+m) \\
+&amp;=a f_{1}(a t) * f_{2}(a t)
+\end{aligned}
+\]</span></p>
+<p>故<span
+class="math inline">\(f_1(2t)*f_2(2t)=\frac{1}{2}y(2t)\)</span>.</p></li>
+</ul>
+</blockquote>
+<h2 id="离散时间卷积">离散时间卷积</h2>
+<blockquote>
+<ul>
+<li><span class="math inline">\(x_{1}(n)=2^{n} u(-n), \
+x_{2}(n)=u(n)\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><span class="math inline">\(x_{1}(n)=2^{n} u(n),\  x_{2}(n)=3^{n}
+u(n)\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><span class="math inline">\(x_{1}(n)=(-0.5)^{n} u(n-4), \
+x_{2}(n)=4^{n} u(-n+2)\)</span></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><span
+class="math inline">\(x_{1}(n)=u(n)-u(-n),\  x_{2}(n)=\left\{\begin{array}{ll}{4^{n},}
+&amp; {n&lt;0} \\ {0.5^{n},} &amp; { n \geq
+0}\end{array}\right.\)</span></li>
+</ul>
+</blockquote>
+<h2 id="一题多解">一题多解</h2>
+<blockquote>
+<p>暂时懒得找那道题,待更新.</p>
+</blockquote>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Engineering/"> Engineering</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/02/12/ss4/">
+                                                Signals and Systems | Fourier Series and Transformation
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/02/10/ss2/">
+                                                        Signals and Systems | Understanding Convolution
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

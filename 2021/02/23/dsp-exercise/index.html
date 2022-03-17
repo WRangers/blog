@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Digital Signal Processing | A Filter Design Exerciese | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno", skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, TeX: { equationNumbers: { autoNumber: "AMS" }, extensions: ["AMSmath.js","AMSsymbols.js"], noUndefined: { attributes: { mathcolor: "red", mathbackground:
+    "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } }, messageStyle: "none" });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax' ; } }); </script>
+        <!-- 通过连接CDN加载MathJax的js代码 -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Digital Signal Processing | A Filter Design Exerciese
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">February 23, 2021&nbsp;&nbsp;1:03:30</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Digital-Signal-Processing/">Digital Signal Processing</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <blockquote>
+<p>这学期考完数字信号处理之后,突然意识一个很简单却不易察觉的地方.</p>
+</blockquote>
+<p>设计一个巴特沃斯模拟高通滤波器,要求其通带边界频率为10Hz,阻带边界频率为100Hz,通带最大衰减1dB,阻带最小衰减20dB.</p>
+<ol type="1">
+<li>求出对应的低通滤波器阶数 <span
+class="math inline">\(N\)</span>,和归一化3dB截止频率<span
+class="math inline">\(\lambda_c\)</span>;</li>
+<li>写出关于通带截止频率归一化的低通系统函数 <span
+class="math inline">\(Q(p)\)</span>;</li>
+<li>计算高通滤波器系统函数 <span
+class="math inline">\(H_{HP}(s)\)</span>.</li>
+</ol>
+<p><strong>提示</strong>　低通到高通的映射关系 <span
+class="math inline">\(p=\frac{\lambda_{p}\Omega_{ph}}{s}\)</span>,频率映射关系
+<span
+class="math inline">\(\lambda=-\frac{\lambda_{p}\Omega_{ph}}{\Omega}\)</span>.二阶和三阶巴特沃斯3dB频率归一化低通滤波器的系统函数为
+<span class="math inline">\(G_{2}(p)=\frac{1}{p^{2}+1.4142 p+1},
+G_{3}(p)=\frac{1}{p^{3}+2 p^{2}+2 p+1}\)</span>.</p>
+<p><strong>解</strong></p>
+<ol type="1">
+<li><p>对应的低通滤波的通带边界频率为10Hz,阻带边界频率为100Hz,因此低通滤波器的
+<span class="math display">\[
+\lambda_{s p}=\frac{\lambda_{s}}{\lambda_{p}}=10, \quad k_{s
+p}=\sqrt{\frac{10^{\alpha_{s} 10}-1}{10^{\alpha_{p} / 10}-1}}=19.5538\,;
+\]</span></p>
+<p><span class="math display">\[
+N=\frac{\lg k_{s p}}{\lg \lambda_{s p}}=1.2912\,,\quad \text{let}\
+N=2\,;
+\]</span></p>
+<p><span class="math display">\[
+\lambda_{c}=\lambda_{p}\left(10^{0.1 a_{p}}-1\right)^{-\frac{1}{2
+N}}=1.4019\quad or\quad \lambda_{c}=\lambda_{s}\left(10^{0.1
+a_{s}}-1\right)^{-\frac{1}{2 N}}=3.1702\,.
+\]</span></p></li>
+<li><p><span class="math display">\[
+Q(p)=\left.G\left(p^{\prime}\right)\right|_{p^{\prime}=p /
+\lambda_{c}}=\frac{\lambda_{c}^{2}}{p^{2}+1.4142 p
+\lambda_{c}+\lambda_{c}^{2}}=\frac{1.965}{p^{2}+1.983 p+1.965},\quad
+\lambda_{c}=1.4019\,.
+\]</span></p></li>
+<li><p>代入公式计算 <span class="math display">\[
+   \begin{aligned}
+   H_{H P}(s) &amp;=\left.Q(p)\right|_{p=\frac{\lambda_{p} \Omega_{p
+h}}{s}}\\
+   &amp;=\frac{\lambda_{c}^{2}}{\left(\frac{\Omega_{p
+h}}{s}\right)^{2}+1.4142 \times \lambda_{c}\left(\frac{\Omega_{p
+h}}{s}\right)+\lambda_{c}^{2}}\\
+   &amp;=\frac{1}{\left(\frac{\Omega_{p h}}{\lambda_{c}
+s}\right)^{2}+1.4142 \times\left(\frac{\Omega_{p h}}{\lambda_{c}
+s}\right)+1} \\
+   &amp;=\frac{s^{2}}{200874+633.83 s+s^{2}}, \quad \Omega_{p h}=2 \pi
+\cdot 100\,.
+   \end{aligned}
+   \]</span></p></li>
+</ol>
+<blockquote>
+<p>题2中的 <span class="math inline">\(\lambda_c\)</span> 不能通过求算
+<span
+class="math inline">\(\Omega_c=\Omega_p(10^{0.1\alpha_p}-1)^{-\frac{1}{2N}}\)</span>
+或 <span
+class="math inline">\(\Omega_c=\Omega_s(10^{0.1\alpha_s}-1)^{-\frac{1}{2N}}\)</span>,然后代入
+<span
+class="math inline">\(\lambda=-\frac{\lambda_{p}\Omega_{ph}}{\Omega}\)</span>
+计算.这样会得到 <span
+class="math inline">\(\lambda_{c}=\lambda_{p}\left(10^{0.1
+a_{p}}-1\right)^{\frac{1}{2 N}}\)</span> 或 <span
+class="math inline">\(\lambda_{c}=\lambda_{s}\left(10^{0.1
+a_{s}}-1\right)^{\frac{1}{2 N}}\)</span>.原因是频率映射关系 <span
+class="math inline">\(\lambda=-\frac{\lambda_{p}\Omega_{ph}}{\Omega}\)</span>
+是线性映射,只有 <span
+class="math inline">\(0,\Omega_{ph},\Omega_{sh},-\infty,+\infty\)</span>
+这些位置是对应的,其他频率并不对应;而且 <span
+class="math inline">\(\Omega_c\)</span>
+计算公式只针对巴特沃斯低通滤波器成立.</p>
+</blockquote>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Engineering/"> Engineering</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2021/02/23/numeric_methods/">
+                                                Numerical Computation Methods | Interesting Exercises
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/06/01/imaginary-number/">
+                                                        Are Imaginary Numbers Really Real?
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>

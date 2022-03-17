@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Junxu Wang">
+
+
+
+
+
+<title>Why Do We Study? | J. WANG&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/blog/favicon.png">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/blog/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/blog/js/script.js"></script>
+    
+    <script src="/blog/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="J. WANG's Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/blog/">J. WANG&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/blog/">J. WANG&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/blog/archives">Posts</a>
+                
+                    <a class="menu-item" href="/blog/jottings/">Jottings</a>
+                
+                    <a class="menu-item" href="/blog/category">Categories</a>
+                
+                    <a class="menu-item" href="/blog/tag">Tags</a>
+                
+                    <a class="menu-item" href="https://wrangers.github.io/">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+        
+            <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+                
+
+                    
+                        <article class="post-wrap">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    Why Do We Study?
+                                </h1>
+                                
+                                    <div class="post-meta">
+                                        
+
+                                                
+                                                    <span class="post-time">
+                                                        <i class="fa fa-calendar-check-o"></i> &nbsp;<a href="#">April 19, 2020&nbsp;&nbsp;13:15:30</a>
+                        </span>
+                                                    
+                                                        
+                                                            <span class="post-category">
+                        &nbsp;<i class="fa fa-folder-open-o"></i>&nbsp;
+                            
+                                <a href="/blog/categories/Notes-of-Nothing/">Notes of Nothing</a>
+                            
+                        </span>
+                                                            <span id="busuanzi_container_page_pv">
+                                                                &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+                                                            </span>
+                                                            
+                                    </div>
+                                    
+                            </header>
+
+                            <div class="post-content">
+                                <p>　The idea that writing such a blog occurred to me long time ago. But
+it's quite hard to give a reasonable answer to this simple but hard
+question with my barren experience. This is also a big annoyance for me
+all the time, and I always try to answer it. Recently, I happen to read
+and watch a lot of books and videos relating to the topic education. The
+following is some of my superficial interpretation.</p>
+<p>　In China, we always refer the word <em>reading</em> to
+<em>study</em>. The word <em>reading</em> here has two kind of meaning.
+One is study—— attending the school, and another one is reading books,
+like novels, proses, poems and other literature works. Therefore, I need
+to response that question from two views.</p>
+<h2 id="why-do-we-reading-books">Why do we reading books?</h2>
+<p>　It's quite easier to answer this question. One of my favorite
+teachers Prof.Xiang Luo posed a video titled <em>Why do we need to
+reading books</em>, which is very heuristic and provides a new viewpoint
+for me. So, I won't repeat more about that question. Here is the
+video.</p>
+<iframe src="//player.bilibili.com/player.html?aid=497651138&amp;bvid=BV1BK411L7DJ&amp;cid=177974677&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 500px; max-width: 100%；align:center; padding:7px;">
+</iframe>
+<h2 id="why-do-we-attend-school">Why do we attend school?</h2>
+<p>　As for this question, in other way, we can ask that why do we
+receive education? In China's education system, we have clear objectives
+when attending school. In elemental school, we learn hard to get in a
+good middle school. In middle school, we work hard to get into a good
+high school. And the final goal is to pass the college entrance
+examination to get into a great university. Unfortunately, that's the
+final goal in most people's life. That's why so many students getting
+lost in university life. This is the tragedy of China's education
+system. However, we hardly can change it. If we abandon the <em>only
+scores theory</em>, it will build walls between classes, resulting in
+great unfairness in society. That seems a incompatible contradiction.
+NO, we have a solution that is to change the educational concepts in
+universities. And my focus is on what is the meaning for us to attend
+university.</p>
+<p>　I have said that most students lost their life goals at university
+in China. Without dreams and even objectives, they muddle along until
+graduation, and then try to find a good job. If you ask me, university
+is a platform for us to find our dreams, and more importantly, it's a
+valuable period to broaden our horizons as well as improve ourselves.
+It's not easy to find our own dreams or life objectives. It takes time
+and experiences. But it should not become an excuse. I think trying to
+scheme our own life and being responsible for ourselves are the basic
+abilities for university students.</p>
+<p>　Recently, I read a book named <em>Education</em>, but haven't
+finished yet. In fact, the meaning of attending school, and the meaning
+of education are as plain as the nose on your face. But I want to dive
+deeper into this question.</p>
+<h2 id="why-do-we-learn-so-many-useless-subjects">Why do we learn so
+many <em>useless</em> subjects?</h2>
+<p>　During this vocation, I reviewed the course <strong>Analog
+Circuit</strong> by Prof.Yihui Zheng again, because I will take the
+<strong>Communitive Electronic Circuit</strong> this term. When I
+learned that course last term, due to the poor teaching ability of my
+teacher, I had to watch the mooc courses of Prof.Zheng. He is a great
+director not only in the course itself, but also in life, inspiring
+students to think, explore and research. That is what most professors
+lose in China.</p>
+<p>　I am a electronic engineering student, and we have a pile of
+courses to take. I always think that why do we learn this course, that
+course…… I am sure that I won't use it in my later life. Why? Why? Why?
+I don't want to study it. But I am also clear that even with so much
+knowledge, we are still not qualified for the challenging jobs. So, what
+do we learn for?</p>
+<p>　In Prof.Zheng's class, I gradually realize that we are not learning
+for all the knowledge. A course's final intention is not to teach you
+all the things in the textbook, but the thoughts. And if you need it
+someday, your able to acquire quickly. Or if you want to go further, you
+own some basic concepts and knowledge in this subject, and maybe it
+contributes your interpretation of other subjects. More importantly, all
+the so called <em>useless subjects</em> are intended for the <em>useless
+use</em>, which mould our thought by unconsciously influenced. In the
+other way, we can say we are learning to how to learn (there is a book
+talking about the art of study: <em>A Mind for Numbers: How to Excel at
+Math and Science</em>). As what Prof.Qiang Zheng mentioned in his
+speech, university education was intended to produce good semi-finished
+products for the society, but not finished products. This was the
+difference between university and junior college.</p>
+<p>　Realizing this, I am excited about study, which like a game, and
+you need to find out the tricks in a subject to defeat it. It's hard but
+exciting. Long time ago, I regarded the study as an ability but not an
+affair. And my experience deepens my understanding.</p>
+<p>　As for the education in university, especially engineering majors,
+I think it's urge to reform. And the beginning target must be textbook.
+A good textbook amounts to a good teacher. When the teacher doesn't
+teach well, the textbook can still play an important role. But the
+situation of textbooks in China let me speechless.</p>
+<p>　The thoughts above are superficial, I believe as the time goes by,
+as my experiences rich, I will gain deeper understanding about the
+questions.</p>
+<blockquote>
+<p>无用之用,是为大用.</p>
+<p style="text-align:right">
+——庄子,《逍遥游》
+</p>
+</blockquote>
+
+                            </div>
+
+                            <hr />
+
+                            
+                                    <section class="post-tags">
+                                        <div>
+                                            <span><i class="fa fa-tags"></i></span>
+                                            <span class="tag">
+                    
+                    
+                        <a href="/blog/tags/Thought/"> Thought</a>
+                    
+                        
+                </span>
+                                        </div>
+                                        <div>
+                                            <a href="javascript:window.history.back();"><i class="fa fa-backward"></i></a>
+                                            <span>· </span>
+                                            <a href="/blog/"><i class="fa fa-home"></i></a>
+                                        </div>
+                                    </section>
+                                    <section class="post-nav">
+                                        
+                                            <a class="prev" rel="prev" href="/blog/2020/04/26/language-in-thought-and-action/">
+                                                Excerpt | Language in Thought and Action
+                                            </a>
+                                            
+                                                
+                                                    <a class="next" rel="next" href="/blog/2020/04/14/calculus-differential/">
+                                                        The Calculus | Derivative and Differential
+                                                    </a>
+                                                    
+                                    </section>
+
+
+                        </article>
+</div>
+            </div>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2020-2022 © Junxu Wang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & Modified <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">
+            <i class="fa fa-eye"></i>  <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+</footer>
+    </div>
+</body>
+
+</html>
