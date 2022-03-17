@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wrangers.github.io/blog/2020/05/06/ps-poisson-distribution/</loc>
+    
+    <lastmod>2022-03-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/05/07/ps-exponential-distribution/</loc>
+    
+    <lastmod>2022-03-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2020/05/04/ps-moment-generating-characteristic-functions/</loc>
+    
+    <lastmod>2022-03-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/2022/03/17/fbp/</loc>
+    
+    <lastmod>2022-03-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://wrangers.github.io/blog/2021/07/29/latex-pagebox/</loc>
     
     <lastmod>2022-03-17</lastmod>
@@ -83,15 +119,6 @@
   </url>
   
   <url>
-    <loc>https://wrangers.github.io/blog/2020/05/07/ps-exponential-distribution/</loc>
-    
-    <lastmod>2021-03-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://wrangers.github.io/blog/2020/05/25/maxwell/</loc>
     
     <lastmod>2021-03-07</lastmod>
@@ -102,24 +129,6 @@
   
   <url>
     <loc>https://wrangers.github.io/blog/2021/02/28/ps-bayes-classical/</loc>
-    
-    <lastmod>2021-02-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://wrangers.github.io/blog/2020/05/06/ps-poisson-distribution/</loc>
-    
-    <lastmod>2021-02-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://wrangers.github.io/blog/2020/05/04/ps-moment-generating-characteristic-functions/</loc>
     
     <lastmod>2021-02-28</lastmod>
     
@@ -439,14 +448,14 @@
   </url>
   
   <url>
-    <loc>https://wrangers.github.io/blog/tags/Experience/</loc>
+    <loc>https://wrangers.github.io/blog/tags/Engineering/</loc>
     <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://wrangers.github.io/blog/tags/Engineering/</loc>
+    <loc>https://wrangers.github.io/blog/tags/Experience/</loc>
     <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -474,13 +483,6 @@
   </url>
   
   <url>
-    <loc>https://wrangers.github.io/blog/tags/Physics/</loc>
-    <lastmod>2022-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://wrangers.github.io/blog/tags/Reading/</loc>
     <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -488,7 +490,21 @@
   </url>
   
   <url>
+    <loc>https://wrangers.github.io/blog/tags/Physics/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://wrangers.github.io/blog/tags/Culture/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/tags/Paper/</loc>
     <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -518,14 +534,14 @@
   </url>
   
   <url>
-    <loc>https://wrangers.github.io/blog/categories/Tech/</loc>
+    <loc>https://wrangers.github.io/blog/categories/Digital-Signal-Processing/</loc>
     <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://wrangers.github.io/blog/categories/Digital-Signal-Processing/</loc>
+    <loc>https://wrangers.github.io/blog/categories/Tech/</loc>
     <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -575,6 +591,13 @@
   
   <url>
     <loc>https://wrangers.github.io/blog/categories/Signals-and-Systems/</loc>
+    <lastmod>2022-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrangers.github.io/blog/categories/SAR/</loc>
     <lastmod>2022-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
