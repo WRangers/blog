@@ -1,9 +1,9 @@
+https://wrangers.github.io/blog/jottings/index.html
 https://wrangers.github.io/blog/2020/05/06/ps-poisson-distribution/
 https://wrangers.github.io/blog/2020/05/07/ps-exponential-distribution/
 https://wrangers.github.io/blog/2020/05/04/ps-moment-generating-characteristic-functions/
 https://wrangers.github.io/blog/2022/03/17/fbp/
 https://wrangers.github.io/blog/2021/07/29/latex-pagebox/
-https://wrangers.github.io/blog/jottings/index.html
 https://wrangers.github.io/blog/2021/04/02/hsi-rgb/
 https://wrangers.github.io/blog/2021/07/15/image-registration/
 https://wrangers.github.io/blog/onhold/sjxhfxyclxt-ch1.html
