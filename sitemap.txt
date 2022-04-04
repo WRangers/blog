@@ -58,7 +58,7 @@ https://wrangers.github.io/blog/tags/Reading/
 https://wrangers.github.io/blog/tags/Physics/
 https://wrangers.github.io/blog/tags/Culture/
 https://wrangers.github.io/blog/tags/Paper/
-https://wrangers.github.io/blog/tags/SAR/
+https://wrangers.github.io/blog/tags/Image/
 https://wrangers.github.io/blog/categories/The-Calculus/
 https://wrangers.github.io/blog/categories/Circuit/
 https://wrangers.github.io/blog/categories/Complex-Analysis/
