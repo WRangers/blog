@@ -6,7 +6,7 @@
   <link href="https://wrangers.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://wrangers.github.io/blog/"/>
-  <updated>2022-03-17T08:51:12.222Z</updated>
+  <updated>2022-04-04T07:21:34.082Z</updated>
   <id>https://wrangers.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>S1A_S3_RAW_6D05</title>
+    <link href="https://wrangers.github.io/blog/2022/04/04/sentinel1s3/"/>
+    <id>https://wrangers.github.io/blog/2022/04/04/sentinel1s3/</id>
+    <published>2022-04-04T07:12:29.000Z</published>
+    <updated>2022-04-04T07:21:34.082Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p style="font-family: &#39;sxsl&#39;; font-size: 14pt">水往前走  花瓣自动脱落<br /> 衣衫上丝线褪色断裂 手背上脉管凸起蜿蜒山岭<br /> 无常逐一升起和熄灭  我对你赤子之心永存</p><p style="text-align: right; font-family: &#39;sxsl&#39;; font-size: 14pt">——《仍然》庆山</p></blockquote><h2 id="hh">HH</h2><p><img src="sentinel1s3.assets/SM_FFBPImg.png" alt="SM_FFBPImg" /></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\blog\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\blog\assets\js\APlayer.m</summary>
+      
+    
+    
+    
+    
+    <category term="SAR" scheme="https://wrangers.github.io/blog/tags/SAR/"/>
+    
+  </entry>
   
   <entry>
     <title>Fast Backprojection Algorithm for Synthetic Aperture Radar</title>
@@ -469,30 +491,6 @@
     
     
     <category term="Math" scheme="https://wrangers.github.io/blog/tags/Math/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Origin of Differences between Chinese and Western Culture | Love</title>
-    <link href="https://wrangers.github.io/blog/2020/04/10/wdf-love/"/>
-    <id>https://wrangers.github.io/blog/2020/04/10/wdf-love/</id>
-    <published>2020-04-10T07:47:41.000Z</published>
-    <updated>2021-02-22T15:40:08.762Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\blog\assets\css\APlayer.min.css"><script src="\blog\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>找个时间补上.</p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\blog\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\blog\assets\js\APlayer.m</summary>
-      
-    
-    
-    
-    <category term="Notes of Nothing" scheme="https://wrangers.github.io/blog/categories/Notes-of-Nothing/"/>
-    
-    
-    <category term="Culture" scheme="https://wrangers.github.io/blog/tags/Culture/"/>
     
   </entry>
   
