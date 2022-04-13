@@ -1,5 +1,5 @@
-https://wrangers.github.io/blog/2022/04/04/sentinel1s3/
 https://wrangers.github.io/blog/jottings/index.html
+https://wrangers.github.io/blog/2022/04/04/sentinel1s3/
 https://wrangers.github.io/blog/2020/05/06/ps-poisson-distribution/
 https://wrangers.github.io/blog/2020/05/07/ps-exponential-distribution/
 https://wrangers.github.io/blog/2020/05/04/ps-moment-generating-characteristic-functions/
